@@ -15,7 +15,3 @@ Para clonar el repositorio, deben seguir los siguientes pasos:
 - `php artisan key:generate`
 
 Para comprobar que la aplicación funcione, deberían ejecutar `php artisan serve`.
-
-## Licencia
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
