@@ -9,6 +9,13 @@
 Para clonar el repositorio, deben seguir los siguientes pasos:
 
 - `git clone https://github.com/edgard-mv/jksoft.git`
+
+Una vez hayan entrado al directorio, deben cambiar a su respectiva rama:
+
+- `git switch [migraciones | plantillas]`
+
+Finalmente, deben instalar las dependencias:
+
 - `composer install`
 - `yarn install --frozen-lockfile`
 - `cp .env.example .env`
