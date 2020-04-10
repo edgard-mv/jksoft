@@ -1,7 +1,7 @@
-@extends('master')
+@extends('menu')
+@section('contenido')
 
-@section('title', 'JKSoft')
 
-@section('body')
-    Has clonado satisfactoriamente el repositorio
+
+
 @endsection
