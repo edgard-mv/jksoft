@@ -5,8 +5,7 @@
 
 
 <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8  col-xs-12">
-       <!-- <a href="producto/crear"><button class="btn btn-success">Nuevo</button></a>-->
+    <div class="col-lg-4 col-md-4 col-sm-4  col-xs-8" >
         @include('producto.buscar')
     </div> 
 </div>
@@ -27,14 +26,14 @@
             </thead>
 
             <tr style="color: rgb(14,14,14);background-color: rgba(79,189,227,0.3);filter: contrast(82%);">
-                    <td>Hola</td>
-                    <td>Hola</td>
-                    <td>Hola</td>
-                    <td>Hola</td>
-                    <td>Hola</td>
-                    <td>Hola</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <a href=""><button class="btn btn-info">Editar</button></a>
+                        <a href=""><button class="btn btn-warning">Editar</button></a>
                         <a href=""><button class="btn btn-danger">Eliminar</button></a>
                     </td>
             </tr>
