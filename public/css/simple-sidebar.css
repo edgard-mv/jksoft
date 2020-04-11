@@ -14,11 +14,15 @@ body {
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
+  color:whitesmoke;
+  
 }
 
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  text-align: center;
+
 }
 
 #sidebar-wrapper .list-group {
@@ -27,6 +31,9 @@ body {
 
 #page-content-wrapper {
   min-width: 100vw;
+  background-color:#E7ECF2 !important;
+  
+  
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -41,9 +48,11 @@ body {
   #page-content-wrapper {
     min-width: 0;
     width: 100%;
+    
   }
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+
 }

@@ -1,7 +1,6 @@
 @extends('menu')
-@section('contenido')
-
-
-
+@section('titulo',"Inicio")
+@section('content')
+<h5>Probando</h5>
 
 @endsection
