@@ -18,3 +18,23 @@ Route::get('/', 'HomeController@index');
 Route::get('producto', function () {
     return view('producto.productos');
 });
+
+Route::get('crear_p', function () {
+    return view('producto.crear');
+});
+
+Route::get('editar_p', function () {
+    return view('producto.editar');
+});
+
+Route::get('proveedores', function () {
+    return view('proveedores.proveedor');
+});
+
+Route::get('editar_pr', function () {
+    return view('proveedores.editar_proveedor');
+});
+
+Route::get('nuevo_pr', function () {
+    return view('proveedores.nuevo_proveedor');
+});

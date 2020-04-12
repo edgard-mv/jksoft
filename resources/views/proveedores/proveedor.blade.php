@@ -1,12 +1,12 @@
 @extends('menu')
-@section('titulo','Productos')
-@section('pagetitle','Lista de productos')
+@section('titulo','Proveedores')
+@section('pagetitle','Lista de los proveedores')
 @section('content')
 
 
 <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4  col-xs-8" >
-        @include('producto.buscar')
+        @include('proveedores.buscar_p')
     </div> 
 </div>
 
@@ -15,12 +15,8 @@
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-condensed table-hover">
             <thead class="text-center text-info bg-light border rounded shadow align-items-center">
-                    <th>Nombre del producto</th>
-                    <th>Stock</th>
                     <th>Empresa Proveedora</th>
-                    <th>Cantidad proveida</th>
-                    <th>Fecha</th>
-                    <th>Precio por unidad</th>
+                    <th>Nombre del trabajador de la empresa</th>
                     <th>Acciones</th>
             
             </thead>
@@ -28,14 +24,9 @@
             <tr style="color: rgb(14,14,14);background-color: rgba(79,189,227,0.3);filter: contrast(82%);">
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td style="text-align:center">
-                        <a href="/editar_p"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-target="#modal" data-toggle="modal-delete"><button class="btn btn-danger">Eliminar</button></a>
-                        @include('producto.modal')
+                        <a href="/editar_pr"><button class="btn btn-warning">Editar</button></a>
+                        <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
                     </td>
             </tr>
          </table>
