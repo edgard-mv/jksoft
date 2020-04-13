@@ -38,3 +38,15 @@ Route::get('editar_pr', function () {
 Route::get('nuevo_pr', function () {
     return view('proveedores.nuevo_proveedor');
 });
+
+Route::get('operarios', function () {
+    return view('operarios.operario');
+});
+
+Route::get('editar_op', function () {
+    return view('operarios.editar_o');
+});
+
+Route::get('nuevo_op', function () {
+    return view('operarios.nuevo_op');
+});
