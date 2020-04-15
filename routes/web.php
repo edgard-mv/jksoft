@@ -50,3 +50,11 @@ Route::get('editar_op', function () {
 Route::get('nuevo_op', function () {
     return view('operarios.nuevo_op');
 });
+
+Route::get('ventas', function () {
+    return view('ventas.venta');
+});
+
+Route::get('contado', function () {
+    return view('ventas.contado');
+});

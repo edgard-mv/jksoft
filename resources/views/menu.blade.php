@@ -22,7 +22,7 @@
         <a href="/producto" class="list-group-item list-group-item-action bg-info text-white">Productos</a>
         <a href="/proveedores" class="list-group-item list-group-item-action bg-info text-white">Proveedores</a>
         <a href="/operarios" class="list-group-item list-group-item-action bg-info text-white">Operarios</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info text-white">Ventas</a>
+        <a href="/ventas" class="list-group-item list-group-item-action bg-info text-white">Ventas</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper --> 
