@@ -49,6 +49,13 @@
         <input type="number" id="p_unitario" disabled></li></ul>
         </p>
 
+        <p>
+        <ul><li><textarea id="comentarios" rows="4" cols="50">
+            </textarea></li></ul>
+        
+        </p>
+
+
         <p style="text-align:right">
         <button type="submit" class="btn btn-info" style="margin-right:30px" > + Agregar producto</button>
         </p>

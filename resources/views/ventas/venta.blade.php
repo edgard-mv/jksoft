@@ -19,6 +19,7 @@
                 <th>Fecha</th>
                 <th>Tipo de venta</th>
                 <th>Monto total</th>
+                <th>Estado</th>
                 <th>Acción</th>
             
             </thead>
@@ -28,8 +29,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                     <td style="text-align:center">
-                        <a href="/"><button class="btn btn-warning">Detalles</button></a>
+                        <a href="/detallec"><button class="btn btn-warning">Detalles</button></a>
                     </td>
             </tr>
          </table>
