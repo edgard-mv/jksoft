@@ -58,3 +58,7 @@ Route::get('ventas', function () {
 Route::get('contado', function () {
     return view('ventas.contado');
 });
+
+Route::get('credito', function () {
+    return view('ventas.credito');
+});
