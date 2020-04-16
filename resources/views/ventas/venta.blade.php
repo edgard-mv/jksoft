@@ -31,7 +31,7 @@
                     <td></td>
                     <td></td>
                     <td style="text-align:center">
-                        <a href="/detallec"><button class="btn btn-warning">Detalles</button></a>
+                        <a href="/detallecr"><button class="btn btn-warning">Detalles</button></a>
                     </td>
             </tr>
          </table>

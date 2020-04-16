@@ -66,3 +66,7 @@ Route::get('credito', function () {
 Route::get('detallec', function () {
     return view('ventas.detalles_contado');
 });
+
+Route::get('detallecr', function () {
+    return view('ventas.detalles_credito');
+});
