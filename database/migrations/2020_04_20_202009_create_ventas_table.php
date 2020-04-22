@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbonoTable extends Migration
+class CreateVentasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateAbonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('abono', function (Blueprint $table) {
-            $table->incremets('abono');
-            $table->integer('id_credito');
-            $table->foreign('id_credito')->references('id_credito')->on('credito');
-            $table->integer('cantidad');
+        Schema::create('ventas', function (Blueprint $table) {
+            $table->increments('id_ventas');
+            $table->integer('id_producto')->unsigned();
+            $table->foreign('id_producto')->references('id_producto')->on('productos');
+            $table->string('nombre_producto');
             $table->date('fecha');
-            $table->string('comentarios');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateAbonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abono');
+        Schema::dropIfExists('ventas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalarioTable extends Migration
+class CreateSalariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSalarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('salario', function (Blueprint $table) {
+        Schema::create('salarios', function (Blueprint $table) {
             $table->increments('id_salario');
-            $table->integer('id_trabajador');
-            $table->foreign('id_trabajador')->references('id_trabajador')->on('trabajador');
+            $table->integer('id_trabajador')->unsigned();
+            $table->foreign('id_trabajador')->references('id_trabajador')->on('trabajadors');
             $table->time('hora',0);
             $table->integer('dias');
             $table->float('pago_por_hora');
@@ -32,6 +32,6 @@ class CreateSalarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salario');
+        Schema::dropIfExists('salarios');
     }
 }

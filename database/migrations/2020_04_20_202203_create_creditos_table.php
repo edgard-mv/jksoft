@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreditoTable extends Migration
+class CreateCreditosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCreditoTable extends Migration
      */
     public function up()
     {
-        Schema::create('credito', function (Blueprint $table) {
+        Schema::create('creditos', function (Blueprint $table) {
             $table->increments('id_credito');
-            $table->integer('id_ventas');
+            $table->integer('id_ventas')->unsigned();
             $table->foreign('id_ventas')->references('id_ventas')->on('ventas');
             $table->string('cliente');
             $table->float('monto');
@@ -31,6 +31,6 @@ class CreateCreditoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('credito');
+        Schema::dropIfExists('creditos');
     }
 }

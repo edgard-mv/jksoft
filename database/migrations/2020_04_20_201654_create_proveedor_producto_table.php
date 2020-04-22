@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProveedorProductosTable extends Migration
+class CreateProveedorProductoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateProveedorProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('proveedor_productos', function (Blueprint $table) {
-            $table->integer('id_proveedor');//FK
-            $table->integer('id_producto');//FK
+        Schema::create('proveedor_producto', function (Blueprint $table) {
+            $table->integer('id_proveedor')->unsigned();//FK
+            $table->integer('id_producto')->unsigned();//FK
             $table->integer('cantidad');
             $table->date('fecha');
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateProveedorProductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proveedor_productos');
+        Schema::dropIfExists('proveedor_producto');
     }
 }

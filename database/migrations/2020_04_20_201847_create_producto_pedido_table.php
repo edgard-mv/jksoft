@@ -14,9 +14,9 @@ class CreateProductoPedidoTable extends Migration
     public function up()
     {
         Schema::create('producto_pedido', function (Blueprint $table) {
-            $table->integer('id_pedido');
-            $table->foreign('id_pedido')->references('id_pedido')->on('pedido');
-            $table->integer('id_producto');
+            $table->integer('id_pedido')->unsigned();
+            $table->foreign('id_pedido')->references('id_pedido')->on('pedidos');
+            $table->integer('id_producto')->unsigned();
             $table->foreign('id_producto')->references('id_producto')->on('productos');
             $table->integer('cantidad_producto');
             $table->date('fecha');

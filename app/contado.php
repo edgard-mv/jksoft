@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class contado extends Model
+class Contado extends Model
 {
     //
 }

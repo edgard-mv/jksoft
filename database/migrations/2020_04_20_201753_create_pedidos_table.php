@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePedidoTable extends Migration
+class CreatePedidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePedidoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedido', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id_pedido');
-            $table->integer('id_trabajador');
-            $table->foreign('id_trabajador')->references('id_trabajador')->on('trabajador');
+            $table->integer('id_trabajador')->unsigned();
+            $table->foreign('id_trabajador')->references('id_trabajador')->on('trabajadors');
             $table->integer('cantidad total');
             $table->float('monto_total');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreatePedidoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedido');
+        Schema::dropIfExists('pedidos');
     }
 }
