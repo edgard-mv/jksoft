@@ -24,12 +24,15 @@
         <a href="/operarios" class="list-group-item list-group-item-action bg-info text-white">Operarios</a>
         <a href="/ventas" class="list-group-item list-group-item-action bg-info text-white">Ventas</a>
       </div>
-    </div>
+
+	      </div>
+    	</nav>
+
+
+
+    
     <!-- /#sidebar-wrapper --> 
     
-    
-       
-
 
 <body>
     

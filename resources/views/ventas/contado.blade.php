@@ -13,14 +13,12 @@
         <p style="text-align:right">
             <strong style="margin-right:20px">N° de venta: 000000 </strong>
         </p>
-        <p>
-            <ul><li><label for="nombre_p">Nombre del producto</label>
-                <select name="productos" id="nombre_p">
-                    <option value="0"></option>
-                    <option value="1">Nombre 1</option>
-                    <option value="2">Nombre 2</option>
-                </select></li></ul>
-        </p>
+
+        <div class="row" style="margin-left:1cm">
+            <div class="col-lg-4 col-md-4 col-sm-4  col-xs-8" >
+                 @include('ventas.buscar_producto')
+            </div> 
+        </div>
 
         <p>
         <ul><li><label for="cantidad_v">Cantidad de productos a comprar</label>
