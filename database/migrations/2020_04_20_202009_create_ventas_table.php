@@ -23,7 +23,10 @@ class CreateVentasTable extends Migration
         });
 
         Schema::table('ventas', function (Blueprint $table) {
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('producto_id')
+                    ->references('id')
+                    ->on('productos')
+                    ->onDelete('cascade');
         });
     }
 

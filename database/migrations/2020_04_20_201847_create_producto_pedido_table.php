@@ -22,8 +22,14 @@ class CreateProductoPedidoTable extends Migration
         });
 
         Schema::table('producto_pedido', function (Blueprint $table) {
-            $table->foreign('pedido_id')->references('id')->on('pedidos');
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('pedido_id')
+                    ->references('id')
+                    ->on('pedidos')
+                    ->onDelete('cascade');
+            $table->foreign('producto_id')
+                    ->references('id')
+                    ->on('productos')
+                    ->onDelete('cascade');
         });
     }
 

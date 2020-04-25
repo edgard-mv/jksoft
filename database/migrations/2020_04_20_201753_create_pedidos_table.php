@@ -22,7 +22,10 @@ class CreatePedidosTable extends Migration
         });
 
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->foreign('trabajador_id')->references('id')->on('trabajadores');
+            $table->foreign('trabajador_id')
+                    ->references('id')
+                    ->on('trabajadores')
+                    ->onDelete('cascade');
         });
     }
 

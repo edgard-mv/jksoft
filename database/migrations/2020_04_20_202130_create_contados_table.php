@@ -20,7 +20,10 @@ class CreateContadosTable extends Migration
         });
 
         Schema::table('contados', function (Blueprint $table) {
-            $table->foreign('venta_id')->references('id')->on('ventas');
+            $table->foreign('venta_id')
+                    ->references('id')
+                    ->on('ventas')
+                    ->onDelete('cascade');
         });
     }
 

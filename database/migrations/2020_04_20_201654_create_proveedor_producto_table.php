@@ -22,8 +22,14 @@ class CreateProveedorProductoTable extends Migration
         });
 
         Schema::table('proveedor_producto', function (Blueprint $table) {
-            $table->foreign('proveedor_id')->references('id')->on('proveedores');
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('proveedor_id')
+                    ->references('id')
+                    ->on('proveedores')
+                    ->onDelete('cascade');
+            $table->foreign('producto_id')
+                    ->references('id')
+                    ->on('productos')
+                    ->onDelete('cascade');
         });
     }
 

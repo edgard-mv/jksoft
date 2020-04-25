@@ -23,7 +23,10 @@ class CreateAbonosTable extends Migration
         });
 
         Schema::table('abonos', function (Blueprint $table) {
-            $table->foreign('credito_id')->references('id')->on('creditos');
+            $table->foreign('credito_id')
+                    ->references('id')
+                    ->on('creditos')
+                    ->onDelete('cascade');
         });
     }
 
