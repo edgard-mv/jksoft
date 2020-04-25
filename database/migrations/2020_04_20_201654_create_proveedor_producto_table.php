@@ -14,16 +14,16 @@ class CreateProveedorProductoTable extends Migration
     public function up()
     {
         Schema::create('proveedor_producto', function (Blueprint $table) {
-            $table->integer('id_proveedor')->unsigned();//FK
-            $table->integer('id_producto')->unsigned();//FK
+            $table->unsignedBigInteger('proveedor_id');//FK
+            $table->unsignedBigInteger('producto_id');//FK
             $table->integer('cantidad');
             $table->date('fecha');
             $table->timestamps();
         });
 
         Schema::table('proveedor_producto', function (Blueprint $table) {
-            $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedors');
-            $table->foreign('id_producto')->references('id_producto')->on('productos');
+            $table->foreign('proveedor_id')->references('id')->on('proveedores');
+            $table->foreign('producto_id')->references('id')->on('productos');
         });
     }
 

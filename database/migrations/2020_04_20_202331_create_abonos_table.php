@@ -14,13 +14,16 @@ class CreateAbonosTable extends Migration
     public function up()
     {
         Schema::create('abonos', function (Blueprint $table) {
-            $table->increments('abono');
-            $table->integer('id_credito')->unsigned();
-            $table->foreign('id_credito')->references('id_credito')->on('creditos');
+            $table->id();
+            $table->unsignedBigInteger('credito_id');
             $table->integer('cantidad');
             $table->date('fecha');
             $table->string('comentarios');
             $table->timestamps();
+        });
+
+        Schema::table('abonos', function (Blueprint $table) {
+            $table->foreign('credito_id')->references('id')->on('creditos');
         });
     }
 

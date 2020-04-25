@@ -14,7 +14,7 @@ class CreateProductosTable extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->increments('id_producto');//PK
+            $table->id();
             $table->string('nombre');
             $table->integer('cantidad');
             $table->float('precio');

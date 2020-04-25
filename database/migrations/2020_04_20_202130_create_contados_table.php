@@ -14,10 +14,13 @@ class CreateContadosTable extends Migration
     public function up()
     {
         Schema::create('contados', function (Blueprint $table) {
-            $table->integer('id_ventas')->unsigned();
-            $table->foreign('id_ventas')->references('id_ventas')->on('ventas');
+            $table->unsignedBigInteger('venta_id');
             $table->float('monto');
             $table->timestamps();
+        });
+
+        Schema::table('contados', function (Blueprint $table) {
+            $table->foreign('venta_id')->references('id')->on('ventas');
         });
     }
 

@@ -14,14 +14,17 @@ class CreateSalariosTable extends Migration
     public function up()
     {
         Schema::create('salarios', function (Blueprint $table) {
-            $table->increments('id_salario');
-            $table->integer('id_trabajador')->unsigned();
-            $table->foreign('id_trabajador')->references('id_trabajador')->on('trabajadors');
-            $table->time('hora',0);
+            $table->id();
+            $table->unsignedBigInteger('trabajador_id');
+            $table->integer('horas');
             $table->integer('dias');
             $table->float('pago_por_hora');
             $table->string('extra');
             $table->timestamps();
+        });
+
+        Schema::table('salarios', function (Blueprint $table) {
+            $table->foreign('trabajador_id')->references('id')->on('trabajadores');
         });
     }
 

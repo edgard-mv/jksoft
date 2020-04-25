@@ -14,13 +14,16 @@ class CreateCreditosTable extends Migration
     public function up()
     {
         Schema::create('creditos', function (Blueprint $table) {
-            $table->increments('id_credito');
-            $table->integer('id_ventas')->unsigned();
-            $table->foreign('id_ventas')->references('id_ventas')->on('ventas');
+            $table->id();
+            $table->unsignedBigInteger('venta_id');
             $table->string('cliente');
             $table->float('monto');
             $table->date('fecha_de_pago');
             $table->timestamps();
+        });
+
+        Schema::table('creditos', function (Blueprint $table) {
+            $table->foreign('venta_id')->references('id')->on('ventas');
         });
     }
 

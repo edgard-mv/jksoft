@@ -14,13 +14,16 @@ class CreateVentasTable extends Migration
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
-            $table->increments('id_ventas');
-            $table->integer('id_producto')->unsigned();
-            $table->foreign('id_producto')->references('id_producto')->on('productos');
+            $table->id();
+            $table->unsignedBigInteger('producto_id');
             $table->string('nombre_producto');
             $table->date('fecha');
             $table->string('estado');
             $table->timestamps();
+        });
+
+        Schema::table('ventas', function (Blueprint $table) {
+            $table->foreign('producto_id')->references('id')->on('productos');
         });
     }
 
