@@ -21,14 +21,16 @@
             
             </thead>
 
-            <tr style="color: rgb(14,14,14);background-color: rgba(79,189,227,0.3);filter: contrast(82%);">
-                    <td></td>
-                    <td></td>
-                    <td style="text-align:center">
-                        <a href="/editar_pr"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
-                    </td>
+            @foreach ($proveedores as $proveedor)
+            <tr style="color: rgb(14,14,14);background-color: rgba(79,189,227,0.3);filter: contrast(82%);">                    
+                <td>{{$proveedor->empresa}}</td>
+                <td>{{$proveedor->nombre}}</td>
+                <td style="text-align:center">
+                <a href="/editar_pr/{{$proveedor->id}}"><button class="btn btn-warning">Editar</button></a>
+                   <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
+                </td>
             </tr>
+            @endforeach
          </table>
     </div>
 </div>
