@@ -4,7 +4,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Clonar el repositorio
+## Clonar el repositorio (esta es la rama para migraciones)
 
 Para clonar el repositorio, deben seguir los siguientes pasos:
 
