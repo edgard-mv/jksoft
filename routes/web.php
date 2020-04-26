@@ -27,9 +27,7 @@ Route::get('editar_p', function () {
     return view('producto.editar');
 });
 
-Route::get('proveedores', function () {
-    return view('proveedores.proveedor');
-});
+Route::get('/proveedores', 'ProveedoresController@getAll');
 
 Route::get('editar_pr', function () {
     return view('proveedores.editar_proveedor');
