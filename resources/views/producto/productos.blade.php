@@ -2,6 +2,7 @@
 @section('titulo','Productos')
 @section('pagetitle','Lista de productos')
 @section('content')
+@include('producto.modal')
 
 
 <div class="row">
@@ -34,8 +35,7 @@
                     <td></td>
                     <td style="text-align:center">
                         <a href="/editar_p"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-target="#modal" data-toggle="modal-delete"><button class="btn btn-danger">Eliminar</button></a>
-                        @include('producto.modal')
+                        <a href="" data-toggle="modal" data-target="#modal-delete"><button class="btn btn-danger">Eliminar</button></a>
                     </td>
             </tr>
          </table>
