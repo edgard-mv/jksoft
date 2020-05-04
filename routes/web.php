@@ -27,15 +27,13 @@ Route::get('editar_p', function () {
     return view('producto.editar');
 });
 
-Route::get('/proveedores', 'ProveedoresController@getAll');
+Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
 
-Route::get('editar_pr', function () {
-    return view('proveedores.editar_proveedor');
-});
+Route::get('/proveedores/buscar', 'ProveedoresController@search')->name('proveedor.buscar');
 
-Route::get('nuevo_pr', function () {
-    return view('proveedores.nuevo_proveedor');
-});
+Route::match(['get', 'put'], '/proveedores/nuevo', 'ProveedoresController@create')->name('proveedor.nuevo');
+
+Route::match(['get', 'patch'], '/proveedores/{id}/editar', 'ProveedoresController@update')->name('proveedor.editar');
 
 Route::get('operarios', function () {
     return view('operarios.operario');
