@@ -2,7 +2,7 @@
 @section('titulo','Productos')
 @section('pagetitle','Lista de productos')
 @section('content')
-@include('producto.modal')
+@include('producto.modal_delete')
 
 
 <div class="row">
@@ -49,7 +49,7 @@
                 <td>{{ $producto->precio }}</td>
                 <td style="text-align:center">
                     <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                    <a href="" data-toggle="modal" data-target="#modal-delete"><button class="btn btn-danger">Eliminar</button></a>
+                    <a href="" data-toggle="modal" data-target="#ModalDelete"><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>
             @endforeach

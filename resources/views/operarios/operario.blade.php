@@ -2,6 +2,8 @@
 @section('titulo','Operarios')
 @section('pagetitle','Lista de los operarios')
 @section('content')
+@include('operarios.modal_delete')
+
 
 
 <div class="row">
@@ -36,7 +38,7 @@
                     <td></td>
                     <td style="text-align:center">
                         <a href="/editar_op"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
+                        <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                     </td>
             </tr>
          </table>

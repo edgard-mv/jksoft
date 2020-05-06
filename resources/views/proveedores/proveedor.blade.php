@@ -2,6 +2,7 @@
 @section('titulo','Proveedores')
 @section('pagetitle','Lista de los proveedores')
 @section('content')
+@include('proveedores.modal_delete')
 
 
 <div class="row">
@@ -28,7 +29,7 @@
                 <td>{{ $proveedor->nombre }}</td>
                 <td style="text-align:center">
                 <a href="{{ route('proveedor.editar', ['id' => $proveedor->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
+                <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>
             @endforeach
