@@ -11,6 +11,10 @@ class CreditoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('creditos')->insert([
+            'cliente'=>'Maria Jose',
+            'monto'=>14,
+            'fecha_de_pago'=>13-05-2020                        
+        ]);
     }
 }

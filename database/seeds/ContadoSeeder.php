@@ -11,6 +11,9 @@ class ContadoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('contados')->insert([
+            'monto'=>120
+                                    
+        ]);
     }
 }

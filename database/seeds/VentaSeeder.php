@@ -11,6 +11,10 @@ class VentaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('ventas')->insert([
+            'nombre_producto'=>'Jabon protex',
+            'fecha'=>06-05-2020,
+            'estado'=>'Bueno'                          
+        ]);
     }
 }

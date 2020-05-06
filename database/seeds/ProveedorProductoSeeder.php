@@ -11,6 +11,11 @@ class ProveedorProductoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('proveedor_producto')->insert([
+            
+            'cantidad'=>120,
+            'fecha'=>14,
+                                      
+        ]);
     }
 }

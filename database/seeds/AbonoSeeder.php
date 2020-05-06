@@ -11,6 +11,10 @@ class AbonoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('abonos')->insert([
+            'cantidad'=>10,
+            'fecha'=>21-05-2020,
+            'comentarios'=>'Pago 10 cordobas , resta 100'                         
+        ]);
     }
 }

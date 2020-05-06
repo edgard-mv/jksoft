@@ -11,6 +11,22 @@ class SalarioSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('salarios')->insert([
+            'horas'=>120,
+            'dias'=>14,
+            'pago_por_hora'=>3600                          
+        ]);
+
+        DB::table('salarios')->insert([
+            'horas'=>120,
+            'dias'=>14,
+            'pago_por_hora'=>3600                          
+        ]);
+
+        DB::table('salarios')->insert([
+            'horas'=>120,
+            'dias'=>14,
+            'pago_por_hora'=>3600                          
+        ]);
     }
 }

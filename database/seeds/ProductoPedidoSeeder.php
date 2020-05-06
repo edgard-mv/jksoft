@@ -11,6 +11,10 @@ class ProductoPedidoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('producto_pedido')->insert([
+            'cantidad_producto'=>120,
+            'fecha'=>14-05-2020,
+                                      
+        ]);
     }
 }
