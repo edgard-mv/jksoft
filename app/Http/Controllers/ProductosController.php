@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Producto;
+use App\Proveedor;
+use App\ProveedorProducto;
+use DB;
+
+class ProductosController extends Controller
+{
+    public function getAll() {
+        $productos = Producto::with('proveedores')->get();
+
+        foreach ($productos as $producto) {
+            foreach ($producto->proveedores as $proveedor) {
+                $proveedorProducto = ProveedorProducto::where([
+                    ['proveedor_id', '=', $proveedor->id],
+                    ['producto_id', '=', $producto->id],
+                ])->first();
+
+                $proveedor['cantidad'] = $proveedorProducto->cantidad;
+            }
+        }
+
+        return view('producto.productos', compact('productos'));
+    }
+
+    public function update(Request $request, $id) {
+        $producto = Producto::with('proveedores')->get()->find($id);
+
+        foreach ($producto->proveedores as $proveedor) {
+            $proveedorProducto = ProveedorProducto::where([
+                ['proveedor_id', '=', $proveedor->id],
+                ['producto_id', '=', $producto->id],
+            ])->first();
+
+            $proveedor['cantidad'] = $proveedorProducto->cantidad;
+        }
+
+        if ($request->isMethod('patch')) {
+            if ($request->input('nombre')) {
+                $producto->nombre = $request->input('nombre');
+            }
+            if ($request->input('cantidad')) {
+                $producto->cantidad = $request->input('cantidad');
+            }
+            if ($request->input('precio')) {
+                $producto->precio = $request->input('precio');
+            }
+
+            $producto->save();
+            return redirect()->route('productos');
+        }
+
+        return view('producto.editar', compact('producto'));
+    }
+}

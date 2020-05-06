@@ -27,7 +27,7 @@
                 <td>{{ $proveedor->empresa }}</td>
                 <td>{{ $proveedor->nombre }}</td>
                 <td style="text-align:center">
-                <a href="{{route('proveedor.editar', ['id' => $proveedor->id])}}"><button class="btn btn-warning">Editar</button></a>
+                <a href="{{ route('proveedor.editar', ['id' => $proveedor->id]) }}"><button class="btn btn-warning">Editar</button></a>
                 <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>

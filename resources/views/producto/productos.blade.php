@@ -16,28 +16,43 @@
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-condensed table-hover">
             <thead class="text-center text-info bg-light border rounded shadow align-items-center">
-                    <th>Nombre del producto</th>
-                    <th>Stock</th>
-                    <th>Empresa Proveedora</th>
-                    <th>Cantidad proveida</th>
-                    <th>Fecha</th>
-                    <th>Precio por unidad</th>
-                    <th>Acciones</th>
-            
+                <th>ID</th>
+                <th>Nombre del producto</th>
+                <th>Stock</th>
+                <th>Empresa Proveedora</th>
+                <th>Cantidad proveida</th>
+                <th>Fecha</th>
+                <th>Precio por unidad</th>
+                <th>Acciones</th>
             </thead>
 
+            @foreach ($productos as $producto)
             <tr style="color: rgb(14,14,14);background-color: rgba(79,189,227,0.3);filter: contrast(82%);">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="text-align:center">
-                        <a href="/editar_p"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-toggle="modal" data-target="#modal-delete"><button class="btn btn-danger">Eliminar</button></a>
-                    </td>
+                <td>{{ $producto->id }}</td>
+                <td>{{ $producto->nombre }}</td>
+                <td>{{ $producto->cantidad }}</td>
+                <td>
+                    <ul>
+                        @foreach ($producto->proveedores as $proveedor)
+                            <li>{{ $proveedor->empresa }}</li>
+                        @endforeach    
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach ($producto->proveedores as $proveedor)
+                            <li>{{ $proveedor->cantidad }}</li>
+                        @endforeach    
+                    </ul>
+                </td>
+                <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
+                <td>{{ $producto->precio }}</td>
+                <td style="text-align:center">
+                    <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
+                    <a href="" data-toggle="modal" data-target="#modal-delete"><button class="btn btn-danger">Eliminar</button></a>
+                </td>
             </tr>
+            @endforeach
          </table>
     </div>
 </div>

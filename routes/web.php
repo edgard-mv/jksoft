@@ -13,19 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('inicio');
 
-Route::get('producto', function () {
-    return view('producto.productos');
-});
+Route::get('/productos', 'ProductosController@getAll')->name('productos');
 
 Route::get('crear_p', function () {
     return view('producto.crear');
 });
 
-Route::get('editar_p', function () {
-    return view('producto.editar');
-});
+Route::match(['get', 'patch'], '/productos/{id}/editar', 'ProductosController@update')->name('producto.editar');
 
 Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
 
