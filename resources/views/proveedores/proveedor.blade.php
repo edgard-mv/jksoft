@@ -28,13 +28,8 @@
                 <td>{{ $proveedor->empresa }}</td>
                 <td>{{ $proveedor->nombre }}</td>
                 <td style="text-align:center">
-<<<<<<< HEAD
-                <a href="/editar_pr/{{$proveedor->id}}"><button class="btn btn-warning">Editar</button></a>
-                   <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
-=======
-                <a href="{{route('proveedor.editar', ['id' => $proveedor->id])}}"><button class="btn btn-warning">Editar</button></a>
-                <a href="" data-target="" data-toggle=""><button class="btn btn-danger">Eliminar</button></a>
->>>>>>> 096cb50c2c82e40c6cd0b5d41b0007938f0903b3
+                    <a href="{{route('proveedor.editar', ['id' => $proveedor->id])}}"><button class="btn btn-warning">Editar</button></a>
+                    <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>
             @endforeach
