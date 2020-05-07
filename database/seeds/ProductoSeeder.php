@@ -117,6 +117,41 @@ class ProductoSeeder extends Seeder
         ]);
 
         DB::table('productos')->insert([
+            'nombre'=>'Pollo TIPTOP',
+            'cantidad'=>1,
+            'precio'=>34       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Pollo TIPTOP(Pechuga)',
+            'cantidad'=>1,
+            'precio'=>40       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Carne San Martin',
+            'cantidad'=>1,
+            'precio'=>45       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Menudo TIPTOP',
+            'cantidad'=>1,
+            'precio'=>18       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Terzo',
+            'cantidad'=>24,
+            'precio'=>6       
+            
+        ]);
+
+        DB::table('productos')->insert([
             'nombre'=>'Axistin(Botella Morado)',
             'cantidad'=>7,
             'precio'=>26       
@@ -183,6 +218,20 @@ class ProductoSeeder extends Seeder
             'nombre'=>'Jabon Marfil(Trasparente)',
             'cantidad'=>24,
             'precio'=>26       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Cerveza lata toña',
+            'cantidad'=>100,
+            'precio'=>25       
+            
+        ]);
+
+        DB::table('productos')->insert([
+            'nombre'=>'Cerveza Litro Toña',
+            'cantidad'=>120,
+            'precio'=>40       
             
         ]);
 
