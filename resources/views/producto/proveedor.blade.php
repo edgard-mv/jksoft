@@ -7,12 +7,12 @@
 
 
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-8" >
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
                     <a data-target="#ModalAddProveedor" data-toggle="modal"><button class="btn btn-success">Agregar proveedor</button></a>
-                    <a href="{{ route('productos') }}"><button type="button" class="btn btn-danger" style="margin-left: 1020px">X</button></a>
+                    <a href="{{ url()->previous() }}"><button type="button" class="btn btn-danger" style="margin-left: 865px">X</button></a>
                 </span>
             </div>
         </div>
