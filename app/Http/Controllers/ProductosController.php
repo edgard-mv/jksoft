@@ -57,4 +57,52 @@ class ProductosController extends Controller
 
         return view('producto.editar', compact('producto'));
     }
+
+    public function proveedores ($id) {
+        $producto = Producto::with('proveedores')->get()->find($id);
+
+        foreach ($producto->proveedores as $proveedor) {
+            $proveedorProducto = ProveedorProducto::where([
+                ['proveedor_id', '=', $proveedor->id],
+                ['producto_id', '=', $producto->id],
+            ])->first();
+
+            $proveedor['cantidad'] = $proveedorProducto->cantidad;
+        }
+
+        $proveedores = $producto->proveedores;
+
+        return view('producto.proveedor', compact('producto', 'proveedores'));
+    }
+
+    public function updateProveedor(Request $request, $producto_id, $id) {
+        $producto = Producto::with('proveedores')->get()->find($producto_id);
+
+        $proveedor = $producto->proveedores->find($id);
+
+        $proveedorProducto = ProveedorProducto::where([
+            ['proveedor_id', '=', $id],
+            ['producto_id', '=', $producto_id],
+        ])->first();
+
+        $proveedor['cantidad'] = $proveedorProducto->cantidad;
+
+        if ($request->isMethod('patch')) {
+            if ($request->input('cantidad')) {
+                $proveedorProducto->cantidad = $request->input('cantidad');
+            }
+
+            $proveedorProducto->save();
+            return redirect()->route('producto.proveedores', ['id' => $producto_id]);
+        }
+
+        return view('producto.editar_proveedor', compact('producto', 'proveedor'));
+    }
+
+    public function deleteProveedor($producto_id, $id) {
+        $producto = Producto::with('proveedores')->get()->find($producto_id);
+        $producto->proveedores()->detach($id);
+        return redirect()->route('producto.proveedores', ['id' => $producto_id]);
+    }
+
 }

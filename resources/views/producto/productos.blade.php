@@ -49,6 +49,7 @@
                 <td>{{ $producto->precio }}</td>
                 <td style="text-align:center">
                     <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
+                    <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}"><button class="btn btn-warning">Proveedores</button></a>
                     <a href="" data-toggle="modal" data-target="#ModalDelete"><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>

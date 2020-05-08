@@ -18,7 +18,7 @@
               <input type="text" value="{{ $producto->cantidad }}" class="form-control" autocomplete="off" name="cantidad">
             </div>
 
-            @foreach ($producto->proveedores as $proveedor)
+            {{-- @foreach ($producto->proveedores as $proveedor)
             <br>
               <div class="form-group">
                 <strong><label for="empresa">Empresa proveedora</label></strong>
@@ -30,7 +30,7 @@
                   <input type="number" value="{{ $proveedor->cantidad }}" class="form-control"  autocomplete="off" name="cantidadproveida"  >
               </div>
               <br>
-            @endforeach
+            @endforeach --}}
 
             <div class="form-group">
               <strong><label for="fecha">Fecha de la provisión</label></strong>

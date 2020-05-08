@@ -23,6 +23,19 @@ Route::get('crear_p', function () {
 
 Route::match(['get', 'patch'], '/productos/{id}/editar', 'ProductosController@update')->name('producto.editar');
 
+Route::get('/productos/{id}/proveedores', 'ProductosController@proveedores')->name('producto.proveedores');
+
+Route::match(
+    ['get', 'patch'],
+    '/productos/{producto_id}/proveedores/{id}/editar',
+    'ProductosController@updateProveedor'
+)->name('producto.proveedor.editar');
+
+Route::delete(
+    '/productos/{producto_id}/proveedores/{id}/remover',
+    'ProductosController@deleteProveedor'
+)->name('producto.proveedor.remover');
+
 Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
 
 Route::get('/proveedores/buscar', 'ProveedoresController@search')->name('proveedor.buscar');
