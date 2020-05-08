@@ -48,9 +48,11 @@
                 <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
                 <td>{{ $producto->precio }}</td>
                 <td style="text-align:center">
-                    <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                    <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}"><button class="btn btn-warning">Proveedores</button></a>
-                    <a href="" data-toggle="modal" data-target="#ModalDelete"><button class="btn btn-danger">Eliminar</button></a>
+                    <div class="input-group-btn">
+                        <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
+                        <a data-toggle="modal" data-target="#ModalDelete"><button class="btn btn-danger">Eliminar</button></a>
+                        <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}"><button class="btn btn-primary">Proveedores</button></a>
+                    </div>
                 </td>
             </tr>
             @endforeach
