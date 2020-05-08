@@ -49,9 +49,21 @@
                 <td style="text-align:center">{{ $producto->precio }}</td>
                 <td style="text-align:center">
                     <div class="input-group-btn">
-                        <a href="{{ route('producto.editar', ['id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                        <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}"><button class="btn btn-primary">Editar</button></a>
-                        <a data-toggle="modal" data-target="#ModalDelete"><button class="btn btn-danger">Eliminar</button></a>
+                        <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
+                            <button class="btn btn-warning">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                        <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}">
+                            <button class="btn btn-primary">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                        <a data-toggle="modal" data-target="#ModalDelete">
+                            <button class="btn btn-danger">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                        </a>
                     </div>
                 </td>
             </tr>

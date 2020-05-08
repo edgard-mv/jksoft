@@ -15,8 +15,13 @@
         <div class="input-group">
             <input type="text" class="form-control"  name="valor" placeholder="Buscar..." autofocus>
             <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary">Buscar</button>  
-                <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">Nuevo proveedor</a>
+                <button type="submit" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>  
+                <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  Nuevo
+                </a>
             </span>
         </div>
     </div>
