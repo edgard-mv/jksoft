@@ -12,93 +12,47 @@ class CreditoSeeder extends Seeder
     public function run()
     {
         DB::table('creditos')->insert([
+            'venta_id'=>7,
             'cliente'=>'Maria Jose',
             'monto'=>14,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
         DB::table('creditos')->insert([
+            'venta_id'=>8,
             'cliente'=>'Bersal Rodriguez',
             'monto'=>1530,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
         DB::table('creditos')->insert([
+            'venta_id'=>9,
             'cliente'=>'Juan Antonio Bermudez',
             'monto'=>80,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
         DB::table('creditos')->insert([
+            'venta_id'=>11,
             'cliente'=>'Bersal Rodriguez',
             'monto'=>400,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
         DB::table('creditos')->insert([
+            'venta_id'=>12,
             'cliente'=>'Mario Calero',
             'monto'=>120,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
         DB::table('creditos')->insert([
+            'venta_id'=>13,
             'cliente'=>'Mario Calero',
             'monto'=>60,
-            'fecha_de_pago'=>'2020-05-21'                        
+            'fecha_de_pago'=>'12-05-2020'                        
         ]);
 
-        DB::table('creditos')->insert([
-            'cliente'=>'Mario calero',
-            'monto'=>300,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Carmen Gil',
-            'monto'=>600,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Rodrigo Veraz',
-            'monto'=>230,
-            'fecha_de_pago'=>'2020-05-21'
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Luis Alegria',
-            'monto'=>450,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Luis Alegria',
-            'monto'=>1200,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Luis Estrada',
-            'monto'=>1500,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Bernardo Cabrera',
-            'monto'=>1500,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Jose feliciano Estrada',
-            'monto'=>800,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
-
-        DB::table('creditos')->insert([
-            'cliente'=>'Raquel Ramirez',
-            'monto'=>140,
-            'fecha_de_pago'=>'2020-05-21'                        
-        ]);
+        
     }
 }

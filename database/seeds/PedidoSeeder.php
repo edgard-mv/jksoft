@@ -12,6 +12,7 @@ class PedidoSeeder extends Seeder
     public function run()
     {
         DB::table('pedidos')->insert([
+            'trabajador_id'=>1,
             'cantidad total'=>120,
             'monto_total'=>12300,
                                      
@@ -19,6 +20,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>1,
             'cantidad total'=>600,
             'monto_total'=>1400,
                                      
@@ -26,6 +28,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>1,
             'cantidad total'=>100,
             'monto_total'=>1300,
                                      
@@ -33,6 +36,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>2,
             'cantidad total'=>40,
             'monto_total'=>1100,
                                      
@@ -40,6 +44,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>2,
             'cantidad total'=>10,
             'monto_total'=>600,
                                      
@@ -47,6 +52,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>300,
             'monto_total'=>1500,
                                      
@@ -54,6 +60,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>1,
             'cantidad total'=>120,
             'monto_total'=>660,
                                      
@@ -61,6 +68,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>78,
             'monto_total'=>1200,
                                      
@@ -68,6 +76,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>1,
             'cantidad total'=>25,
             'monto_total'=>355,
                                      
@@ -75,6 +84,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>2,
             'cantidad total'=>60,
             'monto_total'=>2000,
                                      
@@ -82,6 +92,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>2,
             'cantidad total'=>134,
             'monto_total'=>1250,
                                      
@@ -89,6 +100,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>12,
             'monto_total'=>400,
                                      
@@ -96,6 +108,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>13,
             'monto_total'=>500,
                                      
@@ -103,6 +116,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>90,
             'monto_total'=>1267,
                                      
@@ -110,6 +124,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>3,
             'cantidad total'=>79,
             'monto_total'=>900,
                                      
@@ -117,6 +132,7 @@ class PedidoSeeder extends Seeder
 
 
         DB::table('pedidos')->insert([
+            'trabajador_id'=>2,
             'cantidad total'=>34,
             'monto_total'=>763,
 

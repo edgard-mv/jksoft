@@ -12,95 +12,49 @@ class ContadoSeeder extends Seeder
     public function run()
     {
         DB::table('contados')->insert([
+            'venta_id'=>1,
             'monto'=>120
                                     
         ]);
 
 
         DB::table('contados')->insert([
+            'venta_id'=>2,
             'monto'=>700
                                     
         ]);
 
         DB::table('contados')->insert([
-            'monto'=>10
+            'venta_id'=>3,
+            'monto'=>14
                                     
         ]);
 
         DB::table('contados')->insert([
+            'venta_id'=>4,
             'monto'=>70
                                     
         ]);
 
         DB::table('contados')->insert([
+            'venta_id'=>5,
             'monto'=>20
                                     
         ]);
 
 
         DB::table('contados')->insert([
+            'venta_id'=>6,
             'monto'=>1230
                                     
         ]);
 
         DB::table('contados')->insert([
+            'venta_id'=>10,
             'monto'=>1120
                                     
         ]);
 
-        DB::table('contados')->insert([
-            'monto'=>80
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>620
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>720
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>420
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>670
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>900
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>1220
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>900
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>690
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>340
-                                    
-        ]);
-
-        DB::table('contados')->insert([
-            'monto'=>110
-                                    
-        ]);
+       
     }
 }
