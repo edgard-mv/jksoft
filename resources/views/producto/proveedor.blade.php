@@ -11,8 +11,17 @@
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
-                    <a data-target="#ModalAddProveedor" data-toggle="modal"><button class="btn btn-success">Agregar proveedor</button></a>
-                    <a href="{{ url()->previous() }}"><button type="button" class="btn btn-danger" style="margin-left: 865px">X</button></a>
+                    <a href="{{ url()->previous() }}">
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                        </button>
+                    </a>
+                    <a data-target="#ModalAddProveedor" data-toggle="modal" style="margin-left: 1010px">
+                        <button class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            Agregar
+                        </button>
+                    </a>
                 </span>
             </div>
         </div>
