@@ -2,14 +2,21 @@
 @section('titulo','Proveedores')
 @section('pagetitle','Lista de los proveedores')
 @section('content')
+@include('producto.modal_add_proveedor')
 
 
 
-{{-- <div class="row">
+<div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
-        @include('proveedores.buscar_p')
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a data-target="#ModalAddProveedor" data-toggle="modal"><button class="btn btn-success">Agregar proveedor</button></a>
+                </span>
+            </div>
+        </div>
     </div> 
-</div> --}}
+</div>
 
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">

@@ -15,7 +15,7 @@
 
             <div class="form-group">
               <strong><label for="cantidad">Stock</label></strong>
-              <input type="text" value="{{ $producto->cantidad }}" class="form-control" autocomplete="off" name="cantidad">
+              <input type="number" value="{{ $producto->cantidad }}" class="form-control" autocomplete="off" name="cantidad">
             </div>
 
             {{-- @foreach ($producto->proveedores as $proveedor)

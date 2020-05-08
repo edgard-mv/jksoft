@@ -36,7 +36,14 @@ Route::delete(
     'ProductosController@deleteProveedor'
 )->name('producto.proveedor.remover');
 
+Route::put(
+    '/productos/{producto_id}/proveedores/agregar',
+    'ProductosController@addProveedor'
+)->name('producto.proveedor.agregar');
+
 Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
+
+Route::get('/proveedores/data', 'ProveedoresController@getAllJSON')->name('proveedores.json');
 
 Route::get('/proveedores/buscar', 'ProveedoresController@search')->name('proveedor.buscar');
 

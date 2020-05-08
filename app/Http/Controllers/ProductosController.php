@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\Proveedor;
 use App\ProveedorProducto;
+use Carbon\Carbon;
 use DB;
 
 class ProductosController extends Controller
@@ -58,8 +59,10 @@ class ProductosController extends Controller
         return view('producto.editar', compact('producto'));
     }
 
-    public function proveedores ($id) {
+    public function proveedores($id) {
         $producto = Producto::with('proveedores')->get()->find($id);
+        $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        $fecha = Carbon::now();
 
         foreach ($producto->proveedores as $proveedor) {
             $proveedorProducto = ProveedorProducto::where([
@@ -72,7 +75,14 @@ class ProductosController extends Controller
 
         $proveedores = $producto->proveedores;
 
-        return view('producto.proveedor', compact('producto', 'proveedores'));
+        return view(
+            'producto.proveedor',
+            compact(
+                'producto',
+                'proveedores',
+                'proveedoresDisponibles',
+                'fecha'
+            ));
     }
 
     public function updateProveedor(Request $request, $producto_id, $id) {
@@ -99,9 +109,23 @@ class ProductosController extends Controller
         return view('producto.editar_proveedor', compact('producto', 'proveedor'));
     }
 
-    public function deleteProveedor($producto_id, $id) {
+    public function deleteProveedor($producto_id, $id=null) {
         $producto = Producto::with('proveedores')->get()->find($producto_id);
         $producto->proveedores()->detach($id);
+        return redirect()->route('producto.proveedores', ['id' => $producto_id]);
+    }
+
+    public function addProveedor(Request $request, $producto_id) {
+        if ($request->isMethod('put') and $request->input('proveedor_id') and $request->cantidad) {
+            $producto = Producto::with('proveedores')->get()->find($producto_id);
+            $producto->proveedores()->attach(
+                $request->input('proveedor_id'),
+                [
+                    'cantidad' => $request->input('cantidad'),
+                    'fecha' => $request->input('fecha')
+                ]
+            );
+        }
         return redirect()->route('producto.proveedores', ['id' => $producto_id]);
     }
 

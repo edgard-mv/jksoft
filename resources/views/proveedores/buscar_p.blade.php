@@ -12,7 +12,7 @@
           <input class="form-check-input" type="radio" name="tipo" id="inlineRadio3" value="nombre">
           <label class="form-check-label" for="inlineRadio3">Nombre</label>
         </div>
-        <div class="input-group ">
+        <div class="input-group">
             <input type="text" class="form-control"  name="valor" placeholder="Buscar..." autofocus>
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary">Buscar</button>  

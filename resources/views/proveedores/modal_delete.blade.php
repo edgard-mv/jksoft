@@ -7,7 +7,7 @@
     
         <div class="modal-footer">
             <button class="btn btn-danger" type="button" data-dismiss="modal">Cerrar</button>
-            <button class="btn btn-info" type="submit">Aceptar</button>
+            <button class="btn btn-primary" type="submit">Aceptar</button>
         </div>
       </div>
     </div>
