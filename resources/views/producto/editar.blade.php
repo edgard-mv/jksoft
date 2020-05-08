@@ -34,7 +34,7 @@
 
             <div class="form-group">
               <strong><label for="fecha">Fecha de la provisión</label></strong>
-              <input type="date" value="{{ $producto->updated_at->format("Y-m-d") }}" class="form-control" autocomplete="off" name="empresaproveedora">
+              <input type="date"class="form-control" autocomplete="off" name="fecha">
             </div>
 
             <div class="form-group">
