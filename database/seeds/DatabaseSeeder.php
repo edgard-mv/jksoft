@@ -13,17 +13,17 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
+            ProductoSeeder::class,
+            VentaSeeder::class,                   
+            CreditoSeeder::class,
             AbonoSeeder::class,
             ContadoSeeder::class,
-            CreditoSeeder::class,
+            TrabajadorSeeder::class,
             PedidoSeeder::class,
             ProductoPedidoSeeder::class,
-            ProductoSeeder::class,
-            ProveedorProductoSeeder::class,
             ProveedorSeeder::class,
-            SalarioSeeder::class,
-            TrabajadorSeeder::class,
-            VentaSeeder::class,                   
+            ProveedorProductoSeeder::class,
+            //SalarioSeeder::class,
         ]);
     }
 }
