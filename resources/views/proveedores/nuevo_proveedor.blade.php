@@ -24,7 +24,7 @@
                         <strong>Guardar</strong>
                     </button>
                     <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">
-                        <span class="fas fa-window-close"></span>
+                        <span class="fas fa-times"></span>
                         <strong>Cancelar</strong>
                     </a>
                 </div>
