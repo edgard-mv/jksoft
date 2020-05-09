@@ -13,12 +13,12 @@
                 <span class="input-group-btn">
                     <a href="{{ url()->previous() }}">
                         <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                            <span class="fas fa-arrow-left"></span>
                         </button>
                     </a>
-                    <a data-target="#ModalAddProveedor" data-toggle="modal" style="margin-left: 1010px">
+                    <a data-target="#ModalAddProveedor" data-toggle="modal">
                         <button class="btn btn-success">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span class="fas fa-plus-square"></span>
                             Agregar
                         </button>
                     </a>
@@ -48,8 +48,16 @@
                 <td>{{ $proveedor->nombre }}</td>
                 <td>{{ $proveedor->cantidad }}</td>
                 <td style="text-align:center">
-                    <a href="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal"><button class="btn btn-danger">Remover</button></a>
+                    <a href="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}">
+                        <button class="btn btn-warning">
+                            <span class="fas fa-pencil-alt"></span>
+                        </button>
+                    </a>
+                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal">
+                        <button class="btn btn-danger">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    </a>
                 </td>
             </tr>
             @endforeach

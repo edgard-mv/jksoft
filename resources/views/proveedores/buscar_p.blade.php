@@ -16,11 +16,11 @@
             <input type="text" class="form-control"  name="valor" placeholder="Buscar..." autofocus>
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <span class="fas fa-search"></span>
                 </button>  
                 <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  Nuevo
+                  <span class="fas fa-plus-square"></span>
+                  <strong>Nuevo</strong>
                 </a>
             </span>
         </div>

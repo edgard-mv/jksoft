@@ -19,7 +19,6 @@ Finalmente, deben instalar las dependencias:
 - `composer install`
 - `yarn install --frozen-lockfile`
 - `yarn dev --frozen-lockfile`
-- `yarn watch --frozen-lockfile`
 - `cp .env.example .env`
 
 Recuerda editar tu archivo `.env` y luego ejecuta:

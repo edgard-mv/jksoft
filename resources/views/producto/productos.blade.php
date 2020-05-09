@@ -50,18 +50,19 @@
                 <td style="text-align:center">
                     <div class="input-group-btn">
                         <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
-                            <button class="btn btn-warning">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            <button class="btn btn btn-warning">
+                                <span class="fas fa-pencil-alt"></span>
                             </button>
                         </a>
                         <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}">
                             <button class="btn btn-primary">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                <span class="fas fa-list-ul"></span>
+                                <strong>Proveedores</strong>
                             </button>
                         </a>
                         <a data-toggle="modal" data-target="#ModalDelete">
                             <button class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                <span class="fas fa-trash-alt"></span>
                             </button>
                         </a>
                     </div>
