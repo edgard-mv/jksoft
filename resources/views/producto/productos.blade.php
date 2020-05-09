@@ -57,7 +57,6 @@
                         <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}">
                             <button class="btn btn-primary">
                                 <span class="fas fa-list-ul"></span>
-                                <strong>Proveedores</strong>
                             </button>
                         </a>
                         <a data-toggle="modal" data-target="#ModalDelete">
