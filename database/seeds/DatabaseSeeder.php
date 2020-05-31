@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             ProductoPedidoSeeder::class,
             ProveedorSeeder::class,
             ProveedorProductoSeeder::class,
-            //SalarioSeeder::class,
+            SalarioSeeder::class,
         ]);
     }
 }
