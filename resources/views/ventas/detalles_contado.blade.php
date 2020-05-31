@@ -31,7 +31,7 @@
         <strong style="margin-left:20px"><label for="total_v"> Total cancelado: 00000 cordobas </label></strong>
 
         <p style="text-align:center">
-            <button class="btn btn-danger" type="reset" >Cancelar</button></p>
+            <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
 
 
         

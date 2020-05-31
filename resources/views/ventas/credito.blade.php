@@ -65,7 +65,7 @@
         <div class="row"><!--table begin-->
         <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
         <div class="table-responsive" style="margin-top:20px">
-                  <table class="table table-striped table-bordered table-condensed table-hover">
+                  <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                 <th>Nombre del producto</th>
                 <th>Fecha de plazo</th>
@@ -75,7 +75,7 @@
                 <th>Acción</th>    
             </thead>
 
-            <tr style="background-color:rgba(79,189,227,0.3)">
+            <tr style="background-color:#CDE4F7;">
                     <td ></td>
                     <td style="text-align:center"> <input type="date" name="fecha_p" id="fecha_p" min="2020-02-04" max="2020-05-30" step="2"></td>
                     <td > <input type="number" class="form-control" autocomplete="off" name="cantidad_v"></td>
@@ -96,7 +96,7 @@
 
             <div class="form-group" style="text-align:center">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
             </div>     
 
  
