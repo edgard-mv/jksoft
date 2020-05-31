@@ -14,6 +14,7 @@ class CreateProveedorProductoTable extends Migration
     public function up()
     {
         Schema::create('proveedor_producto', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('proveedor_id');//FK
             $table->unsignedBigInteger('producto_id');//FK
             $table->integer('cantidad');

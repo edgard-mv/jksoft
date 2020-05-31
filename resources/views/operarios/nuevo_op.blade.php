@@ -37,7 +37,7 @@
 
             <div class="form-group" style="text-align:center">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
             
             </div>     
         </div>
