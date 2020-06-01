@@ -86,18 +86,13 @@ class OperariosController extends Controller
     }
 
     public function search(Request $request) {
-        if ($request->isMethod('get') and $request->input('searchvalues')){
-            $value = $request->input('searchvalues');
-
+        
            //-------------------------------------
+           // return view('operarios.operario', compact('operario'));
+        
 
-            return view('operarios.operario', compact('operario'));
-        }
-
-        return redirect()->route('operarios');
+        //return redirect()->route('operarios');
     }
-
-
 
 
 }//fin de funciones del controlador 
