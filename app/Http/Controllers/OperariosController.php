@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Trabajador;
 use App\Salario;
-use Carbon\Carbon;
 use DB;
 
 class OperariosController extends Controller
@@ -90,8 +89,7 @@ class OperariosController extends Controller
         if ($request->isMethod('get') and $request->input('searchvalues')){
             $value = $request->input('searchvalues');
 
-           $operario = collect([Trabajador::find($value)]);
-           
+           //-------------------------------------
 
             return view('operarios.operario', compact('operario'));
         }
