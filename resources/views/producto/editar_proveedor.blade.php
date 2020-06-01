@@ -9,13 +9,13 @@
         <form action="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}" method="post">
             @csrf
             @method('PATCH')
-            Empresa: {{ $proveedor->empresa }}
+            <strong><h5> Empresa proveedora: </strong>{{ $proveedor->empresa }}
             <br>
-            Nombre: {{ $proveedor->nombre }}
+            <strong>  Nombre del trabajador:  </strong> {{ $proveedor->nombre }}</h5>
             <br>
 
             <div class="form-group">
-                <strong><label for="cantidad">Cantidad del producto</label></strong>
+                <h5><strong><label for="cantidad">Cantidad del producto</label></strong></h5>
                 <input type="number" value="{{ $proveedor->cantidad }}" class="form-control"  autocomplete="off" name="cantidad">
             </div>
 

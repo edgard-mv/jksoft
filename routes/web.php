@@ -51,17 +51,15 @@ Route::match(['get', 'put'], '/proveedores/nuevo', 'ProveedoresController@create
 
 Route::match(['get', 'patch'], '/proveedores/{id}/editar', 'ProveedoresController@update')->name('proveedor.editar');
 
-Route::get('operarios', function () {
-    return view('operarios.operario');
-});
+Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 
-Route::get('editar_op', function () {
-    return view('operarios.editar_o');
-});
+Route::match(['get', 'put'], '/operarios/nuevo', 'OperariosController@create')->name('operarios.nuevo');
 
-Route::get('nuevo_op', function () {
-    return view('operarios.nuevo_op');
-});
+Route::match(['get', 'patch'], '/operarios/{id}/editar', 'OperariosController@update')->name('operarios.editar');
+
+Route::get('/operarios/buscar', 'OperariosController@search')->name('operario.buscar');
+
+
 
 Route::get('ventas', function () {
     return view('ventas.venta');

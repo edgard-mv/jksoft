@@ -5,6 +5,9 @@
 
     <div  class="row justify-content-center">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <form action="{{ route('operarios.nuevo') }}" method="post">
+           @csrf
+           @method('PUT')
             <div class="form-group">
               <strong><label for="nombret">Nombre del operario</label></strong>
               <input class="form-control border rounded shadow-lg" autocomplete="off" type="text" name="nombret" required="" maxlength="150" autofocus="" > 
@@ -39,7 +42,8 @@
                 <button class="btn btn-primary" type="submit">Guardar</button>
                 <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
             
-            </div>     
+            </div>  
+        </form><!--fin del form para la accion de enviar los valores-->   
         </div>
     </div>
 

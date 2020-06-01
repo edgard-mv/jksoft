@@ -86,7 +86,7 @@ class ProductosController extends Controller
     }
 
     public function updateProveedor(Request $request, $producto_id, $id) {
-        $producto = Producto::with('proveedores')->get()->find($producto_id);
+        $operario = Trabajador::find($id);
 
         $proveedor = $producto->proveedores->find($id);
 

@@ -14,7 +14,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
     <div class="table-responsive">
-        <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+        <table id="producttable" class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                 <th>ID</th>
                 <th>Nombre del producto</th>
@@ -26,6 +26,7 @@
                 <th>Acciones</th>
             </thead>
 
+            <tbody  >
             @foreach ($productos as $producto)
             <tr style="color: rgb(14,14,14);background-color: #CDE4F7;">
                 <td>{{ $producto->id }}</td>
@@ -56,6 +57,7 @@
                 </td>
             </tr>
             @endforeach
+        </tbody>
          </table>
     </div>
 </div>
@@ -64,5 +66,6 @@
 <span class="badge badge-pill badge-warning">Editar datos del producto</span>
 <span class="badge badge-pill badge-primary" style="margin-left: 5px">Editar datos del proveedor</span>
 </div>
+
 
 @endsection

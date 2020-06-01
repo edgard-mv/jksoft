@@ -22,7 +22,7 @@
       <div class="list-group list-group-flush">
         <a href="{{ route('productos') }}" class="list-group-item list-group-item-action bg-info text-white">Productos</a>
         <a href="{{ route('proveedores') }}" class="list-group-item list-group-item-action bg-info text-white">Proveedores</a>
-        <a href="/operarios" class="list-group-item list-group-item-action bg-info text-white">Operarios</a>
+        <a href="{{ route('operarios') }}" class="list-group-item list-group-item-action bg-info text-white">Operarios</a>
         <a href="/ventas" class="list-group-item list-group-item-action bg-info text-white">Ventas</a>
       </div>
 

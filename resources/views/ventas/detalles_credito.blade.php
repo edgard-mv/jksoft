@@ -46,7 +46,7 @@
         <strong style="margin-left:20px"><label for="total_v"> Total de venta: 00000 cordobas </label></strong>
 
         <p style="text-align:center">
-            <button class="btn btn-danger" type="reset" >Cancelar</button>
+            <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
             <button class="btn btn-info" type="sumit" >Pagado</button></p>
 
 
