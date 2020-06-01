@@ -19,8 +19,14 @@
                 </div>
 
                 <div class="form-group" style="text-align:center">
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
+                    <button class="btn btn-primary" type="submit">
+                        <span class="fas fa-save"></span>
+                        <strong>Guardar</strong>
+                    </button>
+                    <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">
+                        <span class="fas fa-times"></span>
+                        <strong>Cancelar</strong>
+                    </a>
                 </div>
             </form>
         </div>

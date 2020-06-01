@@ -7,12 +7,21 @@
 
 
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-8" >
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
-                    <a data-target="#ModalAddProveedor" data-toggle="modal"><button class="btn btn-success">Agregar proveedor</button></a>
-                    <a href="{{ route('productos') }}"><button type="button" class="btn btn-danger" style="margin-left: 1020px">X</button></a>
+                    <a href="{{ url()->previous() }}">
+                        <button type="button" class="btn btn-danger">
+                            <span class="fas fa-arrow-left"></span>
+                        </button>
+                    </a>
+                    <a data-target="#ModalAddProveedor" data-toggle="modal">
+                        <button class="btn btn-success">
+                            <span class="fas fa-plus-square"></span>
+                            Agregar
+                        </button>
+                    </a>
                 </span>
             </div>
         </div>
@@ -39,8 +48,16 @@
                 <td>{{ $proveedor->nombre }}</td>
                 <td>{{ $proveedor->cantidad }}</td>
                 <td style="text-align:center">
-                    <a href="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}"><button class="btn btn-warning">Editar</button></a>
-                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal"><button class="btn btn-danger">Remover</button></a>
+                    <a href="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}">
+                        <button class="btn btn-warning">
+                            <span class="fas fa-pencil-alt"></span>
+                        </button>
+                    </a>
+                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal">
+                        <button class="btn btn-danger">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    </a>
                 </td>
             </tr>
             @endforeach

@@ -15,8 +15,13 @@
         <div class="input-group">
             <input type="text" class="form-control"  name="valor" placeholder="Buscar..." autofocus>
             <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary">Buscar</button>  
-                <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">Nuevo proveedor</a>
+                <button type="submit" class="btn btn-primary">
+                  <span class="fas fa-search"></span>
+                </button>  
+                <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">
+                  <span class="fas fa-plus-square"></span>
+                  <strong>Nuevo</strong>
+                </a>
             </span>
         </div>
     </div>
