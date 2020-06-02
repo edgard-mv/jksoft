@@ -1,6 +1,6 @@
 @extends('menu')
-@section('titulo','Operarios')
-@section('pagetitle','Editar datos de operario')
+@section('titulo','Trabajadores')
+@section('pagetitle','Editar datos del trabajador')
 @section('content')
 
     <div  class="row justify-content-center">
@@ -10,7 +10,7 @@
                 @method('PATCH')
 
             <div class="form-group">
-              <strong><label for="nombret">Nombre del operario</label></strong>
+              <strong><label for="nombret">Nombre del trabajador</label></strong>
             <input class="form-control border rounded shadow-lg"    autocomplete="off"  type="text" name="nombret" required="" maxlength="150" autofocus=""  value="{{$operador->nombre}}">
 
             </div>

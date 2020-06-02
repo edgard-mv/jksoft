@@ -1,6 +1,6 @@
 @extends('menu')
-@section('titulo','Operarios')
-@section('pagetitle','Lista de los operarios')
+@section('titulo','Trabajadores')
+@section('pagetitle','Lista de los trabajadores')
 @section('content')
 @include('operarios.modal_delete')
 
@@ -34,7 +34,7 @@
             <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">
                     <td>{{ $trabajador->nombre }}</td>
                     <td>{{ $trabajador->telefono }}</td>
-                    <td>{{ $trabajador->edad }}</td>
+                    <td>{{ $trabajador->edad }} años</td>
                     <td>
                        
                         <ul>
@@ -45,7 +45,7 @@
                         
                     <td>
                         <ul>
-                            <li>{{ $trabajador->pago_por_hora}} </li>
+                            <li>{{ $trabajador->pago_por_hora}} córdobas</li>
                           </ul>
                     </td>
                     
@@ -56,10 +56,14 @@
                     
                     </td>
                 
-                    <td>{{ ($trabajador->extra + $trabajador->horas)*$trabajador->pago_por_hora}}</td>
+                    <td>{{ ($trabajador->extra + $trabajador->horas)*$trabajador->pago_por_hora}} córdobas</td>
                     <td style="text-align:center">
-                    <a href="{{ route('operarios.editar', ['id' => $trabajador->trabajador_id])}}"><button class="btn btn-warning">Editar</button></a>
-                        <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                    <a href="{{ route('operarios.editar', ['id' => $trabajador->trabajador_id])}}"><button class="btn btn-warning">
+                        <span class="fas fa-pencil-alt"></span>
+                        </button></a>
+                        <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">
+                            <span class="fas fa-trash-alt"></span>    
+                        </button></a>
                     </td>
             </tr>
             @endforeach

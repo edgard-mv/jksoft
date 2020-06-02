@@ -14,20 +14,22 @@
 
 </head>
 
-<div class="d-flex" id="wrapper">
+<header>
+  <div class="left_area">
+    <h3>Miscelánea</h3>
+    <h3><span>Flor</span></h3>
+  </div>
+</header>
 
-    <!-- Sidebar -->
-    <div class="bg-info border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><a href="{{ route('inicio') }}" style="color:white">Miscelánea Flor</a></div>
-      <div class="list-group list-group-flush">
-        <a href="{{ route('productos') }}" class="list-group-item list-group-item-action bg-info text-white">Productos</a>
-        <a href="{{ route('proveedores') }}" class="list-group-item list-group-item-action bg-info text-white">Proveedores</a>
-        <a href="{{ route('operarios') }}" class="list-group-item list-group-item-action bg-info text-white">Operarios</a>
-        <a href="/ventas" class="list-group-item list-group-item-action bg-info text-white">Ventas</a>
-      </div>
-
-	      </div>
-    	</nav>
+<div class="sidebar">
+  <center>
+    <h4><i class="fas fa-landmark"></i></h4>
+  </center>
+  <a href="{{ route('productos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
+  <a href="{{ route('proveedores') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
+  <a href="{{ route('operarios') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
+  <a href="/ventas"><i class="fas fa-coins"></i><span>Ventas</span></a>
+</div>
 
 
 
@@ -38,14 +40,14 @@
 <body>
     
     <!-- /#wrapper -->
-    <div id="page-content-wrapper">
-            <nav style="width:100%" class="navbar navbar-expand-lg navbar-light bg-info text-white border-bottom">
-                <h5>@yield('titulo')</h5>
+    <div class="content">
+            <nav style="width:100%;text-transform: uppercase; text-align: center;padding-top:32px" class="navbar navbar-expand-lg navbar-light text-white border-bottom">
+                <h4>@yield('titulo')</h4>
             </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 50px">
           <div class="card" style="margin-top:20px">
-            <div class="card-header bg-secondary text-white">
-               <h4> @yield('pagetitle')</h4>
+            <div class="card-header bg-warning text-black" style="text-transform: uppercase;">
+               <h5> @yield('pagetitle')</h5>
             </div>
             <div class="card-body">
                  @yield('content')

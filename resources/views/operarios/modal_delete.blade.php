@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body">
-            <strong><h5>Seguro que desea eliminar los datos del operario?</h5></strong>
+            <strong><h5>Seguro que desea eliminar los datos del trabajador?</h5></strong>
         </div>
     
         <div class="modal-footer">
