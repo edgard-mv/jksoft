@@ -21,7 +21,7 @@ class SpOperariosGetAll extends Migration
             SELECT
                 *
             FROM
-                trabajadores;
+                trabajadores
             JOIN
                 salarios
             ON
