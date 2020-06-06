@@ -17,13 +17,24 @@ Route::get('/', 'HomeController@index')->name('inicio');
 
 Route::get('/productos', 'ProductosController@getAll')->name('productos');
 
-Route::get('crear_p', function () {
-    return view('producto.crear');
-});
+Route::get('/productos/buscar', 'ProductosController@search')->name('producto.buscar');
 
-Route::match(['get', 'patch'], '/productos/{id}/editar', 'ProductosController@update')->name('producto.editar');
+Route::match(
+    ['get', 'put'],
+    '/productos/nuevo',
+    'ProductosController@create'
+)->name('producto.nuevo');
 
-Route::get('/productos/{id}/proveedores', 'ProductosController@proveedores')->name('producto.proveedores');
+Route::match(
+    ['get', 'patch'],
+    '/productos/{id}/editar',
+    'ProductosController@update'
+)->name('producto.editar');
+
+Route::get(
+    '/productos/{id}/proveedores',
+    'ProductosController@proveedores'
+)->name('producto.proveedores');
 
 Route::match(
     ['get', 'patch'],

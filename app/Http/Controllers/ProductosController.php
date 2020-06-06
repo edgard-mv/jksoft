@@ -29,6 +29,26 @@ class ProductosController extends Controller
         return view('producto.productos', compact('productos'));
     }
 
+    public function search(Request $request)
+    {
+        if ($request->isMethod('get') and $request->input('valor') and $request->input('tipo')) {
+            $value = $request->input('valor');
+            $type = $request->input('tipo');
+
+            if ($type == 'id') {
+                $productos = collect([Producto::find($value)]);
+            } elseif ($type == 'empresa') {
+                $productos = Producto::where('empresa', 'like', '%'. $value .'%')->get();
+            } elseif ($type == 'nombre') {
+                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
+            }
+
+            return view('producto.productos', compact('productos'));
+        }
+
+        return redirect()->route('productos');
+    }
+
     public function update(Request $request, $id) {
         $producto = Producto::with('proveedores')->get()->find($id);
 
@@ -59,6 +79,35 @@ class ProductosController extends Controller
         return view('producto.editar', compact('producto'));
     }
 
+    public function create(Request $request) {
+        if ($request->isMethod('put')) {
+            if ($request->input('nombre') and $request->input('cantidad') and $request->input('precio')) {
+                $producto = new Producto;
+                $producto->nombre = $request->input('nombre');
+                $producto->cantidad = $request->input('cantidad');
+                $producto->precio = $request->input('precio');
+
+                $producto->save();
+
+                $this->addProveedor($request, $producto->id);
+            }
+
+            return redirect()->route('productos');
+        }
+
+        $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        $fecha = Carbon::now();
+
+
+        return view(
+            'producto.crear',
+            compact(
+                'proveedoresDisponibles',
+                'fecha'
+            )
+        );
+    }
+
     public function proveedores($id) {
         $producto = Producto::with('proveedores')->get()->find($id);
         $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
@@ -82,11 +131,12 @@ class ProductosController extends Controller
                 'proveedores',
                 'proveedoresDisponibles',
                 'fecha'
-            ));
+            )
+        );
     }
 
     public function updateProveedor(Request $request, $producto_id, $id) {
-        $operario = Trabajador::find($id);
+        $producto = Producto::with('proveedores')->get()->find($producto_id);
 
         $proveedor = $producto->proveedores->find($id);
 
