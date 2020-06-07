@@ -22,7 +22,12 @@ class ProveedoresController extends Controller
             $type = $request->input('tipo');
 
             if ($type == 'id') {
-                $proveedores = collect([Proveedor::find($value)]);
+                $proveedores = Proveedor::find($value);
+                if (!$proveedores) {
+                    $proveedores = collect([]);
+                } else {
+                    $proveedores = collect([$proveedores]);
+                }
             } elseif ($type == 'empresa') {
                 $proveedores = Proveedor::where('empresa', 'like', '%'. $value .'%')->get();
             } elseif ($type == 'nombre') {

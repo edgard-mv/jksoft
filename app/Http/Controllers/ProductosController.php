@@ -36,9 +36,31 @@ class ProductosController extends Controller
             $type = $request->input('tipo');
 
             if ($type == 'id') {
-                $productos = collect([Producto::find($value)]);
+                $productos = Producto::find($value);
+                if (!$productos) {
+                    $productos = collect([]);
+                } else {
+                    $productos = collect([$productos]);
+                }
             } elseif ($type == 'empresa') {
-                $productos = Producto::where('empresa', 'like', '%'. $value .'%')->get();
+                $productos = Producto::with('proveedores')->get()->filter(function ($producto) use($value) {
+                    foreach ($producto->proveedores as $proveedor) {
+                        if (stripos($proveedor->empresa, $value) !== False) {
+                            return True;
+                        }
+                    }
+                });
+
+                foreach ($productos as $producto) {
+                    foreach ($producto->proveedores as $proveedor) {
+                        $proveedorProducto = ProveedorProducto::where([
+                            ['proveedor_id', '=', $proveedor->id],
+                            ['producto_id', '=', $producto->id],
+                        ])->first();
+        
+                        $proveedor['cantidad'] = $proveedorProducto->cantidad;
+                    }
+                }
             } elseif ($type == 'nombre') {
                 $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
             }
