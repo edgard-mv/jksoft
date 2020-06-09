@@ -50,19 +50,19 @@ class ProductosController extends Controller
                         }
                     }
                 });
-
-                foreach ($productos as $producto) {
-                    foreach ($producto->proveedores as $proveedor) {
-                        $proveedorProducto = ProveedorProducto::where([
-                            ['proveedor_id', '=', $proveedor->id],
-                            ['producto_id', '=', $producto->id],
-                        ])->first();
-        
-                        $proveedor['cantidad'] = $proveedorProducto->cantidad;
-                    }
-                }
             } elseif ($type == 'nombre') {
                 $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
+            }
+
+            foreach ($productos as $producto) {
+                foreach ($producto->proveedores as $proveedor) {
+                    $proveedorProducto = ProveedorProducto::where([
+                        ['proveedor_id', '=', $proveedor->id],
+                        ['producto_id', '=', $producto->id],
+                    ])->first();
+    
+                    $proveedor['cantidad'] = $proveedorProducto->cantidad;
+                }
             }
 
             return view('producto.productos', compact('productos'));
