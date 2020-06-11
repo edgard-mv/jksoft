@@ -68,7 +68,7 @@ class ProductosController extends Controller
             return view('producto.productos', compact('productos'));
         }
 
-        return redirect()->route('productos');
+        return redirect()->route('producto.todos');
     }
 
     public function update(Request $request, $id) {
@@ -95,7 +95,7 @@ class ProductosController extends Controller
             }
 
             $producto->save();
-            return redirect()->route('productos');
+            return redirect()->route('producto.todos');
         }
 
         return view('producto.editar', compact('producto'));
@@ -114,7 +114,7 @@ class ProductosController extends Controller
                 $this->addProveedor($request, $producto->id);
             }
 
-            return redirect()->route('productos');
+            return redirect()->route('producto.todos');
         }
 
         $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
@@ -128,6 +128,12 @@ class ProductosController extends Controller
                 'fecha'
             )
         );
+    }
+
+    public function delete($id) {
+        Producto::destroy($id);
+
+        return redirect()->route('producto.todos');    
     }
 
     public function proveedores($id) {

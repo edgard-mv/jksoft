@@ -2,7 +2,6 @@
 @section('titulo','Proveedores')
 @section('pagetitle','Lista de los proveedores')
 @section('content')
-@include('proveedores.modal_delete')
 
 
 <div class="row">
@@ -23,23 +22,24 @@
             </thead>
 
             @foreach ($proveedores as $proveedor)
-            <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">                    
-                <td>{{ $proveedor->id }}</td>
-                <td>{{ $proveedor->empresa }}</td>
-                <td>{{ $proveedor->nombre }}</td>
-                <td style="text-align:center">
-                    <a href="{{ route('proveedor.editar', ['id' => $proveedor->id]) }}">
-                        <button class="btn btn-warning">
-                            <span class="fas fa-pencil-alt"></span>
-                        </button>
-                    </a>
-                    <a href="" data-target="#ModalDelete" data-toggle="modal">
-                        <button class="btn btn-danger">
-                            <span class="fas fa-trash-alt"></span>
-                        </button>
-                    </a>
-                </td>
-            </tr>
+            @include('proveedores.modal_delete')
+                <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">                    
+                    <td>{{ $proveedor->id }}</td>
+                    <td>{{ $proveedor->empresa }}</td>
+                    <td>{{ $proveedor->nombre }}</td>
+                    <td style="text-align:center">
+                        <a href="{{ route('proveedor.editar', ['id' => $proveedor->id]) }}">
+                            <button class="btn btn-warning">
+                                <span class="fas fa-pencil-alt"></span>
+                            </button>
+                        </a>
+                        <a href="" data-target="#ModalDelete{{ $proveedor->id }}" data-toggle="modal">
+                            <button class="btn btn-danger">
+                                <span class="fas fa-trash-alt"></span>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
             @endforeach
          </table>
     </div>

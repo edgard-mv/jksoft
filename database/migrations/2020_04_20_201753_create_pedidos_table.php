@@ -18,6 +18,7 @@ class CreatePedidosTable extends Migration
             $table->unsignedBigInteger('trabajador_id');
             $table->integer('cantidad total');
             $table->float('monto_total');
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -15,52 +15,89 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('inicio');
 
-Route::get('/productos', 'ProductosController@getAll')->name('productos');
+Route::name('producto.')->group(function () {
 
-Route::get('/productos/buscar', 'ProductosController@search')->name('producto.buscar');
+    Route::get(
+        '/productos',
+        'ProductosController@getAll'
+    )->name('todos');
 
-Route::match(
-    ['get', 'put'],
-    '/productos/nuevo',
-    'ProductosController@create'
-)->name('producto.nuevo');
+    Route::get(
+        '/productos/buscar',
+        'ProductosController@search'
+    )->name('buscar');
 
-Route::match(
-    ['get', 'patch'],
-    '/productos/{id}/editar',
-    'ProductosController@update'
-)->name('producto.editar');
+    Route::match(
+        ['get', 'put'],
+        '/productos/nuevo',
+        'ProductosController@create'
+    )->name('nuevo');
 
-Route::get(
-    '/productos/{id}/proveedores',
-    'ProductosController@proveedores'
-)->name('producto.proveedores');
+    Route::delete(
+        '/productos/{id}/remover',
+        'ProductosController@delete'
+    )->name('remover');
 
-Route::match(
-    ['get', 'patch'],
-    '/productos/{producto_id}/proveedores/{id}/editar',
-    'ProductosController@updateProveedor'
-)->name('producto.proveedor.editar');
+    Route::match(
+        ['get', 'patch'],
+        '/productos/{id}/editar',
+        'ProductosController@update'
+    )->name('editar');
 
-Route::delete(
-    '/productos/{producto_id}/proveedores/{id}/remover',
-    'ProductosController@deleteProveedor'
-)->name('producto.proveedor.remover');
+    Route::get(
+        '/productos/{id}/proveedores',
+        'ProductosController@proveedores'
+    )->name('proveedores');
 
-Route::put(
-    '/productos/{producto_id}/proveedores/agregar',
-    'ProductosController@addProveedor'
-)->name('producto.proveedor.agregar');
+    Route::match(
+        ['get', 'patch'],
+        '/productos/{producto_id}/proveedores/{id}/editar',
+        'ProductosController@updateProveedor'
+    )->name('proveedor.editar');
 
-Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
+    Route::delete(
+        '/productos/{producto_id}/proveedores/{id}/remover',
+        'ProductosController@deleteProveedor'
+    )->name('proveedor.remover');
 
-Route::get('/proveedores/data', 'ProveedoresController@getAllJSON')->name('proveedores.json');
+    Route::put(
+        '/productos/{producto_id}/proveedores/agregar',
+        'ProductosController@addProveedor'
+    )->name('proveedor.agregar');
 
-Route::get('/proveedores/buscar', 'ProveedoresController@search')->name('proveedor.buscar');
+});
 
-Route::match(['get', 'put'], '/proveedores/nuevo', 'ProveedoresController@create')->name('proveedor.nuevo');
 
-Route::match(['get', 'patch'], '/proveedores/{id}/editar', 'ProveedoresController@update')->name('proveedor.editar');
+Route::name('proveedor.')->group(function () {
+
+    Route::get(
+        '/proveedores',
+        'ProveedoresController@getAll'
+    )->name('todos');
+
+    Route::get(
+        '/proveedores/buscar',
+        'ProveedoresController@search'
+    )->name('buscar');
+
+    Route::match(
+        ['get', 'put'],
+        '/proveedores/nuevo',
+        'ProveedoresController@create'
+    )->name('nuevo');
+
+    Route::delete(
+        '/proveedores/{id}/remover',
+        'ProveedoresController@delete'
+    )->name('remover');
+
+    Route::match(
+        ['get', 'patch'],
+        '/proveedores/{id}/editar',
+        'ProveedoresController@update'
+    )->name('editar');
+
+});
 
 Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 

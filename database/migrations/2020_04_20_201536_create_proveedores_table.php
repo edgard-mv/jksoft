@@ -17,6 +17,7 @@ class CreateProveedoresTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('empresa');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

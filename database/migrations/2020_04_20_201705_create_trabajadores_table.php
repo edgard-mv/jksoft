@@ -18,6 +18,7 @@ class CreateTrabajadoresTable extends Migration
             $table->string('nombre');
             $table->integer('edad');
             $table->integer('telefono');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

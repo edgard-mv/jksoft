@@ -19,6 +19,7 @@ class CreateVentasTable extends Migration
             $table->string('nombre_producto');
             $table->date('fecha');
             $table->string('estado');
+            $table->softDeletes();
             $table->timestamps();
         });
 

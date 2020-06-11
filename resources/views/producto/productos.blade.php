@@ -2,7 +2,6 @@
 @section('titulo','Productos')
 @section('pagetitle','Lista de productos')
 @section('content')
-@include('producto.modal_delete')
 
 
 <div class="row">
@@ -28,6 +27,7 @@
 
             <tbody  >
             @foreach ($productos as $producto)
+            @include('producto.modal_delete')
             <tr style="color: rgb(14,14,14);background-color: #CDE4F7;">
                 <td>{{ $producto->id }}</td>
                 <td>{{ $producto->nombre }}</td>
@@ -60,7 +60,7 @@
                                 <span class="fas fa-list-ul"></span>
                             </button>
                         </a>
-                        <a data-toggle="modal" data-target="#ModalDelete">
+                        <a data-toggle="modal" data-target="#ModalDelete{{ $producto->id }}">
                             <button class="btn btn-danger">
                                 <span class="fas fa-trash-alt"></span>
                             </button>

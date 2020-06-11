@@ -19,6 +19,7 @@ class CreateCreditosTable extends Migration
             $table->string('cliente');
             $table->float('monto');
             $table->date('fecha_de_pago');
+            $table->softDeletes();
             $table->timestamps();
         });
 

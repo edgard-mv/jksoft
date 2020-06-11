@@ -10,7 +10,6 @@ use DB;
 class ProveedoresController extends Controller
 {
     public function getAll() {
-        //$proveedores = Proveedor::all();
         $proveedores = DB::select('CALL spProveedores_GetAll()');
 
         return view('proveedores.proveedor', compact('proveedores'));
@@ -37,7 +36,7 @@ class ProveedoresController extends Controller
             return view('proveedores.proveedor', compact('proveedores'));
         }
 
-        return redirect()->route('proveedores');
+        return redirect()->route('proveedor.todos');
     }
 
     public function create(Request $request) {
@@ -48,10 +47,25 @@ class ProveedoresController extends Controller
                 $proveedor->empresa = $request->input('empresa');
                 $proveedor->save();
             }
-            return redirect()->route('proveedores');
+            return redirect()->route('proveedor.todos');
         }
 
         return view('proveedores.nuevo_proveedor');
+    }
+
+    public function delete($id) {
+        $proveedor = Proveedor::find($id);
+        
+        $proveedor->productos()->each(function ($producto) {
+            if ($producto->proveedores()->count() == 1) {
+                $producto->delete();
+            }
+        });
+
+
+        $proveedor->delete();
+
+        return redirect()->route('proveedor.todos');    
     }
 
     public function update(Request $request, $id) {
@@ -65,7 +79,7 @@ class ProveedoresController extends Controller
                 $proveedor->empresa = $request->input('empresa');
             }
             $proveedor->save();
-            return redirect()->route('proveedores');
+            return redirect()->route('proveedor.todos');
         }
 
         return view('proveedores.editar_proveedor', compact('proveedor'));

@@ -11,7 +11,7 @@
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
-                    <a href="{{ url()->previous() }}">
+                    <a href="{{ route('producto.todos') }}">
                         <button type="button" class="btn btn-danger">
                             <span class="fas fa-arrow-left"></span>
                         </button>
@@ -53,7 +53,7 @@
                             <span class="fas fa-pencil-alt"></span>
                         </button>
                     </a>
-                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal">
+                    <a href="" data-target="#ModalDeleteProveedor{{ $proveedor->id }}" data-toggle="modal">
                         <button class="btn btn-danger">
                             <span class="fas fa-trash-alt"></span>
                         </button>

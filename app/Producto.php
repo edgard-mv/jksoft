@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model
 {
@@ -15,6 +16,8 @@ class Producto extends Model
         'created_at',
         'updated_at'
     ];
+
+    use SoftDeletes;
 
     public function proveedores() {
 		return $this->belongsToMany('App\Proveedor', 'proveedor_producto');

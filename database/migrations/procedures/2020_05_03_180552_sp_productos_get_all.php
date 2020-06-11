@@ -21,7 +21,8 @@ class SpProductosGetAll extends Migration
                 SELECT
                     *
                 FROM
-                    productos;
+                    productos
+                WHERE deleted_at IS NULL;
             END;
         ');
     }
