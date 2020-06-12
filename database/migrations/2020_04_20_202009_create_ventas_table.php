@@ -15,20 +15,20 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('producto_id');
-            $table->string('nombre_producto');
+            // $table->unsignedBigInteger('producto_id');
+            // $table->string('nombre_producto');
             $table->date('fecha');
             $table->string('estado');
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('ventas', function (Blueprint $table) {
-            $table->foreign('producto_id')
-                    ->references('id')
-                    ->on('productos')
-                    ->onDelete('cascade');
-        });
+        // Schema::table('ventas', function (Blueprint $table) {
+        //     $table->foreign('producto_id')
+        //             ->references('id')
+        //             ->on('productos')
+        //             ->onDelete('cascade');
+        // });
     }
 
     /**

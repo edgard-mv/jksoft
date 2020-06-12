@@ -1,6 +1,6 @@
 @extends('menu')
 @section('titulo','Ventas')
-@section('pagetitle','Lista de las ventas realizadas')
+@section('pagetitle','Lista de ventas realizadas')
 @section('content')
 
 
@@ -15,9 +15,9 @@
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                <th>Número de venta</th>
+                <th>N⁰ Venta</th>
                 <th>Fecha</th>
-                <th>Tipo de venta</th>
+                <th>Tipo</th>
                 <th>Monto total</th>
                 <th>Estado</th>
                 <th>Acción</th>
@@ -25,14 +25,14 @@
             </thead>
 
             <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="text-align:center">
-                        <a href="/detallecr"><button class="btn btn-warning">Detalles</button></a>
-                    </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:center">
+                    <a href="/detallecr"><button class="btn btn-warning">Detalles</button></a>
+                </td>
             </tr>
          </table>
     </div>

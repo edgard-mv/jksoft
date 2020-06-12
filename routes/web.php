@@ -49,8 +49,7 @@ Route::name('producto.')->group(function () {
         'ProductosController@proveedores'
     )->name('proveedores');
 
-    Route::match(
-        ['get', 'patch'],
+    Route::patch(
         '/productos/{producto_id}/proveedores/{id}/editar',
         'ProductosController@updateProveedor'
     )->name('proveedor.editar');
@@ -107,10 +106,13 @@ Route::match(['get', 'patch'], '/operarios/{id}/editar', 'OperariosController@up
 
 Route::get('/operarios/buscar', 'OperariosController@search')->name('operario.buscar');
 
+Route::name('venta.')->group(function () {
+    
+    Route::get(
+        '/ventas',
+        'VentasController@getAll'
+    )->name('todos');
 
-
-Route::get('ventas', function () {
-    return view('ventas.venta');
 });
 
 Route::get('contado', function () {

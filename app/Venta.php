@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Venta extends Model
 {
     use SoftDeletes;
+
+    public function productos() {
+        return $this->belongsToMany('App\Producto', 'producto_venta')
+                        ->withPivot('cantidad_producto');
+    }
 }

@@ -28,7 +28,7 @@
   <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
   <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
   <a href="{{ route('operarios') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
-  <a href="/ventas"><i class="fas fa-coins"></i><span>Ventas</span></a>
+  <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
 </div>
 
 

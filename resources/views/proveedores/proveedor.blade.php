@@ -1,6 +1,6 @@
 @extends('menu')
 @section('titulo','Proveedores')
-@section('pagetitle','Lista de los proveedores')
+@section('pagetitle','Lista de proveedores')
 @section('content')
 
 

@@ -42,7 +42,7 @@
                 <td >
                     <ul>
                         @foreach ($producto->proveedores as $proveedor)
-                            <li>{{ $proveedor->cantidad }}</li>
+                            <li>{{ $proveedor->pivot->cantidad }}</li>
                         @endforeach    
                     </ul>
                 </td>
