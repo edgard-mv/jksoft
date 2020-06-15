@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('inicio');
+Route::get('/', 'ChartController@index')->name('inicio');
+
+Route::get('/estadistica_proveedores', 'EstadisticaProveedorController@index')->name('estadistica.proveedores');
 
 Route::get('/productos', 'ProductosController@getAll')->name('productos');
 
