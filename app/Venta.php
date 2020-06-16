@@ -11,6 +11,14 @@ class Venta extends Model
 
     public function productos() {
         return $this->belongsToMany('App\Producto', 'producto_venta')
-                        ->withPivot('cantidad_producto');
+                        ->withPivot('cantidad_producto', 'monto');
+    }
+
+    public function contado() {
+        return $this->hasOne('App\Contado');
+    }
+
+    public function credito() {
+        return $this->hasOne('App\Credito');
     }
 }

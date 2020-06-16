@@ -17,7 +17,7 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->unsignedInteger('cantidad');
-            $table->float('precio');
+            $table->decimal('precio', 13, 2);
             $table->softDeletes();
             $table->timestamps();
         });

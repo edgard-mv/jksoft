@@ -22,13 +22,6 @@ class CreateVentasTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-
-        // Schema::table('ventas', function (Blueprint $table) {
-        //     $table->foreign('producto_id')
-        //             ->references('id')
-        //             ->on('productos')
-        //             ->onDelete('cascade');
-        // });
     }
 
     /**

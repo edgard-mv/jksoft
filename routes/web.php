@@ -66,7 +66,6 @@ Route::name('producto.')->group(function () {
 
 });
 
-
 Route::name('proveedor.')->group(function () {
 
     Route::get(
@@ -112,6 +111,11 @@ Route::name('venta.')->group(function () {
         '/ventas',
         'VentasController@getAll'
     )->name('todos');
+
+    Route::get(
+        '/ventas/por',
+        'VentasController@getSaleBy'
+    )->name('por_tipo');
 
 });
 

@@ -28,18 +28,20 @@
             <tbody  >
             @foreach ($productos as $producto)
             @include('producto.modal_delete')
-            <tr style="color: rgb(14,14,14);background-color: #CDE4F7;">
+            <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
                 <td>{{ $producto->id }}</td>
-                <td>{{ $producto->nombre }}</td>
-                <td style="text-align:center">{{ $producto->cantidad }}</td>
-                <td>
+                <td style="text-align:left">
+                    {{ $producto->nombre }}
+                </td>
+                <td>{{ $producto->cantidad }}</td>
+                <td style="text-align:left">
                     <ul>
                         @foreach ($producto->proveedores as $proveedor)
                             <li>{{ $proveedor->empresa }}</li>
                         @endforeach    
                     </ul>
                 </td>
-                <td >
+                <td style="text-align:left">
                     <ul>
                         @foreach ($producto->proveedores as $proveedor)
                             <li>{{ $proveedor->pivot->cantidad }}</li>
@@ -47,8 +49,8 @@
                     </ul>
                 </td>
                 <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
-                <td style="text-align:center">{{ $producto->precio }}</td>
-                <td style="text-align:center">
+                <td>@money($producto->precio)</td>
+                <td>
                     <div class="input-group-btn">
                         <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
                             <button class="btn btn btn-warning">
@@ -69,8 +71,8 @@
                 </td>
             </tr>
             @endforeach
-        </tbody>
-         </table>
+            </tbody>
+        </table>
     </div>
 </div>
 
