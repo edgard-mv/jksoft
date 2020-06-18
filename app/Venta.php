@@ -11,7 +11,7 @@ class Venta extends Model
 
     public function productos() {
         return $this->belongsToMany('App\Producto', 'producto_venta')
-                        ->withPivot('cantidad_producto', 'monto');
+                        ->withPivot('cantidad_producto', 'monto', 'precio_actual');
     }
 
     public function contado() {

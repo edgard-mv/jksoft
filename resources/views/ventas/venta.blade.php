@@ -34,13 +34,17 @@
                     <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
                         <td>{{ $venta->id }}</td>
                         <td>{{ $venta->fecha }}</td>
-                        <td>{{ $venta->tipo }}</td>
+                        @if ($venta->tipo == 'contado')
+                            <td>Contado</td>
+                        @elseif ($venta->tipo == 'credito')
+                            <td>Crédito</td>
+                        @endif
                         <td>
                             @money($venta->monto_total)
                         </td>
                         <td>{{ $venta->estado }}</td>
                         <td style="text-align:center">
-                            <a href="/detallecr" class="btn btn-warning">
+                            <a href="{{ route('venta.detalles', ['tipo' => $venta->tipo, 'id' => $venta->id]) }}" class="btn btn-warning">
                                 <span class="fas fa-info-circle"></span>
                                 <strong>Detalles</strong>
                             </a>

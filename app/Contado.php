@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contado extends Model
 {
     use SoftDeletes;
+
+    public function venta() {
+        return $this->belongsTo('App\Venta');
+    }
 }

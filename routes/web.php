@@ -117,6 +117,11 @@ Route::name('venta.')->group(function () {
         'VentasController@getSaleBy'
     )->name('por_tipo');
 
+    Route::get(
+        '/ventas/{tipo}/{id}/detalles',
+        'VentasController@details'
+    )->name('detalles');
+
 });
 
 Route::get('contado', function () {
@@ -125,12 +130,4 @@ Route::get('contado', function () {
 
 Route::get('credito', function () {
     return view('ventas.credito');
-});
-
-Route::get('detallec', function () {
-    return view('ventas.detalles_contado');
-});
-
-Route::get('detallecr', function () {
-    return view('ventas.detalles_credito');
 });
