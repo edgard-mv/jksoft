@@ -80,14 +80,16 @@ Route::name('producto.')->group(function () {
         'ProductosController@addProveedor'
     )->name('proveedor.agregar');
 
-<<<<<<< HEAD
-
-Route::get('crear_p', function () {
-    return view('producto.crear');
-=======
->>>>>>> b3931da6a9e60c9aa71a44cb9ec53f1a8df55d7c
 });
 
+    Route::get('crear_p', function () {
+      return view('producto.crear');
+
+    });
+
+
+
+   
 
 Route::name('proveedor.')->group(function () {
 
@@ -118,7 +120,7 @@ Route::name('proveedor.')->group(function () {
         'ProveedoresController@update'
     )->name('editar');
 
-});
+   });
 
 Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 
