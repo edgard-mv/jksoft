@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model
 {
@@ -16,7 +17,15 @@ class Producto extends Model
         'updated_at'
     ];
 
+    use SoftDeletes;
+
     public function proveedores() {
-		return $this->belongsToMany('App\Proveedor', 'proveedor_producto');
-	}
+        return $this->belongsToMany('App\Proveedor', 'proveedor_producto')
+                        ->withPivot('cantidad', 'fecha');
+    }
+    
+    public function ventas() {
+        return $this->belongsToMany('App\Venta', 'producto_venta')
+                        ->withPivot('cantidad_producto');
+    }
 }

@@ -21,7 +21,8 @@ class SpProveedorProductoGetAll extends Migration
                 SELECT
                     *
                 FROM
-                    proveedor_producto;
+                    proveedor_producto
+                WHERE deleted_at IS NULL;
             END;
         ');
     }

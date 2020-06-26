@@ -31,42 +31,94 @@ Route::get('manualu', function () {
 
 Route::get('/estadistica_proveedores', 'EstadisticaProveedorController@index')->name('estadistica.proveedores');
 
-Route::get('/productos', 'ProductosController@getAll')->name('productos');
+Route::name('producto.')->group(function () {
 
+    Route::get(
+        '/productos',
+        'ProductosController@getAll'
+    )->name('todos');
+
+    Route::get(
+        '/productos/buscar',
+        'ProductosController@search'
+    )->name('buscar');
+
+    Route::match(
+        ['get', 'put'],
+        '/productos/nuevo',
+        'ProductosController@create'
+    )->name('nuevo');
+
+    Route::delete(
+        '/productos/{id}/remover',
+        'ProductosController@delete'
+    )->name('remover');
+
+    Route::match(
+        ['get', 'patch'],
+        '/productos/{id}/editar',
+        'ProductosController@update'
+    )->name('editar');
+
+    Route::get(
+        '/productos/{id}/proveedores',
+        'ProductosController@proveedores'
+    )->name('proveedores');
+
+    Route::patch(
+        '/productos/{producto_id}/proveedores/{id}/editar',
+        'ProductosController@updateProveedor'
+    )->name('proveedor.editar');
+
+    Route::delete(
+        '/productos/{producto_id}/proveedores/{id}/remover',
+        'ProductosController@deleteProveedor'
+    )->name('proveedor.remover');
+
+    Route::put(
+        '/productos/{producto_id}/proveedores/agregar',
+        'ProductosController@addProveedor'
+    )->name('proveedor.agregar');
+
+<<<<<<< HEAD
 
 Route::get('crear_p', function () {
     return view('producto.crear');
+=======
+>>>>>>> b3931da6a9e60c9aa71a44cb9ec53f1a8df55d7c
 });
 
-Route::match(['get', 'patch'], '/productos/{id}/editar', 'ProductosController@update')->name('producto.editar');
 
-Route::get('/productos/{id}/proveedores', 'ProductosController@proveedores')->name('producto.proveedores');
+Route::name('proveedor.')->group(function () {
 
-Route::match(
-    ['get', 'patch'],
-    '/productos/{producto_id}/proveedores/{id}/editar',
-    'ProductosController@updateProveedor'
-)->name('producto.proveedor.editar');
+    Route::get(
+        '/proveedores',
+        'ProveedoresController@getAll'
+    )->name('todos');
 
-Route::delete(
-    '/productos/{producto_id}/proveedores/{id}/remover',
-    'ProductosController@deleteProveedor'
-)->name('producto.proveedor.remover');
+    Route::get(
+        '/proveedores/buscar',
+        'ProveedoresController@search'
+    )->name('buscar');
 
-Route::put(
-    '/productos/{producto_id}/proveedores/agregar',
-    'ProductosController@addProveedor'
-)->name('producto.proveedor.agregar');
+    Route::match(
+        ['get', 'put'],
+        '/proveedores/nuevo',
+        'ProveedoresController@create'
+    )->name('nuevo');
 
-Route::get('/proveedores', 'ProveedoresController@getAll')->name('proveedores');
+    Route::delete(
+        '/proveedores/{id}/remover',
+        'ProveedoresController@delete'
+    )->name('remover');
 
-Route::get('/proveedores/data', 'ProveedoresController@getAllJSON')->name('proveedores.json');
+    Route::match(
+        ['get', 'patch'],
+        '/proveedores/{id}/editar',
+        'ProveedoresController@update'
+    )->name('editar');
 
-Route::get('/proveedores/buscar', 'ProveedoresController@search')->name('proveedor.buscar');
-
-Route::match(['get', 'put'], '/proveedores/nuevo', 'ProveedoresController@create')->name('proveedor.nuevo');
-
-Route::match(['get', 'patch'], '/proveedores/{id}/editar', 'ProveedoresController@update')->name('proveedor.editar');
+});
 
 Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 
@@ -76,10 +128,13 @@ Route::match(['get', 'patch'], '/operarios/{id}/editar', 'OperariosController@up
 
 Route::get('/operarios/buscar', 'OperariosController@search')->name('operario.buscar');
 
+Route::name('venta.')->group(function () {
+    
+    Route::get(
+        '/ventas',
+        'VentasController@getAll'
+    )->name('todos');
 
-
-Route::get('ventas', function () {
-    return view('ventas.venta');
 });
 
 Route::get('contado', function () {

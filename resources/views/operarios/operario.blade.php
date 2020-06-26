@@ -1,6 +1,6 @@
 @extends('menu')
 @section('titulo','Trabajadores')
-@section('pagetitle','Lista de los trabajadores')
+@section('pagetitle','Lista de trabajadores')
 @section('content')
 @include('operarios.modal_delete')
 

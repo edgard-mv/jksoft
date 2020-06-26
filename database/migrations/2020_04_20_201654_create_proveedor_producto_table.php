@@ -19,6 +19,7 @@ class CreateProveedorProductoTable extends Migration
             $table->unsignedBigInteger('producto_id');//FK
             $table->integer('cantidad');
             $table->date('fecha');
+            $table->softDeletes();
             $table->timestamps();
         });
 

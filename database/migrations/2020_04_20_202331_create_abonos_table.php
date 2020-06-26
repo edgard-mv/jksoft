@@ -19,6 +19,7 @@ class CreateAbonosTable extends Migration
             $table->integer('cantidad');
             $table->date('fecha');
             $table->string('comentarios');
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -1,6 +1,6 @@
 @extends('menu')
-@section('titulo','Proveedores')
-@section('pagetitle','Lista de los proveedores')
+@section('titulo', 'Producto: ' . $producto->nombre)
+@section('pagetitle','Lista de proveedores')
 @section('content')
 @include('producto.modal_add_proveedor')
 
@@ -11,7 +11,7 @@
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
-                    <a href="{{ url()->previous() }}">
+                    <a href="{{ route('producto.todos') }}">
                         <button type="button" class="btn btn-danger">
                             <span class="fas fa-arrow-left"></span>
                         </button>
@@ -42,18 +42,19 @@
 
             @foreach ($proveedores as $proveedor)
             @include('producto.modal_delete_proveedor')
+            @include('producto.modal_update_proveedor')
             <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">                    
                 <td>{{ $proveedor->id }}</td>
                 <td>{{ $proveedor->empresa }}</td>
                 <td>{{ $proveedor->nombre }}</td>
-                <td>{{ $proveedor->cantidad }}</td>
+                <td>{{ $proveedor->pivot->cantidad }}</td>
                 <td style="text-align:center">
-                    <a href="{{ route('producto.proveedor.editar', ['id' => $proveedor->id, 'producto_id' => $producto->id]) }}">
+                    <a href="" data-target="#ModalUpdateProveedor{{ $proveedor->id }}" data-toggle="modal">
                         <button class="btn btn-warning">
                             <span class="fas fa-pencil-alt"></span>
                         </button>
                     </a>
-                    <a href="" data-target="#ModalDeleteProveedor" data-toggle="modal">
+                    <a href="" data-target="#ModalDeleteProveedor{{ $proveedor->id }}" data-toggle="modal">
                         <button class="btn btn-danger">
                             <span class="fas fa-trash-alt"></span>
                         </button>

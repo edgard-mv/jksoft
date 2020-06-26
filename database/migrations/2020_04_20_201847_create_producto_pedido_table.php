@@ -18,6 +18,7 @@ class CreateProductoPedidoTable extends Migration
             $table->unsignedBigInteger('producto_id');
             $table->integer('cantidad_producto');
             $table->date('fecha');
+            $table->softDeletes();
             $table->timestamps();
         });
 

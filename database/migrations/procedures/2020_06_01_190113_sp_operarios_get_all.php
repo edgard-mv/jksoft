@@ -21,11 +21,13 @@ class SpOperariosGetAll extends Migration
             SELECT
                 *
             FROM
-                trabajadores;
+                trabajadores
             JOIN
                 salarios
             ON
-                trabajadores.id = salarios.trabajador_id;
+                trabajadores.id = salarios.trabajador_id
+            WHERE trabajadores.deleted_at IS NULL
+            AND salarios.deleted_at IS NULL;
         END;
 
     ');
