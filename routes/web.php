@@ -14,10 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ChartController@index')->name('inicio');
+Route::get('input', 'ChartController@Dates')->name('estadistica.actualizar');
+
+
+Route::get('backup', function () {
+    return view('backup');
+});
+
+
+Route::get('input', 'EstadisticaProveedorController@Dates')->name('estadistica.proveedores.actualizar');
+
+
+Route::get('manualu', function () {
+    return view('manualuser');
+});
 
 Route::get('/estadistica_proveedores', 'EstadisticaProveedorController@index')->name('estadistica.proveedores');
 
 Route::get('/productos', 'ProductosController@getAll')->name('productos');
+
 
 Route::get('crear_p', function () {
     return view('producto.crear');

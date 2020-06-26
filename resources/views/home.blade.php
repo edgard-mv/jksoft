@@ -15,9 +15,9 @@
 </head>
 
 
-<div class="dashboard-wrapper">
-  <div class="dashboard-ecommerce">
-      <div class="container-fluid dashboard-content ">
+<div style="background-image:url(/images/bkproducts.png);background-size:cover">
+  <div>
+      <div class="container-fluid ">
           <!-- ============================================================== -->
           <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -30,7 +30,22 @@
                                   <li class="breadcrumb-item active" aria-current="page">Productos</li>
                               </ol>
                           </nav>
-                      </div>
+
+                           <div class="form-group">
+                                <form  action="{{route('estadistica.proveedores.actualizar')}}" method="get" >
+                                <strong><label for="fechainicio">Fecha de inicio:</label></strong>
+                                <input type="date" name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" value="2020-01-01" step="1">
+
+                                <strong><label for="fechafin" style="margin-left: 10px">Fecha de fin:</label></strong>
+                                <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31" step="1"  value="<?php echo date("Y-m-d"); ?>" >
+
+                                <button type="submit" class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
+
+                                </form>
+                            </div>
+                          <hr class="my-4" style="height: 1px;background-color:rosybrown;">
+
+                        </div>
                   </div>
               </div>
           </div>
@@ -174,24 +189,25 @@
                                 var popCanvas = document.getElementById("popChart").getContext("2d");
 
                                 var barChart = new Chart(popCanvas, {
-                                type: 'bar',
+                                type: 'horizontalBar',
                                 data: {
-                                    labels: ["1-40", "40-80", "80'270"],
+                                    labels: [
+                                     "Máximo","Promedio","Mínimo"
+                                    ],
                                     datasets: [{
-                                    label: 'Precios',
-                                    data: [1379302771, 1281935911, 326625791],
+                                    label: 'Precios c$',
+                                    data: [
+                                    <?php foreach($prod as $cp):?>
+                                    <?php echo $cp->maximo?>,
+                                    <?php echo $cp->promedio?>, 
+                                    <?php echo $cp->minimo?>,       
+                                    <?php endforeach; ?>
+                                    ],
+                                    
                                     backgroundColor: [
-                                        'rgba(255, 99, 132, 0.6)',
-                                        'rgba(54, 162, 235, 0.6)',
-                                        'rgba(255, 206, 86, 0.6)',
-                                        'rgba(75, 192, 192, 0.6)',
-                                        'rgba(153, 102, 255, 0.6)',
-                                        'rgba(255, 159, 64, 0.6)',
-                                        'rgba(255, 99, 132, 0.6)',
-                                        'rgba(54, 162, 235, 0.6)',
-                                        'rgba(255, 206, 86, 0.6)',
-                                        'rgba(75, 192, 192, 0.6)',
-                                        'rgba(153, 102, 255, 0.6)'
+                                        'rgba(255, 200, 132, 0.6)',
+                                        'rgba(255, 200, 132, 0.6)',
+                                        'rgba(255, 200, 132, 0.6)'
                                     ]
                                     }]
                                 }
@@ -204,99 +220,10 @@
                     </div>
 
 
-                    <script type="text/javascript">
+                   
 
 
-                        google.charts.load("current", {packages:["corechart"]});
-                        google.charts.setOnLoadCallback(drawChart);
-
-                    function drawChart() {
-                        var data = google.visualization.arrayToDataTable([
-                          ['Task', 'Hours per Day'],
-                           @foreach ( $circularchart as $pastels)
-                           ['{{$pastels->empresa}}', {{$pastels->total}}],
-                           @endforeach
-                    
-                        ]);
-                    
-                        var options = {
-                          title: 'Porcentaje total de productos distribuidos por cada empresa proveedora',
-                          is3D: true,
-                          colors: ['#F61C40', '#F53656', '#F64664', '#F6677F', '#F38194'],
-                          };
-                    
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                        chart.draw(data, options);
-                      }
-                    
-                    
-                      function drawChart() {
-                        var data = google.visualization.arrayToDataTable([
-                          ['Task', 'Hours per Day'],
-                           @foreach ( $circularchart as $pastels)
-                           ['{{$pastels->empresa}}', {{$pastels->total}}],
-                           @endforeach
-                    
-                        ]);
-                    
-                        var options = {
-                          title: '',
-                          is3D: true,
-                          colors: ['#F61C40', '#A9E3FB', '#F3F6C1', '#EBCFF4', '#F38194']
-                          };
-                    
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                        chart.draw(data, options);
-                      }
-                    
-                    </script>
-
-              <!--Cards de los google charts -->
-
-      <div class="row">
-        <!-- ============================================================== -->
-   
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
-            <div class="card border border-dark bg-light ">
-                <h5 class="card-header"> <strong><i class="fas fa-balance-scale-right"></i> Porcentaje total de productos distribuidos por cada empresa</strong></h5>
-                <div class="card-body">
-                    <div class="card-body" id="piechart_3d" style="width: 600px; height: 400px; margin-top:40px">
-                    </div>                    
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-            <div class="card bg-secondary text-secondary rounded-circle">
-                <div class="card-header">
-                    
-                    <h5 class="mb-0"> <span class="badge-dot badge-secondary mr-1"></span><strong> TOTAL </strong></h5>
-                </div>
-                <div class="card-body">
-
-                    <div class="card border-bottom border-primary mb-3 rounded" style="max-width: 18rem;">
-                        <div class="card-body text-dark">
-                          <h5 class="card-title text-dark">Empresas proveedoras</h5>
-                          <p class="card-text">
-                                <h2><strong>
-                                    @foreach ( $total_proveedor as $totales)
-                                    {{$totales->total_p}}
-                                    @endforeach</h2>
-
-                                </strong></h5>
-
-                          </p>
-                        </div>
-                      </div>
-
-                    <div class="ct-chart-product ct-golden-section"></div>
-                </div>
-            </div>
-        </div>
-
-      </div>
-   
+     
 
 
 @endsection
