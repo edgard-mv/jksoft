@@ -80,17 +80,18 @@ Route::name('producto.')->group(function () {
         'ProductosController@addProveedor'
     )->name('proveedor.agregar');
 
+    Route::get('crear_p', function () {
+        return view('producto.crear');
+  
+      });
+  
+
 });
 
-    Route::get('crear_p', function () {
-      return view('producto.crear');
-
-    });
-
+    
 
 
    
-
 Route::name('proveedor.')->group(function () {
 
     Route::get(
