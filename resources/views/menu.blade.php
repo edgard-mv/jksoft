@@ -29,7 +29,33 @@
   <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
   <a href="{{ route('operarios') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
   <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
+  
+<!--Dropdown de las estadisticas -->
+
+<div class="btn-group " >
+  <button type="button" class="btn" style="color: white;font-size: 17px;padding-left:40px;line-height: 40px;  width: 100%;" >
+    <i class="fas fa-chart-line"></i><span> Estadísticas </span></button>
+  <button type="button" style="color: white" class="btn  dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only"></span>
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:#2f323a;font-size:10px">
+    <a class="dropdown-item" href="{{route('estadistica.productos') }}">E.PRODUCTOS</a>
+    <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">E.PROVEEDORES</a>
+    <a class="dropdown-item" href="{{route('estadistica.ventas')}}">E.VENTAS</a>
+  </div>
 </div>
+
+
+ <!--Item de Copia de seguridad -->
+
+ <a href="/backup"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
+ <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
+
+
+</div>
+
+
 
 
 

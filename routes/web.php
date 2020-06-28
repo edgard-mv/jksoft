@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,57 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('inicio');
+
+
+
+Route::get('backup', function () {
+    return view('backup');
+});
+
+
+Route::get('manualu', function () {
+    return view('manualuser');
+});
+
+
+
+Route::name('estadistica.')->group(function () {
+
+    Route::get(
+        '/estadisticas/proveedores/fechas', 
+        'EstadisticaProveedorController@Dates'
+    )->name('actualizar.proveedor');
+
+
+    Route::get(
+        '/estadistica/proveedores', 
+        'EstadisticaProveedorController@index'
+        )->name('proveedores');
+
+    Route::get(
+        '/estadistica/productos', 
+        'ChartController@index'
+        )->name('productos');
+    
+    Route::get(
+        '/estadisticas/productos/fechas', 
+          'ChartController@Dates'
+        )->name('actualizar.productos');
+
+    Route::get(
+        '/estadistica/ventas', 
+        'EstadisticasVentasController@index'
+         )->name('ventas');
+    
+    Route::get(
+       '/estadisticas/ventas/fechas', 
+       'EstadisticasVentasController@Dates'
+        )->name('actualizar.ventas');
+    
+
+});
+
+
 
 Route::name('producto.')->group(function () {
 
@@ -95,7 +146,7 @@ Route::name('proveedor.')->group(function () {
         'ProveedoresController@update'
     )->name('editar');
 
-});
+   });
 
 Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 

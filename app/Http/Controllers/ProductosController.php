@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Producto;
 use App\Proveedor;
 use App\ProveedorProducto;
@@ -13,7 +14,7 @@ use DB;
 class ProductosController extends Controller
 {
     public function getAll() {
-        $productos = Producto::with('proveedores')->get();
+        $productos = Producto::with('proveedores')->paginate(5);
 
         return view('producto.productos', compact('productos'));
     }
@@ -40,7 +41,7 @@ class ProductosController extends Controller
                     }
                 });
             } elseif ($type == 'nombre') {
-                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
+                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->paginate(5);
             }
 
             foreach ($productos as $producto) {
