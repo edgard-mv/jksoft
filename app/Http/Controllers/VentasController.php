@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Venta;
+use App\Producto;
 
 class VentasController extends Controller
 {
@@ -68,5 +69,21 @@ class VentasController extends Controller
         } elseif ($tipo == 'credito') {
             return view('ventas.detalles_credito');
         }
+    }
+
+    public function createContado(Request $request) {
+        return view('ventas.contado');
+    }
+
+    public function addToOrder(Request $request, $id) {
+        $producto = Producto::find($id);
+
+        if(!$producto) {
+            return redirect()->route('venta.contado.nuevo');
+        }
+    }
+
+    public function removeFromOrder($id) {
+        return redirect()->route('venta.contado.nuevo');
     }
 }

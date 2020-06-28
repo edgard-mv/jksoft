@@ -32,7 +32,7 @@
                     <span class="fas fa-plus-square"></span>
                     <strong>Crédito</strong>
                 </a>
-                <a class="btn btn-primary" href="/contado">
+                <a class="btn btn-primary" href="{{ route('venta.contado.nuevo') }}">
                     <span class="fas fa-plus-square"></span>
                     <strong>Contado</strong>
                 </a>

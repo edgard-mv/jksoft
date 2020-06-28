@@ -122,10 +122,30 @@ Route::name('venta.')->group(function () {
         'VentasController@details'
     )->name('detalles');
 
-});
+    Route::name('contado.')->group(function () {
 
-Route::get('contado', function () {
-    return view('ventas.contado');
+        Route::match(
+            ['get', 'put'],
+            '/ventas/contado/nuevo',
+            'VentasController@createContado'
+        )->name('nuevo');
+
+        Route::name('orden.')->group(function () {
+
+            Route::post(
+                'ventas/contado/orden/agregar/{id}',
+                'VentasController@addToOrder'
+            )->name('agregar');
+            
+            Route::post(
+                'ventas/contado/orden/remover/{id}',
+                'VentasController@removeFromOrder'
+            )->name('remover');
+
+        });
+
+    });
+
 });
 
 Route::get('credito', function () {

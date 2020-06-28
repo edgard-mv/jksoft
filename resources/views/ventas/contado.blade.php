@@ -3,81 +3,77 @@
 @section('pagetitle','Nueva venta al contado')
 @section('content')
 
-    <div  class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-        <form class="datos_venta">
-        <fieldset style="border: 4px groove;border-color: skyblue;">
-        <legend style=" width: auto;">Datos de artículo en venta</legend>
+<div  class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="datos_venta">
+            <fieldset style="border: 4px groove;border-color: skyblue;">
+                <legend style=" width: auto;">Agregar producto</legend>
 
-        <p style="text-align:right">
-            <strong style="margin-right:20px">N° de venta: 000000 </strong>
-        </p>
+                <div class="form-group" style="margin-left:150px; margin-right:150px">
+                    @include('ventas.buscar_producto')
+                </div> 
 
-        <div class="row" style="margin-left:1cm">
-            <div class="col-lg-4 col-md-4 col-sm-4  col-xs-8" >
-                 @include('ventas.buscar_producto')
-            </div> 
+                <div style="text-align:center; margin-right:30px; margin-bottom:10px">
+                    <a>
+                        <button class="btn btn-primary">
+                            <span class="fas fa-plus"></span>
+                            <strong>Agregar</strong>    
+                        </button>
+                    </a>
+                </div>
+            </fieldset>
         </div>
 
-        <p>
-        <ul><li><label for="cantidad_v">Cantidad de productos a comprar</label>
-        <input type="number" id="cantidad_v"></li></ul>
-        </p>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                <div class="table-responsive" style="margin-top:20px">
+                    <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+                        <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
+                            <th>Nombre del producto</th>
+                            <th>Precio por unidad</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th> 
+                            <th>Acción</th>    
+                        </thead>
 
-        <p>
-        <ul><li><label for="stock">Stock del producto</label>
-        <input type="number" id="stock" disabled></li></ul>
-        </p>
-
-        <p>
-        <ul><li><label for="p_unitario">Precio unitario del producto</label>
-        <input type="number" id="p_unitario" disabled></li></ul>
-        </p>
-
-        <p style="text-align:right">
-        <button type="submit" class="btn btn-info" style="margin-right:30px" > + Agregar producto</button>
-        </p>
-
-        </fieldset>
-        </form>
-
-        <div class="row"><!--table begin-->
-        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
-        <div class="table-responsive" style="margin-top:20px">
-                  <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
-            <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                <th>Nombre del producto</th>
-                <th>Fecha</th>
-                <th>Cantidad</th>
-                <th>Precio por unidad</th>
-                <th>Monto</th> 
-                <th>Acción</th>    
-            </thead>
-
-            <tr style="background-color:#CDE4F7;">
-                    <td ></td>
-                    <td style="text-align:center"> <input type="date" name="fecha" id="fechaventa" min="2020-02-04" max="2020-05-30" step="2"></td>
-                    <td > <input type="number" class="form-control" autocomplete="off" name="cantidad_v"></td>
-                    <td></td>
-                    <td></td>
-                    <td style="text-align:center">
-                        <a href="/"><button class="btn btn-danger">X</button></a>
-                    </td>
-            </tr>
-             </table>
+                        <tr style="background-color:#CDE4F7;">
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="number" class="form-control" autocomplete="off" name="cantidad_v">
+                            </td>
+                            <td></td>
+                            <td style="text-align:center">
+                                <a href="/">
+                                    <button class="btn btn-danger">
+                                        <span class="fas fa-trash"></span>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        </div>
-        </div><!--end of the table-->
 
         <hr>
 
-              <strong><label for="total_v"> Total a pagar: 00000 cordobas </label></strong>
+        <strong><label for="total_v"> Total a pagar: 00000 cordobas </label></strong>
 
-            <div class="form-group" style="text-align:center">
-                <button class="btn btn-primary" type="submit">Guardar</button>
-                <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
-            </div>     
+        <div class="form-group" style="text-align:center">
+            <button class="btn btn-primary" type="submit">
+                <span class="fas fa-save"></span>
+                <strong>Guardar</strong>
+            </button>
+            <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">
+                <span class="fas fa-times"></span>
+                <strong>Cancelar</strong></a>
+            </a>
+        </div>
+
+    </div>
+</div>
 
  
 
