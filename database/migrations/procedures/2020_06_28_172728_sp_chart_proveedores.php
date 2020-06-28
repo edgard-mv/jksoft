@@ -30,7 +30,7 @@ class SpChartProveedores extends Migration
             ON proveedores.id=proveedor_producto.proveedor_id
             GROUP BY proveedores.empresa
             ORDER BY total desc
-            LIMIT 1)
+            LIMIT 1);
         END;
     ');
         
