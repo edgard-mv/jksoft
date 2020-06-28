@@ -32,7 +32,9 @@
                           </nav>
 
                            <div class="form-group">
-                                <form  action="{{route('estadistica.proveedores.actualizar')}}" method="get" >
+                            <h4 style=" font-family: monospace;margin-top:10px">Selección de rango de fechas</h4>
+                                <form  action="{{route('estadistica.actualizar.productos')}}" method="get" >
+                                
                                 <strong><label for="fechainicio">Fecha de inicio:</label></strong>
                                 <input type="date" name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" value="2020-01-01" step="1">
 
@@ -43,6 +45,7 @@
 
                                 </form>
                             </div>
+
                           <hr class="my-4" style="height: 1px;background-color:rosybrown;">
 
                         </div>
@@ -51,12 +54,11 @@
           </div>
           <!-- ============================================================== -->
 
-          <div class="ecommerce-widget">
-
+          <div >
               <div class="row"><!-- Card del Total de productos-->
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                      <div class="card border-5 border-top border-primary">
-                          <div class="card-body">
+                      <div class="card border-5 border-top border-primary shadow-lg">
+                          <div class="card-body zoom">
                               <h5 class="text-muted">Total de Productos</h5>
                               <div class="metric-value d-inline-block">
                                   <h1 class="mb-1">@foreach ( $prod as $pastels)
@@ -76,7 +78,7 @@
 
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                       <div class="card border-top border-success">
-                          <div class="card-body">
+                          <div class="card-body zoom">
                               <h5 class="text-muted">Promedio de precios</h5>
                               <div class="metric-value d-inline-block">
                                   <h1 class="mb-1">@foreach ( $prod as $pastels)
@@ -97,12 +99,12 @@
 
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                       <div class="card border-top border-dark">
-                          <div class="card-body ">
+                          <div class="card-body zoom">
                               <h5 class="text-muted">Rango de precios</h5>
                               <div class="metric-value d-inline-block">
                                   <h1 class="mb-1"> 
                                     @foreach ( $prod as $pastels)
-                                    C${{$pastels->minimo}}- C${{$pastels->maximo}}
+                                    C${{$pastels->minimo }}-C${{$pastels->maximo}}
                                     @endforeach
 
                                   </h1>
@@ -119,7 +121,7 @@
 
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                       <div class="card border-top border-danger">
-                          <div class="card-body">
+                          <div class="card-body zoom">
                               <h5 class="text-muted">Mayor cantidad en stock</h5>
                               <div class="metric-value d-inline-block">
                                   <h1 class="mb-1">
@@ -166,6 +168,7 @@
                                   </table>
                               </div>
                           </div>
+                            {{$stockminimo->links()}}
                       </div>
                   </div>
                   <!-- ============================================================== -->

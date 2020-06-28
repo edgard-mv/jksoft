@@ -40,9 +40,9 @@
   </button>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:#2f323a;font-size:10px">
-    <a class="dropdown-item" href="{{ route('inicio') }}">E.PRODUCTOS</a>
-  <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">E.PROVEEDORES</a>
-    <a class="dropdown-item" href="#">E.VENTAS</a>
+    <a class="dropdown-item" href="{{route('estadistica.productos') }}">E.PRODUCTOS</a>
+    <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">E.PROVEEDORES</a>
+    <a class="dropdown-item" href="{{route('estadistica.ventas')}}">E.VENTAS</a>
   </div>
 </div>
 

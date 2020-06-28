@@ -22,13 +22,14 @@
 <div class="jumbotron " style="background-image:url(/images/bkjumbotron.png);background-size:cover">
   <div class="container">
     <h6 class="display-5 ">
+      <h4 style=" font-family: monospace;">Selección de rango de fechas</h4>
       <div class="form-group">
-        <form  action="{{route('estadistica.proveedores.actualizar')}}" method="get" >
-        <strong><label for="fechainicio">Fecha de inicio:</label></strong>
-        <input type="date" name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" value="2020-01-01" step="1">
+        <form  action="{{route('estadistica.actualizar.proveedor')}}" method="get" >
+        <strong><label for="fechainicio" >Fecha de inicio:</label></strong>
+        <input type="date" required name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" >
 
         <strong><label for="fechafin" style="margin-left: 10px">Fecha de fin:</label></strong>
-        <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31" step="1"  value="<?php echo date("Y-m-d"); ?>" >
+        <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31"  value="<?php echo date("Y-m-d"); ?>" >
 
         <button type="submit" class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
 
@@ -44,7 +45,7 @@
                   <h5 class="card-title "><strong>PROVISIÓN TOTAL</strong></h5>
                   <div>
                       <div >
-                        <canvas id="doughnut-chart" width="800" height="400"></canvas>
+                        <canvas id="doughnut-chart" width="800" height="700"></canvas>
                         <script>
                             new Chart(document.getElementById("doughnut-chart"), {
                             type: 'doughnut',
@@ -57,7 +58,8 @@
                               datasets: [
                                 {
                                   
-                                  backgroundColor: ["#AD180F", "#199C0E","#0E889A","#0D4092","#6A0D92"],
+                                  backgroundColor: ["#AD180F", "#199C0E","#0E889A","#0D4092","#6A0D92","#AD180F", "#199C0E","#0E889A","#0D4092","#6A0D92",
+                                  "#AD180F", "#199C0E","#0E889A","#0D4092","#6A0D92","#AD180F", "#199C0E","#0E889A","#0D4092","#6A0D92"],
                                   data: [
                                     <?php foreach($chart_providers as $cp):?>
                                     <?php echo $cp->total?>, 
@@ -183,5 +185,7 @@
     
   </div>
 </div>
+
+
  
 @endsection  

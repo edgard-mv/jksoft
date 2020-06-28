@@ -21,11 +21,10 @@ class ChartController extends Controller
                             MAX(cantidad) as stockmayor
                             FROM productos');
 
-        $stockminimo=DB::select('SELECT
-                            nombre,cantidad
-                            FROM productos
-                            WHERE cantidad<5
-                            ORDER BY cantidad');
+        $stockminimo= DB::table('productos')
+                    ->where('cantidad', '<', 5)
+                    ->OrderBy('cantidad')
+                    ->paginate(5);
         
         $total_proveedor=DB::select('SELECT
                                 COUNT(empresa) as total_p
@@ -53,13 +52,12 @@ class ChartController extends Controller
                                 MAX(precio) as maximo,
                                 MIN(precio) as minimo,
                                 MAX(cantidad) as stockmayor
-                                FROM productos');
-    
-            $stockminimo=DB::select('SELECT
-                                nombre,cantidad
                                 FROM productos
-                                WHERE cantidad<5
-                                ORDER BY cantidad');
+                                WHERE updated_at between ? and ?',[$Initialdate,$Finaldate]
+                                );
+    
+            $stockminimo= DB::table('productos')->where('cantidad', '<', 5)->OrderBy('cantidad')->paginate(5);
+
             
             $total_proveedor=DB::select('SELECT
                                     COUNT(empresa) as total_p
@@ -70,7 +68,7 @@ class ChartController extends Controller
     
 
             }
-            return redirect()->route('inicio');
+            return redirect()->route('estadistica.productos');
         }
     }
 
