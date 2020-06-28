@@ -23,7 +23,7 @@ class SpChartProveedores extends Migration
             ON proveedores.id=proveedor_producto.proveedor_id
             GROUP BY proveedores.empresa
             ORDER BY total asc
-            LIMIT 1 )
+            LIMIT 1)
         UNION
            (Select proveedores.empresa, SUM(proveedor_producto.cantidad) as total
             FROM proveedores  join proveedor_producto 

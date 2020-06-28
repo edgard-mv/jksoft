@@ -15,7 +15,7 @@ class CreateContadosTable extends Migration
     {
         Schema::create('contados', function (Blueprint $table) {
             $table->unsignedBigInteger('venta_id');
-            $table->float('monto');
+            $table->decimal('monto', 13, 2);
             $table->softDeletes();
             $table->timestamps();
         });

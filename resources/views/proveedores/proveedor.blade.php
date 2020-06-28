@@ -24,7 +24,7 @@
             @foreach ($proveedores as $proveedor)
             @include('proveedores.modal_delete')
                 <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">                    
-                    <td>{{ $proveedor->id }}</td>
+                    <td style="text-align:center">{{ $proveedor->id }}</td>
                     <td>{{ $proveedor->empresa }}</td>
                     <td>{{ $proveedor->nombre }}</td>
                     <td style="text-align:center">

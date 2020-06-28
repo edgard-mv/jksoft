@@ -25,53 +25,55 @@
                 <th>Acciones</th>
             </thead>
 
-            <tbody  >
+            <tbody>
             @foreach ($productos as $producto)
             @include('producto.modal_delete')
-            <tr style="color: rgb(14,14,14);background-color: #CDE4F7;">
-                <td>{{ $producto->id }}</td>
-                <td>{{ $producto->nombre }}</td>
-                <td style="text-align:center">{{ $producto->cantidad }} ud(s).</td>
-                <td>
-                    <ul>
-                        @foreach ($producto->proveedores as $proveedor)
-                            <li>{{ $proveedor->empresa }}</li>
-                        @endforeach    
-                    </ul>
-                </td>
-                <td >
-                    <ul>
-                        @foreach ($producto->proveedores as $proveedor)
-                            <li>{{ $proveedor->pivot->cantidad }}</li>
-                        @endforeach    
-                    </ul>
-                </td>
-                <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
-                <td style="text-align:center">{{ $producto->precio }} córdobas</td>
-                <td style="text-align:center">
-                    <div class="input-group-btn">
-                        <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
-                            <button class="btn btn btn-warning">
-                                <span class="fas fa-pencil-alt"></span>
-                            </button>
-                        </a>
-                        <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}">
-                            <button class="btn btn-primary">
-                                <span class="fas fa-list-ul"></span>
-                            </button>
-                        </a>
-                        <a data-toggle="modal" data-target="#ModalDelete{{ $producto->id }}">
-                            <button class="btn btn-danger">
-                                <span class="fas fa-trash-alt"></span>
-                            </button>
-                        </a>
-                    </div>
-                </td>
-            </tr>
+                <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
+                    <td>{{ $producto->id }}</td>
+                    <td style="text-align:left">
+                        {{ $producto->nombre }}
+                    </td>
+                    <td style="text-align:center">{{ $producto->cantidad }} ud(s).</td>
+                    <td style="text-align:left">
+                        <ul>
+                            @foreach ($producto->proveedores as $proveedor)
+                                <li>{{ $proveedor->empresa }}</li>
+                            @endforeach    
+                        </ul>
+                    </td>
+                    <td style="text-align:left">
+                        <ul>
+                            @foreach ($producto->proveedores as $proveedor)
+                                <li>{{ $proveedor->pivot->cantidad }}</li>
+                            @endforeach    
+                        </ul>
+                    </td>
+                    <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
+                    <td>@money($producto->precio)</td>
+                    <td>
+                        <div class="input-group-btn">
+                            <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
+                                <button class="btn btn btn-warning">
+                                    <span class="fas fa-pencil-alt"></span>
+                                </button>
+                            </a>
+                            <a href="{{ route('producto.proveedores', ['id' => $producto->id]) }}">
+                                <button class="btn btn-primary">
+                                    <span class="fas fa-list-ul"></span>
+                                </button>
+                            </a>
+                            <a data-toggle="modal" data-target="#ModalDelete{{ $producto->id }}">
+                                <button class="btn btn-danger">
+                                    <span class="fas fa-trash-alt"></span>
+                                </button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
-        </tbody>
-         </table>
-         {{ $productos->links() }}         
+            </tbody>
+        </table>
+        {{ $productos->links() }}         
     </div>
 </div>
 

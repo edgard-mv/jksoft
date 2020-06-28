@@ -115,16 +115,8 @@ Route::name('producto.')->group(function () {
         'ProductosController@addProveedor'
     )->name('proveedor.agregar');
 
-    Route::get('crear_p', function () {
-        return view('producto.crear');
-  
-      });
-  
-
 });
 
-    
-   
 Route::name('proveedor.')->group(function () {
 
     Route::get(
@@ -171,20 +163,42 @@ Route::name('venta.')->group(function () {
         'VentasController@getAll'
     )->name('todos');
 
-});
+    Route::get(
+        '/ventas/por',
+        'VentasController@getSaleBy'
+    )->name('por_tipo');
 
-Route::get('contado', function () {
-    return view('ventas.contado');
+    Route::get(
+        '/ventas/{tipo}/{id}/detalles',
+        'VentasController@details'
+    )->name('detalles');
+
+    Route::name('contado.')->group(function () {
+
+        Route::match(
+            ['get', 'put'],
+            '/ventas/contado/nuevo',
+            'VentasController@createContado'
+        )->name('nuevo');
+
+        Route::name('orden.')->group(function () {
+
+            Route::post(
+                'ventas/contado/orden/agregar/{id}',
+                'VentasController@addToOrder'
+            )->name('agregar');
+            
+            Route::post(
+                'ventas/contado/orden/remover/{id}',
+                'VentasController@removeFromOrder'
+            )->name('remover');
+
+        });
+
+    });
+
 });
 
 Route::get('credito', function () {
     return view('ventas.credito');
-});
-
-Route::get('detallec', function () {
-    return view('ventas.detalles_contado');
-});
-
-Route::get('detallecr', function () {
-    return view('ventas.detalles_credito');
 });

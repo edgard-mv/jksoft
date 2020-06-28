@@ -18,6 +18,8 @@ class CreateProductoVentaTable extends Migration
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
             $table->unsignedInteger('cantidad_producto');
+            $table->decimal('precio_actual', 13, 2);
+            $table->decimal('monto', 13, 2);
             $table->softDeletes();
             $table->timestamps();
         });

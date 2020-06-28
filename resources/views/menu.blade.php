@@ -44,8 +44,6 @@
     <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">E.PROVEEDORES</a>
     <a class="dropdown-item" href="{{route('estadistica.ventas')}}">E.VENTAS</a>
   </div>
-
-
 </div>
 
 
