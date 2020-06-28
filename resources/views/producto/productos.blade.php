@@ -31,7 +31,7 @@
             <tr style="color: rgb(14,14,14);background-color: #CDE4F7;">
                 <td>{{ $producto->id }}</td>
                 <td>{{ $producto->nombre }}</td>
-                <td style="text-align:center">{{ $producto->cantidad }}</td>
+                <td style="text-align:center">{{ $producto->cantidad }} ud(s).</td>
                 <td>
                     <ul>
                         @foreach ($producto->proveedores as $proveedor)
@@ -47,7 +47,7 @@
                     </ul>
                 </td>
                 <td>{{ date('Y-m-d', strtotime($producto->updated_at)) }}</td>
-                <td style="text-align:center">{{ $producto->precio }}</td>
+                <td style="text-align:center">{{ $producto->precio }} córdobas</td>
                 <td style="text-align:center">
                     <div class="input-group-btn">
                         <a href="{{ route('producto.editar', ['id' => $producto->id]) }}">
@@ -71,12 +71,13 @@
             @endforeach
         </tbody>
          </table>
+         {{ $productos->links() }}         
     </div>
 </div>
 
-<div style="margin-top: 5px">
-<span class="badge badge-pill badge-warning">Editar datos del producto</span>
-<span class="badge badge-pill badge-primary" style="margin-left: 5px">Editar datos del proveedor</span>
+<div style="margin-top: 5px" >
+<span class="badge badge-pill badge-warning"> <span class="fas fa-pencil-alt"></span> Editar datos del producto</span>
+<span class="badge badge-pill badge-primary" style="margin-left: 5px"> <span class="fas fa-list-ul"></span> Editar datos del proveedor</span>
 </div>
 
 

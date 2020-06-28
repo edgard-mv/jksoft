@@ -75,6 +75,43 @@ header{
   padding-right: 10px;
 }
 
+.card-header-graficos{
+  margin-top: 10px;
+  margin-left: 5px;
+  font-family: fantasy;
+  font-size: medium;
+  text-transform: uppercase;
+
+}
+
+.card-header-ventas{
+  margin-top: -30px;
+  height: 60px;
+  background: linear-gradient(-75deg,rgba(197, 21, 21, 0.781),red);
+  text-align: center;
+  font-family: fantasy;
+  color: whitesmoke;
+}
+
+.card-header-ventas-credito{
+  margin-top: -30px;
+  height: 60px;
+  background: linear-gradient(-75deg,rgba(13, 119, 40, 0.781),rgba(3, 226, 89, 0.575));
+  text-align: center;
+  font-family: fantasy;
+  color: whitesmoke;
+}
+
+.card-body-ventas{
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.divisiones{
+  font-family: fantasy;
+  margin-bottom: 30px;
+}
 
 label #sidebar_btn{
   z-index: 1;
@@ -117,6 +154,15 @@ label #sidebar_btn:hover{
 
 #check{
   display: none;
+}
+
+.zoom {
+  transition: transform .2s; 
+}
+
+.zoom:hover {
+  transform: scale(1.1); 
+  background-color: #EFDACF;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -721,7 +767,6 @@ label #sidebar_btn:hover{
 }
 .navbar-expand-lg .navbar-toggler {
   display: none;
-}
 }
 
 @media (max-width: 1199.98px) {

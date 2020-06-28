@@ -32,7 +32,7 @@ class EstadisticaProveedorController extends Controller
 
         $rangos=DB::select('CALL spChart_Proveedores()');
 
-        return view('estadistica_pr',compact('total_proveedor','rangos','chart_providers','lastdate'));
+        return view('Estadisticas.estadistica_pr',compact('total_proveedor','rangos','chart_providers','lastdate'));
 
     }
 
@@ -40,6 +40,7 @@ class EstadisticaProveedorController extends Controller
 
         if ($request->isMethod('get') and $request->input('fechainicio') and $request->input('fechafin')) {
         {
+
         $Initialdate = $request->input('fechainicio');
         $Finaldate=$request->input('fechafin');
 
@@ -66,7 +67,7 @@ class EstadisticaProveedorController extends Controller
         $rangos=DB::select('CALL spChart_Proveedores()');
 
 
-        return view('estadistica_pr', compact('total_proveedor','rangos','chart_providers','lastdate'));
+        return view('Estadisticas.estadistica_pr', compact('total_proveedor','rangos','chart_providers','lastdate'));
 
         }
          return redirect()->route('estadistica.proveedores');

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ChartController@index')->name('inicio');
-Route::get('input', 'ChartController@Dates')->name('estadistica.actualizar');
+
 
 
 Route::get('backup', function () {
@@ -22,14 +22,49 @@ Route::get('backup', function () {
 });
 
 
-Route::get('input', 'EstadisticaProveedorController@Dates')->name('estadistica.proveedores.actualizar');
-
-
 Route::get('manualu', function () {
     return view('manualuser');
 });
 
-Route::get('/estadistica_proveedores', 'EstadisticaProveedorController@index')->name('estadistica.proveedores');
+
+
+Route::name('estadistica.')->group(function () {
+
+    Route::get(
+        '/estadisticas/proveedores/fechas', 
+        'EstadisticaProveedorController@Dates'
+    )->name('actualizar.proveedor');
+
+
+    Route::get(
+        '/estadistica/proveedores', 
+        'EstadisticaProveedorController@index'
+        )->name('proveedores');
+
+    Route::get(
+        '/estadistica/productos', 
+        'ChartController@index'
+        )->name('productos');
+    
+    Route::get(
+        '/estadisticas/productos/fechas', 
+          'ChartController@Dates'
+        )->name('actualizar.productos');
+
+    Route::get(
+        '/estadistica/ventas', 
+        'EstadisticasVentasController@index'
+         )->name('ventas');
+    
+    Route::get(
+       '/estadisticas/ventas/fechas', 
+       'EstadisticasVentasController@Dates'
+        )->name('actualizar.ventas');
+    
+
+});
+
+
 
 Route::name('producto.')->group(function () {
 
@@ -89,8 +124,6 @@ Route::name('producto.')->group(function () {
 });
 
     
-
-
    
 Route::name('proveedor.')->group(function () {
 
