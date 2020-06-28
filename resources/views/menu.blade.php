@@ -28,8 +28,7 @@
   <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
   <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
   <a href="{{ route('operarios') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
-<<<<<<< HEAD
-  <a href="/ventas"><i class="fas fa-coins"></i><span>Ventas</span></a>
+  <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
   
 <!--Dropdown de las estadisticas -->
 
@@ -45,9 +44,6 @@
   <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">E.PROVEEDORES</a>
     <a class="dropdown-item" href="#">E.VENTAS</a>
   </div>
-=======
-  <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
->>>>>>> b3931da6a9e60c9aa71a44cb9ec53f1a8df55d7c
 </div>
 
 
