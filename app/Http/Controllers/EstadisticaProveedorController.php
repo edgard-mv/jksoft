@@ -74,5 +74,7 @@ class EstadisticaProveedorController extends Controller
     }
 
     }
+
+
     
 }

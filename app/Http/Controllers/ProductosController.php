@@ -15,7 +15,7 @@ use DB;
 class ProductosController extends Controller
 {
     public function getAll() {
-        $productos = Producto::with('proveedores')->paginate(5);
+        $productos = Producto::with('proveedores')->get();
 
         return view('producto.productos', compact('productos'));
     }
@@ -29,9 +29,9 @@ class ProductosController extends Controller
             if ($type == 'id') {
                 $productos = Producto::find($value);
                 if (!$productos) {
-                    $productos = collect([])->paginate(5);
+                    $productos = collect([]);
                 } else {
-                    $productos = collect([$productos])->paginate(5);
+                    $productos = collect([$productos]);
                 }
             } elseif ($type == 'empresa') {
                 $productos = Producto::with('proveedores')->get()->filter(function ($producto) use($value) {
@@ -42,7 +42,7 @@ class ProductosController extends Controller
                     }
                 });
             } elseif ($type == 'nombre') {
-                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->paginate(5);
+                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
             }
 
             foreach ($productos as $producto) {

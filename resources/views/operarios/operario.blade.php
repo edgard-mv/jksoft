@@ -13,7 +13,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
     <div class="table-responsive">
-        <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+        <table id="Worktable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                 
                 <th>Nombre del trabajador</th>
@@ -61,7 +61,7 @@
                         <span class="fas fa-pencil-alt"></span>
                         </button></a>
                         
-                        <a data-toggle="modal" data-target="#ModalDelete{{ $trabajador->id }}">
+                        <a data-toggle="modal" data-target="#ModalDelete{{ $trabajador->trabajador_id }}">
                             <button class="btn btn-danger">
                                 <span class="fas fa-trash-alt"></span>
                             </button>
@@ -73,5 +73,35 @@
          </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+          $('#Worktable').DataTable({
+            "language": {
+                "lengthMenu": "Registros _MENU_ por pagina",
+                "zeroRecords": "Resultados no encontrados",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros que coincidan",
+                "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+            },
+            "searching": false,
+             "paging": true, 
+             "info": false,         
+             "lengthChange":true ,
+            "pageLength": 6,
+            "bFilter":true,
+            "lengthMenu": [[5,10, 15, 20, -1], [5,10, 15, 20, "Todos"]] ,
+            
+    
+            });
+        
+    });
+    
+    </script>
 
 @endsection

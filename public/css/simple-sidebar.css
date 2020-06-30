@@ -328,6 +328,16 @@ label #sidebar_btn:hover{
   }
 }
 
+.table {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: medium;
+  border: black 1px solid;  
+}
+
+
+
+
+
 @media (min-width: 768px) {
   .dropdown-menu-md-left {
     right: auto;
