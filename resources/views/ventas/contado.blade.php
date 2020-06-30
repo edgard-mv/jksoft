@@ -47,7 +47,7 @@
                                     </td>
                                     <td class="subtotal">@money($details['subtotal'])</td>
                                     <td style="text-align:center">
-                                        <a href="{{ route('venta.contado.orden.remover', ['id' => $id]) }}" class="btn btn-danger">
+                                        <a href="{{ route('venta.orden.remover', ['id' => $id]) }}" class="btn btn-danger">
                                             <span class="fas fa-trash"></span>
                                         </a>
                                     </td>
@@ -67,7 +67,7 @@
                     <span class="fas fa-save"></span>
                     <strong>Guardar</strong>
                 </button>
-                <a href="{{ route('venta.contado.orden.remover') }}" class="btn btn-default btn-danger">
+                <a href="{{ route('venta.orden.remover') }}" class="btn btn-default btn-danger">
                     <span class="fas fa-times"></span>
                     <strong>Cancelar</strong></a>
                 </a>
