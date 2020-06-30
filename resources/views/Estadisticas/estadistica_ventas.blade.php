@@ -31,7 +31,7 @@
           <strong><label for="fechafin" style="margin-left: 10px">Fecha de fin:</label></strong>
           <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31"  value="<?php echo date("Y-m-d"); ?>" >
   
-          <button type="submit" class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
+          <button type="submit"  class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
   
           </form>
           <hr class="my-4" style="height: 1px;background-color:rgb(174, 173, 233);">
@@ -53,7 +53,7 @@
         <div class="col-lg-3 col-md-6 ">
             <div class="card border rounded p-3  borders border-danger">
                 <h2 class="card-header-ventas rounded pt-3">INGRESO</h2>
-                <div class="card-body-ventas">
+                <div class="card-ventas">
                     <div class="stat-text"><span class="count">
                         @foreach($contados as $cont)
                         C$ {{$cont->total}}

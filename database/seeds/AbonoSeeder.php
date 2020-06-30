@@ -13,49 +13,49 @@ class AbonoSeeder extends Seeder
     {
         DB::table('abonos')->insert([
             'credito_id'=>1,
-            'cantidad'=>10,
+            'cantidad'=>100,
             'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 10 cordobas , resta 100'                         
+            'comentarios'=>'Pago 100 cordobas , resta 40'                         
         ]);
 
         
         DB::table('abonos')->insert([
             'credito_id'=>2,
-            'cantidad'=>100,
-            'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 100 cordobas , resta 700'                         
+            'cantidad'=>1000,
+            'fecha'=>'2020-06-06',
+            'comentarios'=>'Pago 1000 cordobas , resta 530'                         
         ]);
 
 
         DB::table('abonos')->insert([
             'credito_id'=>3,
-            'cantidad'=>1500,
-            'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 1500 cordobas , resta 400'                         
+            'cantidad'=>40,
+            'fecha'=>'2020-04-28',
+            'comentarios'=>'Pago 40 cordobas , resta 40'                         
         ]);
 
 
         DB::table('abonos')->insert([
             'credito_id'=>4,
-            'cantidad'=>600,
-            'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 600 cordobas , resta 1000'                         
+            'cantidad'=>200,
+            'fecha'=>'2020-01-10',
+            'comentarios'=>'Pago 200 cordobas , resta 200'                         
         ]);
 
 
         DB::table('abonos')->insert([
             'credito_id'=>5,
-            'cantidad'=>400,
-            'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 400 cordobas , resta 800'                         
+            'cantidad'=>100,
+            'fecha'=>'2020-03-12',
+            'comentarios'=>'Pago 100 cordobas , resta 20'                         
         ]);
 
 
         DB::table('abonos')->insert([
             'credito_id'=>6,
-            'cantidad'=>700,
+            'cantidad'=>100,
             'fecha'=>'2020-05-21',
-            'comentarios'=>'Pago 700 cordobas , resta 1000'                         
+            'comentarios'=>'Pago 100 cordobas , resta 60'                         
         ]);
 
 

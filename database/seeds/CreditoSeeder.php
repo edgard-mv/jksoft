@@ -14,7 +14,7 @@ class CreditoSeeder extends Seeder
         DB::table('creditos')->insert([
             'venta_id'=>7,
             'cliente'=>'Maria Jose',
-            'monto'=>14,
+            'monto'=>140,
             'fecha_de_pago'=>'2020-05-12'                        
         ]);
 
@@ -49,7 +49,7 @@ class CreditoSeeder extends Seeder
         DB::table('creditos')->insert([
             'venta_id'=>13,
             'cliente'=>'Mario Calero',
-            'monto'=>60,
+            'monto'=>160,
             'fecha_de_pago'=>'2020-05-12'                        
         ]);
 

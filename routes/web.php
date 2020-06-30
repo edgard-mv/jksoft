@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::permanentRedirect('/', '/productos');
 
 
-Route::get('backup', function () {
-    return view('backup');
-});
+Route::get('/backup', 'BackupController@index')->name('backup');
+Route::get('/backup/guardar', 'BackupController@save')->name('backup.save');
+
 
 
 Route::get('manualu', function () {
@@ -60,6 +60,7 @@ Route::name('estadistica.')->group(function () {
        '/estadisticas/ventas/fechas', 
        'EstadisticasVentasController@Dates'
         )->name('actualizar.ventas');
+
     
 
 });
@@ -148,13 +149,37 @@ Route::name('proveedor.')->group(function () {
 
    });
 
-Route::get('/operarios', 'OperariosController@getAll')->name('operarios');
 
-Route::match(['get', 'put'], '/operarios/nuevo', 'OperariosController@create')->name('operarios.nuevo');
+Route::name('operarios.')->group(function () {
 
-Route::match(['get', 'patch'], '/operarios/{id}/editar', 'OperariosController@update')->name('operarios.editar');
+   Route::get(
+       '/operarios', 
+       'OperariosController@getAll')
+    ->name('todos');
 
-Route::get('/operarios/buscar', 'OperariosController@search')->name('operario.buscar');
+   Route::match(
+       ['get', 'put'], 
+       '/operarios/nuevo', 
+       'OperariosController@create'
+       )->name('nuevo');
+
+    Route::match(
+        ['get', 'patch'],
+         '/operarios/{id}/editar', 
+         'OperariosController@update'
+         )->name('editar');
+
+    Route::get(
+        '/operarios/buscar',
+        'OperariosController@search'
+        )->name('buscar');
+    
+    Route::delete(
+        '/operarios/{id}/remover',
+        'OperariosController@delete'
+        )->name('remover');
+
+});
 
 Route::name('venta.')->group(function () {
     

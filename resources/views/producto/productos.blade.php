@@ -13,7 +13,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
     <div class="table-responsive">
-        <table id="producttable" class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+        <table id="producttable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                 <th>ID</th>
                 <th>Nombre del producto</th>
@@ -28,8 +28,8 @@
             <tbody>
             @foreach ($productos as $producto)
             @include('producto.modal_delete')
-                <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
-                    <td>{{ $producto->id }}</td>
+            <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
+                <td>{{ $producto->id }}</td>
                     <td style="text-align:left">
                         {{ $producto->nombre }}
                     </td>
@@ -73,7 +73,6 @@
             @endforeach
             </tbody>
         </table>
-        {{ $productos->links() }}         
     </div>
 </div>
 
@@ -82,5 +81,34 @@
 <span class="badge badge-pill badge-primary" style="margin-left: 5px"> <span class="fas fa-list-ul"></span> Editar datos del proveedor</span>
 </div>
 
+<script>
+$(document).ready(function() {
+      $('#producttable').DataTable({
+        "language": {
+            "lengthMenu": "Registros _MENU_ por pagina",
+            "zeroRecords": "Resultados no encontrados",
+            "info": "Pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No existen registros que coincidan",
+            "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+        },
+        "searching": false,
+         "paging": true, 
+         "info": false,         
+         "lengthChange":true ,
+        "pageLength": 6,
+        "bFilter":true,
+        "lengthMenu": [[5,10, 15, 20, -1], [5,10, 15, 20, "Todos"]] ,
+        
+
+        });
+    
+});
+
+</script>
 
 @endsection

@@ -36,10 +36,10 @@
                                 <form  action="{{route('estadistica.actualizar.productos')}}" method="get" >
                                 
                                 <strong><label for="fechainicio">Fecha de inicio:</label></strong>
-                                <input type="date" name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" value="2020-01-01" step="1">
+                                <input type="date" name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" required >
 
                                 <strong><label for="fechafin" style="margin-left: 10px">Fecha de fin:</label></strong>
-                                <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31" step="1"  value="<?php echo date("Y-m-d"); ?>" >
+                                <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31"  value="<?php echo date("Y-m-d"); ?>" >
 
                                 <button type="submit" class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
 
@@ -61,9 +61,9 @@
                           <div class="card-body zoom">
                               <h5 class="text-muted">Total de Productos</h5>
                               <div class="metric-value d-inline-block">
-                                  <h1 class="mb-1">@foreach ( $prod as $pastels)
+                                  <h3 class="mb-1">@foreach ( $prod as $pastels)
                                     {{$pastels->total}}
-                                    @endforeach</h1>
+                                    @endforeach</h3>
                               </div>
                               <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                   <span><i class="fa fa-fw fa-arrow-up"></i>
@@ -81,9 +81,9 @@
                           <div class="card-body zoom">
                               <h5 class="text-muted">Promedio de precios</h5>
                               <div class="metric-value d-inline-block">
-                                  <h1 class="mb-1">@foreach ( $prod as $pastels)
+                                  <h3 class="mb-1">@foreach ( $prod as $pastels)
                                     C${{$pastels->promedio}}
-                                    @endforeach</h1>
+                                    @endforeach</h3>
                               </div>
                               <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                   <span><i class="fa fa-fw fa-arrow-up"></i></span>
@@ -102,12 +102,12 @@
                           <div class="card-body zoom">
                               <h5 class="text-muted">Rango de precios</h5>
                               <div class="metric-value d-inline-block">
-                                  <h1 class="mb-1"> 
+                                  <h3 class="mb-1"> 
                                     @foreach ( $prod as $pastels)
                                     C${{$pastels->minimo }}-C${{$pastels->maximo}}
                                     @endforeach
 
-                                  </h1>
+                                  </h3>
                               </div>
                               <div class="metric-label d-inline-block float-right text-primary font-weight-bold">
                               </div>
@@ -124,11 +124,11 @@
                           <div class="card-body zoom">
                               <h5 class="text-muted">Mayor cantidad en stock</h5>
                               <div class="metric-value d-inline-block">
-                                  <h1 class="mb-1">
+                                  <h3 class="mb-1">
                                     @foreach ( $prod as $pastels)
                                      {{$pastels->stockmayor}} uds.
                                     @endforeach
-                                  </h1>
+                                  </h3>
                               </div>
                             
                           </div>

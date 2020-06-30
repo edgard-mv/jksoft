@@ -12,8 +12,8 @@
 
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+    <div class="table-responsive" >
+        <table id="proveetable" class="table table-striped table-bordered nowrap" cellspacing="0"  style="border-collapse: separate;">
             <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                 <th>ID</th>
                 <th>Empresa Proveedora</th>
@@ -44,5 +44,37 @@
          </table>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+          $('#proveetable').DataTable({
+            "language": {
+                "lengthMenu": "Registros _MENU_ por pagina",
+                "zeroRecords": "Resultados no encontrados",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros que coincidan",
+                "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+            },
+            "searching": false,
+             "paging": true, 
+             "info": false,         
+             "lengthChange":true ,
+            "pageLength": 6,
+            "bFilter":true,
+            "lengthMenu": [[5,10, 15, 20, -1], [5,10, 15, 20, "Todos"]] ,
+            
+    
+            });
+        
+    });
+    
+    </script>
+    
 
 @endsection

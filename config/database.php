@@ -43,6 +43,11 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        'mysqldump' => [
+            'use_single_transaction',
+            'timeout' => 60 * 5, 
+        ],  
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),

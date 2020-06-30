@@ -163,7 +163,7 @@
                                 <div class="col-sm-11" style="float: right">
                                   <h6>
                                     @foreach ( $rangos as $valor_maximo)
-                                     {{$valor_maximo->empresa}} <i class="fas fa-long-arrow-alt-right" style="color: black;margin-left:10px;"></i>       {{  $valor_maximo->total}}
+                                     {{$valor_maximo->empresa}} <i class="fas fa-long-arrow-alt-right" style="color: black;margin-left:10px;"></i>       {{  $valor_maximo->total}} unidad(es)
                                      <br><br>
 
                                     @endforeach
