@@ -7,6 +7,12 @@
             <span class="fas fa-arrow-left"></span>
             <strong>Regresar</strong>
         </a>
+        @if ($venta->estado != 'Saldado')
+            <a href="{{ route('venta.credito.abonar', ['id' => $venta->id]) }}" class="btn btn-success" style="margin-left:890px">
+                <span class="fas fa-plus-square"></span>
+                <strong>Agregar abono</strong>
+            </a>
+        @endif
     </div>
     <br>
     <div class="row">
@@ -33,10 +39,55 @@
             </div>
         </div>
     </div>           
+
+    <hr>
+    <h5 style="text-align: center"><strong>Pendiente: <span id="total">@money($venta->credito->monto - $totalAbonado)</span> córdobas</strong></h5>
     <hr>
 
-    <h5 style="margin-left:20px"><strong>Fecha de la venta:</strong> {{ $venta->fecha }}</h5>
-    <h5 style="margin-left:20px"><strong>Fecha de pago:</strong> {{ $venta->credito->fecha_de_pago }}</h5>
-    <h5><strong style="margin-left:20px">A nombre de:</strong> {{ $venta->credito->cliente }}</h5>
-    <h5><strong style="margin-left:20px">Total cancelado:</strong> @money($venta->monto_total) córdobas</h5>
+    <div class="datos_venta">
+        <fieldset style="border: 4px groove;border-color: skyblue;">
+            <legend style=" width: auto;">Datos de venta</legend>
+
+            <div class="row d-flex justify-content-between" style="margin-left: 100px; margin-right:100px">
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Total a cancelar</label></strong></h6>
+                    <h6 id="fecha" name="fecha">@money($venta->monto_total)</h6>
+                </div>
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Abonado Hasta Ahora</label></strong></h6>
+                    <h6 id="fecha" name="fecha">@money($totalAbonado)</h6>
+                </div>
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Último Abono Realizado</label></strong></h6>
+                    <h6 id="fecha" name="fecha">{{ $ultimoAbono ?? "No hay abonos" }}</h6>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between" style="margin-left: 100px; margin-right:100px">
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Fecha de la venta</label></strong></h6>
+                    <h6 id="fecha" name="fecha">{{ $venta->fecha }}</h6>
+                </div>
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Cliente</label></strong></h6>
+                    <h6 id="fecha" name="fecha">{{ $venta->credito->cliente }}</h6>
+                </div>
+                <div class="form-group" style="text-align: center; margin-left:80px">
+                    <h6><strong><label for="fecha">Plazo para el Pago</label></strong></h6>
+                    <h6 id="fecha" name="fecha">{{ $venta->fecha }}</h6>
+                </div>
+            </div>
+            <div id="msgsArea" class="form-group" style="text-align: center;margin-left: 400px; margin-right:400px">
+                <ul class="list-group">
+                    @if ($msg)
+                        <li class="list-group-item list-group-item-info">
+                            <span class="fas fa-exclamation-circle"> </span>
+                            <strong>{{ $msg }}</strong>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </fieldset>
+    </div>
+
+
 @endsection

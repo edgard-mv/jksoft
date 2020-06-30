@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::permanentRedirect('/', '/productos');
 
 
 Route::get('backup', function () {
@@ -190,6 +190,12 @@ Route::name('venta.')->group(function () {
             '/ventas/credito/nuevo',
             'VentasController@createCredito'
         )->name('nuevo');
+
+        Route::match(
+            ['get', 'put'],
+            '/ventas/credito/{id}/abonar',
+            'VentasController@addPayment'
+        )->name('abonar');
 
     });
 

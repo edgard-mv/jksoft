@@ -71,10 +71,22 @@ class VentasController extends Controller
         } elseif ($tipo == 'credito') {
             $venta = Venta::with('productos')->has('credito')->get()->find($id);
 
+            $totalAbonado = $venta->credito->abonos->reduce(function ($total, $abono) {
+                return $total + $abono->cantidad;
+            });
+
+            $ultimoAbono = $venta->credito->abonos()->latest('fecha')->first();
+            $msg = "";
+            if ($ultimoAbono) {
+                $msg = $ultimoAbono->comentarios;
+                $ultimoAbono = $ultimoAbono->fecha;
+            }
+
+
             $venta['tipo'] = 'credito';
             $venta['monto_total'] = $venta->credito->monto;
 
-            return view('ventas.detalles_credito', compact('venta'));
+            return view('ventas.detalles_credito', compact('venta', 'totalAbonado', 'ultimoAbono', 'msg'));
         }
     }
 
@@ -278,5 +290,57 @@ class VentasController extends Controller
         session()->put('order', $order);
         
         return view('ventas.credito', compact('total', 'msgs', 'fecha'));
+    }
+
+    public function addPayment(Request $request, $id) {
+        $venta = Venta::has('credito')->get()->find($id);
+        $fecha = Carbon::now();
+        $msgs = [];
+
+
+
+        $totalAbonado = $venta->credito->abonos->reduce(function ($total, $abono) {
+            return $total + $abono->cantidad;
+        });
+
+        if ($request->isMethod('PUT')) {
+            $restante = $venta->credito->monto - $totalAbonado;
+            $cantidadPorAbonar = $request->input('cantidad');
+            $comentarios = $request->input('comentarios');
+
+            if (!$comentarios) {
+                $comentarios = "";
+            }
+
+            if ($restante - $cantidadPorAbonar < 0) {
+                array_push($msgs, "C$". $cantidadPorAbonar ." excede la cantidad restante: ". "C$". $restante);
+            } else {
+                $venta->credito->abonos()->create([
+                    'cantidad' => $cantidadPorAbonar,
+                    'fecha' => $fecha,
+                    'comentarios' => $comentarios
+                ]);
+
+                $totalAbonado = $venta->credito->abonos->reduce(function ($total, $abono) {
+                    return $total + $abono->cantidad;
+                });
+
+                if ($totalAbonado = $venta->credito->monto) {
+                    $venta->estado = 'Saldado';
+                    $venta->save();
+                }
+            }
+            
+        }
+
+        $ultimoAbono = $venta->credito->abonos()->latest('fecha')->first();
+        $msg = "";
+
+        if ($ultimoAbono) {
+            $msg = $ultimoAbono->comentarios;
+            $ultimoAbono = $ultimoAbono->fecha;
+        }
+
+        return view('ventas.add_abono', compact('venta', 'totalAbonado', 'ultimoAbono', 'msg', 'msgs'));
     }
 }

@@ -152,6 +152,8 @@ class ProductosController extends Controller
 
             if ($request->input('cantidad')) {
                 $proveedor->pivot->cantidad = $request->input('cantidad');
+                $producto->cantidad += $request->input('cantidad');
+                $producto->save();    
             }
 
             $proveedor->pivot->save();
@@ -175,6 +177,8 @@ class ProductosController extends Controller
                     'fecha' => $request->input('fecha')
                 ]
             );
+            $producto->cantidad += $request->input('cantidad');
+            $producto->save();
         }
         return redirect()->route('producto.proveedores', ['id' => $producto_id]);
     }
