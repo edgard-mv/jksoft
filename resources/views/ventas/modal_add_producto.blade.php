@@ -42,7 +42,13 @@
         let fullData = addFormData + "&" + orderFormData.replace("&_method=PUT", "");
 
         $.post("{{ route('venta.contado.orden.agregar') }}", fullData).done(function (rdata) {
-            location.reload();
+            if (rdata) {
+                let oldMsgs = $("#msgsArea").html();
+                $("#msgsArea").html(oldMsgs + rdata);
+                $('#ModalAddProducto').modal('hide');
+            } else {
+                location.reload();
+            }
         });
 
     });

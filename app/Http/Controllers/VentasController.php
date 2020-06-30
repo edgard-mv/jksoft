@@ -81,10 +81,23 @@ class VentasController extends Controller
             session()->put('order', $order);
         }
 
+        if ($request->isMethod('PUT')) {
+            $currentOrder = $request->input('order');
+
+            foreach ($currentOrder as $id => $details) {
+                $order[$id]['quantity'] = $details['quantity'];
+            }
+        }
+
         $total = 0;
+        $msgs = [];
 
         foreach ($order as $id => $details) {
             $producto = Producto::find($id);
+
+            if ($details['quantity'] > $producto->cantidad) {
+                array_push($msgs, $producto->nombre .' sólo tiene '. $producto->cantidad .' unidades');
+            }
 
             $order[$id]['nombre'] = $producto->nombre;
             $order[$id]['precio'] = $producto->precio;
@@ -93,8 +106,7 @@ class VentasController extends Controller
             $total += $order[$id]['subtotal'];
         }
 
-        if ($request->isMethod('PUT')) {
-            $currentOrder = $request->input('order');
+        if ($request->isMethod('PUT') and empty($msgs)) {
             $venta = new Venta;
 
             $venta->fecha = Carbon::now();
@@ -104,10 +116,14 @@ class VentasController extends Controller
 
             foreach ($order as $id => $details) {
                 $venta->productos()->attach($id, [
-                    'cantidad_producto' => $currentOrder[$id]['quantity'],
+                    'cantidad_producto' => $order[$id]['quantity'],
                     'precio_actual' => $details['precio'],
                     'monto' => $details['subtotal']
                 ]);
+
+                $producto = Producto::find($id);
+                $producto->cantidad -= $order[$id]['quantity'];
+                $producto->save();
             }
 
             $venta->contado()->create([
@@ -120,7 +136,7 @@ class VentasController extends Controller
 
         session()->put('order', $order);
         
-        return view('ventas.contado', compact('total'));
+        return view('ventas.contado', compact('total', 'msgs'));
     }
 
     public function searchProductOrder(Request $request) {
@@ -146,6 +162,13 @@ class VentasController extends Controller
         $order = session()->get('order');
 
         $cantidad = $request->input('cantidad');
+
+        if ($cantidad > $producto->cantidad) {
+            $msgs = [$producto->nombre .' sólo tiene '. $producto->cantidad .' unidades'];
+            $htmlResponse = view('ventas.mensajes', compact('msgs'))->render();
+            return $htmlResponse;
+        }
+
         if (!$order) {
             $order = [
                 $id => [
@@ -164,8 +187,6 @@ class VentasController extends Controller
         }
 
         session()->put('order', $order);
-
-        return "funciono";
     }
 
     public function removeFromOrder(Request $request) {

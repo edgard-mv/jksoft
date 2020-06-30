@@ -17,15 +17,9 @@
                 <div class="form-group align-items-center" id="searchResults">
                     @include('ventas.resultados')
                 </div>
-
-                {{-- <div style="text-align:center; margin-right:30px; margin-bottom:10px">
-                    <a>
-                        <button class="btn btn-primary">
-                            <span class="fas fa-plus"></span>
-                            <strong>Agregar</strong>    
-                        </button>
-                    </a>
-                </div> --}}
+                <div id="msgsArea" class="form-group" style="text-align: center;margin-left: 400px; margin-right:400px">
+                    @include('ventas.mensajes')
+                </div>
             </fieldset>
         </div>
         <form action="{{ route('venta.contado.nuevo') }}" id="orderForm" method="post">
