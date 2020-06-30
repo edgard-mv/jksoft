@@ -28,7 +28,7 @@
                       <a class="dropdown-item" href="{{ route('venta.por_tipo', ['tipo' => 'contado']) }}">Contado</a>
                     </div>
                 </div>
-                <a class="btn btn-success" href="/credito" style="margin-left:440px">
+                <a class="btn btn-success" href="{{ route('venta.credito.nuevo') }}" style="margin-left:440px">
                     <span class="fas fa-plus-square"></span>
                     <strong>Crédito</strong>
                 </a>

@@ -17,15 +17,9 @@
                 <div class="form-group align-items-center" id="searchResults">
                     @include('ventas.resultados')
                 </div>
-
-                {{-- <div style="text-align:center; margin-right:30px; margin-bottom:10px">
-                    <a>
-                        <button class="btn btn-primary">
-                            <span class="fas fa-plus"></span>
-                            <strong>Agregar</strong>    
-                        </button>
-                    </a>
-                </div> --}}
+                <div id="msgsArea" class="form-group" style="text-align: center;margin-left: 400px; margin-right:400px">
+                    @include('ventas.mensajes')
+                </div>
             </fieldset>
         </div>
         <form action="{{ route('venta.contado.nuevo') }}" id="orderForm" method="post">
@@ -53,7 +47,7 @@
                                     </td>
                                     <td class="subtotal">@money($details['subtotal'])</td>
                                     <td style="text-align:center">
-                                        <a href="{{ route('venta.contado.orden.remover', ['id' => $id]) }}" class="btn btn-danger">
+                                        <a href="{{ route('venta.orden.remover', ['id' => $id]) }}" class="btn btn-danger">
                                             <span class="fas fa-trash"></span>
                                         </a>
                                     </td>
@@ -73,7 +67,7 @@
                     <span class="fas fa-save"></span>
                     <strong>Guardar</strong>
                 </button>
-                <a href="{{ route('venta.contado.orden.remover') }}" class="btn btn-default btn-danger">
+                <a href="{{ route('venta.orden.remover') }}" class="btn btn-default btn-danger">
                     <span class="fas fa-times"></span>
                     <strong>Cancelar</strong></a>
                 </a>

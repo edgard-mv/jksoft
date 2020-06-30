@@ -206,29 +206,35 @@ Route::name('venta.')->group(function () {
             'VentasController@createContado'
         )->name('nuevo');
 
-        Route::name('orden.')->group(function () {
+    });
 
-            Route::post(
-                'ventas/contado/orden/agregar',
-                'VentasController@addToOrder'
-            )->name('agregar');
-            
-            Route::get(
-                'ventas/contado/orden/remover',
-                'VentasController@removeFromOrder'
-            )->name('remover');
+    Route::name('credito.')->group(function () {
 
-            Route::get(
-                '/ventas/contado/orden/buscar',
-                'VentasController@searchProductOrder'
-            )->name('buscar');
-
-        });
+        Route::match(
+            ['get', 'put'],
+            '/ventas/credito/nuevo',
+            'VentasController@createCredito'
+        )->name('nuevo');
 
     });
 
-});
+    Route::name('orden.')->group(function () {
 
-Route::get('credito', function () {
-    return view('ventas.credito');
+        Route::post(
+            'ventas/contado/orden/agregar',
+            'VentasController@addToOrder'
+        )->name('agregar');
+        
+        Route::get(
+            'ventas/contado/orden/remover',
+            'VentasController@removeFromOrder'
+        )->name('remover');
+
+        Route::get(
+            '/ventas/contado/orden/buscar',
+            'VentasController@searchProductOrder'
+        )->name('buscar');        
+
+    });
+
 });

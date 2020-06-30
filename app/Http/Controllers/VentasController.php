@@ -69,7 +69,12 @@ class VentasController extends Controller
 
             return view('ventas.detalles_contado', compact('venta'));
         } elseif ($tipo == 'credito') {
-            return view('ventas.detalles_credito');
+            $venta = Venta::with('productos')->has('credito')->get()->find($id);
+
+            $venta['tipo'] = 'credito';
+            $venta['monto_total'] = $venta->credito->monto;
+
+            return view('ventas.detalles_credito', compact('venta'));
         }
     }
 
@@ -81,10 +86,23 @@ class VentasController extends Controller
             session()->put('order', $order);
         }
 
+        if ($request->isMethod('PUT')) {
+            $currentOrder = $request->input('order');
+
+            foreach ($currentOrder as $id => $details) {
+                $order[$id]['quantity'] = $details['quantity'];
+            }
+        }
+
         $total = 0;
+        $msgs = [];
 
         foreach ($order as $id => $details) {
             $producto = Producto::find($id);
+
+            if ($details['quantity'] > $producto->cantidad) {
+                array_push($msgs, $producto->nombre .' sólo tiene '. $producto->cantidad .' unidades');
+            }
 
             $order[$id]['nombre'] = $producto->nombre;
             $order[$id]['precio'] = $producto->precio;
@@ -93,8 +111,7 @@ class VentasController extends Controller
             $total += $order[$id]['subtotal'];
         }
 
-        if ($request->isMethod('PUT')) {
-            $currentOrder = $request->input('order');
+        if ($request->isMethod('PUT') and empty($msgs)) {
             $venta = new Venta;
 
             $venta->fecha = Carbon::now();
@@ -104,10 +121,14 @@ class VentasController extends Controller
 
             foreach ($order as $id => $details) {
                 $venta->productos()->attach($id, [
-                    'cantidad_producto' => $currentOrder[$id]['quantity'],
+                    'cantidad_producto' => $order[$id]['quantity'],
                     'precio_actual' => $details['precio'],
                     'monto' => $details['subtotal']
                 ]);
+
+                $producto = Producto::find($id);
+                $producto->cantidad -= $order[$id]['quantity'];
+                $producto->save();
             }
 
             $venta->contado()->create([
@@ -120,7 +141,7 @@ class VentasController extends Controller
 
         session()->put('order', $order);
         
-        return view('ventas.contado', compact('total'));
+        return view('ventas.contado', compact('total', 'msgs'));
     }
 
     public function searchProductOrder(Request $request) {
@@ -139,13 +160,16 @@ class VentasController extends Controller
 
         $producto = Producto::find($id);
 
-        if (!$producto) {
-            return redirect()->route('venta.contado.nuevo');
-        }
-
         $order = session()->get('order');
 
         $cantidad = $request->input('cantidad');
+
+        if ($cantidad > $producto->cantidad) {
+            $msgs = [$producto->nombre .' sólo tiene '. $producto->cantidad .' unidades'];
+            $htmlResponse = view('ventas.mensajes', compact('msgs'))->render();
+            return $htmlResponse;
+        }
+
         if (!$order) {
             $order = [
                 $id => [
@@ -164,8 +188,6 @@ class VentasController extends Controller
         }
 
         session()->put('order', $order);
-
-        return "funciono";
     }
 
     public function removeFromOrder(Request $request) {
@@ -184,6 +206,77 @@ class VentasController extends Controller
             return redirect()->route('venta.todos');
         }
 
-        return redirect()->route('venta.contado.nuevo');
+        return redirect(url()->previous());
+    }
+
+    public function createCredito(Request $request) {
+        $order = session()->get('order');
+        $fecha = Carbon::now();
+        
+        if (!$order) {
+            $order = [];
+            session()->put('order', $order);
+        }
+
+        if ($request->isMethod('PUT')) {
+            $currentOrder = $request->input('order');
+
+            foreach ($currentOrder as $id => $details) {
+                $order[$id]['quantity'] = $details['quantity'];
+            }
+        }
+
+        $total = 0;
+        $msgs = [];
+
+        foreach ($order as $id => $details) {
+            $producto = Producto::find($id);
+
+            if ($details['quantity'] > $producto->cantidad) {
+                array_push($msgs, $producto->nombre .' sólo tiene '. $producto->cantidad .' unidades');
+            }
+
+            $order[$id]['nombre'] = $producto->nombre;
+            $order[$id]['precio'] = $producto->precio;
+            $order[$id]['subtotal'] = $producto->precio * $details['quantity'];
+
+            $total += $order[$id]['subtotal'];
+        }
+
+        if ($request->isMethod('PUT') and empty($msgs)) {
+            $venta = new Venta;
+
+            $venta->fecha = $fecha;
+            $venta->estado = 'Pendiente';
+
+            $venta->save();
+
+            foreach ($order as $id => $details) {
+                $venta->productos()->attach($id, [
+                    'cantidad_producto' => $order[$id]['quantity'],
+                    'precio_actual' => $details['precio'],
+                    'monto' => $details['subtotal']
+                ]);
+
+                $producto = Producto::find($id);
+                $producto->cantidad -= $order[$id]['quantity'];
+                $producto->save();
+            }
+
+            $cliente = $request->input('cliente');
+            $fechaPago = $request->input('fecha');
+            $venta->credito()->create([
+                'cliente' => $cliente,
+                'monto' => $total,
+                'fecha_de_pago' => $fechaPago
+            ]);
+            
+            session()->forget('order');
+            return redirect()->route('venta.credito.nuevo');
+        }
+
+        session()->put('order', $order);
+        
+        return view('ventas.credito', compact('total', 'msgs', 'fecha'));
     }
 }

@@ -7,7 +7,7 @@
 
     $("#searchValue").on("keyup", function (event) {
         let currentValue = $(this).val();
-        $.get("{{ route('venta.contado.orden.buscar') }}", { value: currentValue }).done(function(data) {
+        $.get("{{ route('venta.orden.buscar') }}", { value: currentValue }).done(function(data) {
             $("#searchResults").html(data);
         });
     });
