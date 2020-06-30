@@ -111,6 +111,10 @@ class OperariosController extends Controller
     public function delete($id) {
        
 
+        Trabajador::destroy($id);
+        DB::table('salarios')->where('trabajador_id', $id)->delete();
+
+
         return redirect()->route('operarios.todos');    
     }
 
