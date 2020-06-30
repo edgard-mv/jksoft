@@ -28,9 +28,9 @@ class ProductosController extends Controller
             if ($type == 'id') {
                 $productos = Producto::find($value);
                 if (!$productos) {
-                    $productos = collect([]);
+                    $productos = collect([])->paginate(5);
                 } else {
-                    $productos = collect([$productos]);
+                    $productos = collect([$productos])->paginate(5);
                 }
             } elseif ($type == 'empresa') {
                 $productos = Producto::with('proveedores')->get()->filter(function ($producto) use($value) {

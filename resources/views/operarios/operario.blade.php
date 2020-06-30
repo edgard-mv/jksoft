@@ -2,8 +2,6 @@
 @section('titulo','Trabajadores')
 @section('pagetitle','Lista de trabajadores')
 @section('content')
-@include('operarios.modal_delete')
-
 
 
 <div class="row">
@@ -31,6 +29,7 @@
 
             <tbody>
             @foreach ($trabajadores as $trabajador)
+            @include('operarios.modal_delete')
             <tr style="color: rgb(14,14,14);background-color:  #CDE4F7;">
                     <td>{{ $trabajador->nombre }}</td>
                     <td>{{ $trabajador->telefono }}</td>
@@ -58,12 +57,15 @@
                 
                     <td>{{ ($trabajador->extra + $trabajador->horas)*$trabajador->pago_por_hora}} córdobas</td>
                     <td style="text-align:center">
-                    <a href="{{ route('operarios.editar', ['id' => $trabajador->trabajador_id])}}"><button class="btn btn-warning">
+                       <a href="{{ route('operarios.editar', ['id' => $trabajador->trabajador_id])}}"><button class="btn btn-warning">
                         <span class="fas fa-pencil-alt"></span>
                         </button></a>
-                        <a href="" data-target="#ModalDelete" data-toggle="modal"><button class="btn btn-danger">
-                            <span class="fas fa-trash-alt"></span>    
-                        </button></a>
+                        
+                        <a data-toggle="modal" data-target="#ModalDelete{{ $trabajador->id }}">
+                            <button class="btn btn-danger">
+                                <span class="fas fa-trash-alt"></span>
+                            </button>
+                        </a>
                     </td>
             </tr>
             @endforeach

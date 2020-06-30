@@ -16,7 +16,7 @@
       <h5 class="card-title"><strong>Creación de copia de seguridad</strong></h5>
       <p class="card-text">Al presionar el botón de crear copia de seguridad se efectuará a respaldar los datos existentes en la base de datos 
           que utiliza el sistema </p>
-      <a href="#" class="btn btn-primary"> <i class="fas fa-download"></i> Copia de seguridad</a>
+      <a href="{{route('backup.save')}}" class="btn btn-primary"> <i class="fas fa-download"></i> Copia de seguridad</a>
     </div>
   </div>
   

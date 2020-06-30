@@ -10,9 +10,13 @@ use DB;
 
 class OperariosController extends Controller
 {
+
     public function getAll() {
-      $trabajadores = DB::select('CALL spOperarios_GetAll()');
+        $trabajadores = DB::select('CALL spOperarios_GetAll()');
+
+
         return view('operarios.operario', compact('trabajadores'));
+
     }
 
     public function create(Request $request) {
@@ -37,7 +41,7 @@ class OperariosController extends Controller
                 $salario->save();
 
             }
-            return redirect()->route('operarios');
+            return redirect()->route('operarios.todos');
         }
 
         return view('operarios.nuevo_op');
@@ -79,7 +83,7 @@ class OperariosController extends Controller
 
 
 
-            return redirect()->route('operarios');
+            return redirect()->route('operarios.todos');
         }
 
         return view('operarios.editar_o', compact('operador','salario'));
@@ -87,12 +91,27 @@ class OperariosController extends Controller
 
     public function search(Request $request) {
         
-           //-------------------------------------
-           // return view('operarios.operario', compact('operario'));
-        
+        if ($request->isMethod('get') and $request->input('valor')){
+           
+            $nombre = $request->input('valor');
+            
+            $trabajadores=DB::table('trabajadores')
+            ->JOIN('salarios','salarios.trabajador_id','=','trabajadores.id')
+            ->WHERE('nombre', 'like', '%'. $nombre.'%')        
+            ->get();
 
-        //return redirect()->route('operarios');
+
+              return view('operarios.operario', compact('trabajadores'));
+
+        }
+    
+          return redirect()->route('operarios.todos');
     }
 
+    public function delete($id) {
+       
+
+        return redirect()->route('operarios.todos');    
+    }
 
 }//fin de funciones del controlador 

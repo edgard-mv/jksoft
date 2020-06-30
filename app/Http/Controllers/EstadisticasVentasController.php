@@ -20,8 +20,7 @@ class EstadisticasVentasController extends Controller
         SUM(monto) as total, 
         ROUND(AVG(monto),2) as promedio,
         MAX(monto) as maximo,
-        MIN(monto) as minimo,
-        MAX(monto) as stockmayor
+        MIN(monto) as minimo
         FROM contados');
 
         $chartcontados=DB::table('contados')->get();
@@ -31,13 +30,12 @@ class EstadisticasVentasController extends Controller
         SUM(monto) AS total, 
         MAX(monto) AS maximo,
         MIN(monto) AS minimo,
-        ROUND(AVG(monto),2) AS promedio,
-        MAX(monto) AS stockmayor
+        ROUND(AVG(monto),2) AS promedio
         FROM creditos');
 
         $chartcreditos=DB::select('SELECT creditos.monto AS monto_total,
         abonos.id AS identificador,
-        (creditos.monto-abonos.cantidad) AS totales
+        (abonos.cantidad) AS totales
         FROM creditos
         JOIN abonos 
         WHERE abonos.credito_id=creditos.id
@@ -52,4 +50,50 @@ class EstadisticasVentasController extends Controller
              'chartcreditos'));
         }
 
+
+        function Dates(Request $request){
+
+            if ($request->isMethod('get') and $request->input('fechainicio') and $request->input('fechafin')) {
+                {
+        
+                $Initialdate = $request->input('fechainicio');
+                $Finaldate=$request->input('fechafin');
+
+                $contados= DB::select('call sp_Ventas_Contado(?,?)',array($Initialdate,$Finaldate));
+        
+                $chartcontados=DB::table('contados')
+                ->JOIN('ventas','ventas.id','=','contados.venta_id')
+                ->WHERE('fecha','>=',$Initialdate,'and','fecha','<=',$Finaldate)
+                ->get();
+        
+                $creditos= DB::select('call sp_Ventas_Credito(?,?)',array($Initialdate,$Finaldate));
+
+        
+                $chartcreditos=DB::select('SELECT creditos.monto AS monto_total,
+                abonos.id AS identificador,
+                (creditos.monto-abonos.cantidad) AS totales
+                FROM creditos
+                JOIN abonos 
+                ON abonos.credito_id=creditos.id 
+                JOIN ventas 
+                ON ventas.id=creditos.venta_id
+                WHERE ventas.fecha BETWEEN ? AND ?
+                ',[$Initialdate,$Finaldate]);
+
+
+                
+                return view(
+                    'Estadisticas.estadistica_ventas',
+                    compact(
+                    'contados',
+                    'creditos',
+                    'chartcontados',
+                    'chartcreditos'));
+
+                }
+
+                redirect()->route('estadistica.ventas');
+
+        }
+    }
 }

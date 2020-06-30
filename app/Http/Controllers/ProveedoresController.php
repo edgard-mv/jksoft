@@ -10,6 +10,7 @@ use DB;
 class ProveedoresController extends Controller
 {
     public function getAll() {
+        
         $proveedores = DB::select('CALL spProveedores_GetAll()');
 
         return view('proveedores.proveedor', compact('proveedores'));
