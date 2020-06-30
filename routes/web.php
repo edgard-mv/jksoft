@@ -184,14 +184,19 @@ Route::name('venta.')->group(function () {
         Route::name('orden.')->group(function () {
 
             Route::post(
-                'ventas/contado/orden/agregar/{id}',
+                'ventas/contado/orden/agregar',
                 'VentasController@addToOrder'
             )->name('agregar');
             
-            Route::post(
-                'ventas/contado/orden/remover/{id}',
+            Route::get(
+                'ventas/contado/orden/remover',
                 'VentasController@removeFromOrder'
             )->name('remover');
+
+            Route::get(
+                '/ventas/contado/orden/buscar',
+                'VentasController@searchProductOrder'
+            )->name('buscar');
 
         });
 

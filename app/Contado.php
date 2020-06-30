@@ -12,4 +12,6 @@ class Contado extends Model
     public function venta() {
         return $this->belongsTo('App\Venta');
     }
+
+    protected $fillable = ['monto'];
 }
