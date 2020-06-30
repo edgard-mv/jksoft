@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\Proveedor;
 use App\ProveedorProducto;
+
 use Carbon\Carbon;
 use DB;
 
