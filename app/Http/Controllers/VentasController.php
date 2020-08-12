@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class VentasController extends Controller
 {
     public function getAll() {
-        $ventas = Venta::with('productos')->get();
+        $ventas = Venta::with('productos')->paginate(15);
 
         foreach ($ventas as $venta) {
             if ($venta->contado()->exists()) {
