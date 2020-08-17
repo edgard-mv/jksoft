@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Salario extends Model
 {
     use SoftDeletes;
-   /* public function trabajadores() {
-		return $this->hasOne('App\Trabajador','id');
-    }*/
+
+    public function trabajador() {
+        return $this->belongsTo('App\Trabajador');
+    }
     
-   protected $table = 'salarios';
+    protected $table = 'salarios';
 }

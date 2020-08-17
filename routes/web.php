@@ -20,13 +20,9 @@ Route::permanentRedirect('/', '/productos');
 Route::get('/backup', 'BackupController@index')->name('backup');
 Route::get('/backup/guardar', 'BackupController@save')->name('backup.save');
 
-
-
 Route::get('manualu', function () {
     return view('manualuser');
 });
-
-
 
 Route::name('estadistica.')->group(function () {
 
@@ -64,8 +60,6 @@ Route::name('estadistica.')->group(function () {
     
 
 });
-
-
 
 Route::name('producto.')->group(function () {
 
@@ -147,8 +141,7 @@ Route::name('proveedor.')->group(function () {
         'ProveedoresController@update'
     )->name('editar');
 
-   });
-
+});
 
 Route::name('operarios.')->group(function () {
 

@@ -31,7 +31,7 @@ class ProductosController extends Controller
                 if (!$productos) {
                     $productos = collect([]);
                 } else {
-                    $productos = collect([$productos]);
+                    $productos = collect([$productos])->paginate(15);
                 }
             } elseif ($type == 'empresa') {
                 $productos = Producto::with('proveedores')->get()->filter(function ($producto) use($value) {
@@ -40,9 +40,9 @@ class ProductosController extends Controller
                             return True;
                         }
                     }
-                });
+                })->paginate(15);
             } elseif ($type == 'nombre') {
-                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->get();
+                $productos = Producto::where('nombre', 'like', '%'. $value .'%')->paginate(15);
             }
 
             foreach ($productos as $producto) {
@@ -108,7 +108,8 @@ class ProductosController extends Controller
             return redirect()->route('producto.todos');
         }
 
-        $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        //$proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        $proveedoresDisponibles = Proveedor::all();
         $fecha = Carbon::now();
 
 
@@ -129,7 +130,8 @@ class ProductosController extends Controller
 
     public function proveedores($id) {
         $producto = Producto::with('proveedores')->get()->find($id);
-        $proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        //$proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
+        $proveedoresDisponibles = Proveedor::all();
         $fecha = Carbon::now();
 
         $proveedores = $producto->proveedores;

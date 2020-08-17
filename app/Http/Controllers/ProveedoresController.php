@@ -24,14 +24,14 @@ class ProveedoresController extends Controller
             if ($type == 'id') {
                 $proveedores = Proveedor::find($value);
                 if (!$proveedores) {
-                    $proveedores = collect([]);
+                    $proveedores = collect([])->paginate(15);
                 } else {
-                    $proveedores = collect([$proveedores]);
+                    $proveedores = collect([$proveedores])->paginate(15);
                 }
             } elseif ($type == 'empresa') {
-                $proveedores = Proveedor::where('empresa', 'like', '%'. $value .'%')->get();
+                $proveedores = Proveedor::where('empresa', 'like', '%'. $value .'%')->paginate(15);
             } elseif ($type == 'nombre') {
-                $proveedores = Proveedor::where('nombre', 'like', '%'. $value .'%')->get();
+                $proveedores = Proveedor::where('nombre', 'like', '%'. $value .'%')->paginate(15);
             }
 
             return view('proveedores.proveedor', compact('proveedores'));
