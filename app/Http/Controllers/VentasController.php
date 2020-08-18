@@ -35,7 +35,7 @@ class VentasController extends Controller
         $type = $request->input('tipo');
 
         if ($type == "contado") {
-            $ventas = Venta::with('productos')->has('contado')->get();
+            $ventas = Venta::with('productos')->has('contado')->paginate(15);
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'contado';
@@ -46,7 +46,7 @@ class VentasController extends Controller
                 // });
             });
         } elseif ($type == "credito") {
-            $ventas = Venta::with('productos')->has('credito')->get();
+            $ventas = Venta::with('productos')->has('credito')->paginate(15);
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'credito';

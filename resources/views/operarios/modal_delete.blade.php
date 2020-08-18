@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-sm" id="ModalDelete{{ $trabajador->trabajador_id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-sm" id="ModalDelete{{ $trabajador->id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -6,7 +6,7 @@
       </div>
   
       <div class="modal-footer">
-        <form action="{{ route('operarios.remover', ['id' => $trabajador->trabajador_id]) }}" method="post">
+        <form action="{{ route('operarios.remover', ['id' => $trabajador->id]) }}" method="post">
           @csrf
           @method('DELETE')
           <button class="btn btn-danger" type="button" data-dismiss="modal">

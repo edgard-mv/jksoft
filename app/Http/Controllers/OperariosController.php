@@ -12,7 +12,8 @@ class OperariosController extends Controller
 {
 
     public function getAll() {
-        $trabajadores = DB::select('CALL spOperarios_GetAll()');
+        //$trabajadores = DB::select('CALL spOperarios_GetAll()');
+        $trabajadores = Trabajador::with('salarios')->paginate(15);
 
 
         return view('operarios.operario', compact('trabajadores'));
@@ -94,14 +95,11 @@ class OperariosController extends Controller
         if ($request->isMethod('get') and $request->input('valor')){
            
             $nombre = $request->input('valor');
-            
-            $trabajadores=DB::table('trabajadores')
-            ->JOIN('salarios','salarios.trabajador_id','=','trabajadores.id')
-            ->WHERE('nombre', 'like', '%'. $nombre.'%')        
-            ->get();
+
+            $trabajadores = Trabajador::where('nombre', 'like', '%'. $nombre .'%')->with('salarios')->paginate(15);
 
 
-              return view('operarios.operario', compact('trabajadores'));
+            return view('operarios.operario', compact('trabajadores'));
 
         }
     

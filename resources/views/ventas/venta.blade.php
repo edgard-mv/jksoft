@@ -16,77 +16,48 @@
 </div>
 
 <div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
-    <div class="table-responsive">
-        <div class="container-fluid">
-            <table id="Selltable" class="table table-striped table-bordered nowrap" cellspacing="0"  style="border-collapse: separate;margin-right:40px">
-                <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                    <th>N⁰</th>
-                    <th>Fecha</th>
-                    <th>Tipo</th>
-                    <th>Monto total</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                
-                </thead>
+    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+        <div class="table-responsive">
+            <div class="container-fluid">
+                <table id="Selltable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px">
+                    <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
+                        <th>N⁰</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Monto total</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    
+                    </thead>
 
-                <tbody>
-                    @foreach ($ventas as $venta)
-                        <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
-                            <td>{{ $venta->id }}</td>
-                            <td>{{ $venta->fecha }}</td>
-                            @if ($venta->tipo == 'contado')
-                                <td>Contado</td>
-                            @elseif ($venta->tipo == 'credito')
-                                <td>Crédito</td>
-                            @endif
-                            <td>
-                                @money($venta->monto_total)
-                            </td>
-                            <td>{{ $venta->estado }}</td>
-                            <td style="text-align:center">
-                                <a href="{{ route('venta.detalles', ['tipo' => $venta->tipo, 'id' => $venta->id]) }}" class="btn btn-warning">
-                                    <span class="fas fa-info-circle"></span>
-                                    <strong>Detalles</strong>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $ventas->links() }}
+                    <tbody>
+                        @foreach ($ventas as $venta)
+                            <tr style="text-align:center; color: rgb(14,14,14);background-color: #CDE4F7;">
+                                <td>{{ $venta->id }}</td>
+                                <td>{{ $venta->fecha }}</td>
+                                @if ($venta->tipo == 'contado')
+                                    <td>Contado</td>
+                                @elseif ($venta->tipo == 'credito')
+                                    <td>Crédito</td>
+                                @endif
+                                <td>
+                                    @money($venta->monto_total)
+                                </td>
+                                <td>{{ $venta->estado }}</td>
+                                <td style="text-align:center">
+                                    <a href="{{ route('venta.detalles', ['tipo' => $venta->tipo, 'id' => $venta->id]) }}" class="btn btn-warning">
+                                        <span class="fas fa-info-circle"></span>
+                                        <strong>Detalles</strong>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $ventas->links() }}
+            </div>
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-          $('#Selltable').DataTable({
-            "language": {
-                "lengthMenu": "Registros _MENU_ por pagina",
-                "zeroRecords": "Resultados no encontrados",
-                "info": "Pagina _PAGE_ de _PAGES_",
-                "infoEmpty": "No existen registros que coincidan",
-                "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            }
-            },
-            "searching": false,
-             "paging": true, 
-             "info": false,         
-             "lengthChange":true ,
-            "pageLength": 6,
-            "bFilter":true,
-            "lengthMenu": [[5,10, 15, 20, -1], [5,10, 15, 20, "Todos"]] ,
-            
-    
-            });
-        
-    });
-    
-    </script>
 
 @endsection
