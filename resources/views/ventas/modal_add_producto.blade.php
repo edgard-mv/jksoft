@@ -45,7 +45,7 @@
             if (rdata) {
                 let oldMsgs = $("#msgsArea").html();
                 $("#msgsArea").html(oldMsgs + rdata);
-                $('#ModalAddProducto').modal('hide');
+                $("#ModalAddProducto").modal("hide");
             } else {
                 location.reload();
             }

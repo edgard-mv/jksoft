@@ -15,7 +15,7 @@ use DB;
 class ProductosController extends Controller
 {
     public function getAll() {
-        $productos = Producto::with('proveedores')->get();
+        $productos = Producto::with('proveedores')->paginate(15);
 
         return view('producto.productos', compact('productos'));
     }

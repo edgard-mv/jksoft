@@ -11,7 +11,7 @@ class ProveedoresController extends Controller
 {
     public function getAll() {
         
-        $proveedores = DB::select('CALL spProveedores_GetAll()');
+        $proveedores = Proveedor::paginate(15);
 
         return view('proveedores.proveedor', compact('proveedores'));
     }
