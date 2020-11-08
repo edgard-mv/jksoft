@@ -61,6 +61,27 @@ Route::name('estadistica.')->group(function () {
 
 });
 
+Route::name('pedidos.')->group(function () {
+
+    Route::get(
+        '/pedidos', 
+        'PedidosController@getAll')
+     ->name('todos');
+
+     Route::delete(
+        '/pedidos/{id}/remover',
+        'PedidosController@delete'
+    )->name('remover');
+
+    Route::match(
+        ['get', 'put'],
+        '/pedidos/nuevo',
+        'PedidosController@create'
+    )->name('nuevo');
+ 
+ 
+ });
+
 Route::name('producto.')->group(function () {
 
     Route::get(
@@ -236,4 +257,8 @@ Route::name('venta.')->group(function () {
 
     });
 
+   
+
 });
+
+
