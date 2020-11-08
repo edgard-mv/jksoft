@@ -37,7 +37,7 @@
                         <th>ID</th>
                         <th>Empresa Proveedora</th>
                         <th>Nombre del trabajador de la empresa</th>
-                        <th>Cantidad</th>
+                        <th>Última cantidad ingresada</th>
                         <th>Acciones</th>
                     </thead>
 
@@ -48,7 +48,7 @@
                             <td>{{ $proveedor->id }}</td>
                             <td>{{ $proveedor->empresa }}</td>
                             <td>{{ $proveedor->nombre }}</td>
-                            <td>{{ $proveedor->pivot->cantidad }}</td>
+                            <td style="text-align:center">{{ $proveedor->pivot->cantidad }}</td>
                             <td style="text-align:center">
                                 <a href="" data-target="#ModalUpdateProveedor{{ $proveedor->id }}" data-toggle="modal">
                                     <button class="btn btn-warning">

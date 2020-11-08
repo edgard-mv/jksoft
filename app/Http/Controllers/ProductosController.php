@@ -14,8 +14,33 @@ use DB;
 
 class ProductosController extends Controller
 {
+    public $categories = [
+        'Granos basicos',
+        'Carnes y Embutidos',
+        'Frutas y Verduras',
+        'Panadería y Dulces',
+        'Aceite, Pasta y Legumbres',
+        'Huevos y Lacteos',
+        'Conservas y Comida Preparada',
+        'Zumos y Bebidas',
+        'Aperitivos',
+        'Infantil',
+        'Mariscos',
+        'Cosmeticos',
+        'Hogar y Limpieza'
+    ];
+
+    public $units = [
+        'botella',
+        'lata',
+        'bolsa',
+        'vaso',
+        'blister (n)',
+        'paquete (n)'
+    ];
+
     public function getAll() {
-        $productos = Producto::with('proveedores')->paginate(15);
+        $productos = Producto::with('proveedores')->get();
 
         return view('producto.productos', compact('productos'));
     }
@@ -65,21 +90,27 @@ class ProductosController extends Controller
     public function update(Request $request, $id) {
         $producto = Producto::with('proveedores')->get()->find($id);
 
-        foreach ($producto->proveedores as $proveedor) {
-            $proveedorProducto = ProveedorProducto::where([
-                ['proveedor_id', '=', $proveedor->id],
-                ['producto_id', '=', $producto->id],
-            ])->first();
+        // foreach ($producto->proveedores as $proveedor) {
+        //     $proveedorProducto = ProveedorProducto::where([
+        //         ['proveedor_id', '=', $proveedor->id],
+        //         ['producto_id', '=', $producto->id],
+        //     ])->first();
 
-            $proveedor['cantidad'] = $proveedorProducto->cantidad;
-        }
+        //     $proveedor['cantidad'] = $proveedorProducto->cantidad;
+        // }
 
         if ($request->isMethod('patch')) {
             if ($request->input('nombre')) {
                 $producto->nombre = $request->input('nombre');
             }
+            if ($request->input('categoria')) {
+                $producto->categoria = $request->input('categoria');
+            }
             if ($request->input('cantidad')) {
                 $producto->cantidad = $request->input('cantidad');
+            }
+            if ($request->input('unidad')) {
+                $producto->unidad = $request->input('unidad');
             }
             if ($request->input('precio')) {
                 $producto->precio = $request->input('precio');
@@ -94,9 +125,16 @@ class ProductosController extends Controller
 
     public function create(Request $request) {
         if ($request->isMethod('put')) {
-            if ($request->input('nombre') and $request->input('cantidad') and $request->input('precio')) {
+            if ($request->input('nombre') and $request->input('cantidad') and $request->input('precio') and $request->input('categoria') and $request->input('unidad')) {
                 $producto = new Producto;
                 $producto->nombre = $request->input('nombre');
+                if (in_array($request->categoria, $this->categories)) {
+                    $producto->categoria = $request->input('categoria');
+                }
+                if (in_array($request->unidad, $this->units)) {
+                    $producto->unidad = $request->input('unidad');
+                    error_log('got in');
+                }
                 $producto->cantidad = $request->input('cantidad');
                 $producto->precio = $request->input('precio');
 
