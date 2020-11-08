@@ -19,10 +19,13 @@ class HomeController extends Controller
                 switch (Auth::user()->role) {
                     case 1:
                         return redirect()->intended(route('estadistica.productos'));
+                        break;
                     case 2:
                         return redirect()->intended(route('producto.todos'));
+                        break;
                     case 3:
                         return redirect()->intended(route('venta.todos'));
+                        break;
                 }
             }
         }
