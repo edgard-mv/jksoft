@@ -38,28 +38,21 @@
   <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
   <a href="{{ route('operarios.todos') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
   <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
-  
-<!--Dropdown de las estadisticas -->
+  <!--Dropdown de las estadisticas -->
+  <div class="btn-group " style="width: 100%" >
+    <button type="button" class="btn dropdown-toggle" style="color: white;font-size: 17px;line-height: 40px; padding-right: 40px;" 
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-chart-line"></i><span>Estadísticas </span></button>
 
-<div class="btn-group " style="width: 100%" >
-  <button type="button" class="btn dropdown-toggle" style="color: white;font-size: 17px;line-height: 40px; padding-right: 40px;" 
-  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-chart-line"></i><span>Estadísticas </span></button>
-
-  <div class="dropdown-menu"  style="background-color:black ;font-size:14px;margin-left:95px">
-    <a class="dropdown-item hover-item" href="{{route('estadistica.productos') }}">Productos</a>
-    <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">Proveedores</a>
-    <a class="dropdown-item" href="{{route('estadistica.ventas')}}">Ventas</a>
+    <div class="dropdown-menu"  style="background-color:black ;font-size:14px;margin-left:95px">
+      <a class="dropdown-item hover-item" href="{{route('estadistica.productos') }}">Productos</a>
+      <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">Proveedores</a>
+      <a class="dropdown-item" href="{{route('estadistica.ventas')}}">Ventas</a>
+    </div>
   </div>
-</div>
-
-
- <!--Item de Copia de seguridad -->
-
-<a href="{{route('backup')}}"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
- <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
-
-
+  <!--Item de Copia de seguridad -->
+  <a href="{{route('backup')}}"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
+  <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
 </div>
 
 
@@ -74,13 +67,27 @@
     
     <!-- /#wrapper -->
     <div class="content">
-            <nav style="width:100%;text-transform: uppercase; text-align: center;padding-top:32px" class="navbar navbar-expand-lg navbar-light text-white border-bottom">
+            <nav style="width:100%;text-transform: uppercase; text-align: center;padding-top:32px" class="navbar navbar-expand-lg navbar-light text-white border-bottom justify-content-between">
                 <h4>@yield('titulo')</h4>
+                @auth
+                <div class="dropdown">
+                  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fas fa-user-tie" id="icon" alt="User Icon"></span>
+                    {{Auth::user()->name}}
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item" href="">Action1</a>
+                    <a class="dropdown-item" href="">Action2</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
+                  </div>
+                </div>
+                @endauth
             </nav>
         <div class="container-fluid" style="margin-top: 50px">
           <div class="card" style="margin-top:20px">
             <div class="card-header bg-warning text-black" style="text-transform: uppercase;">
-               <h5> @yield('pagetitle')</h5>
+              <h5> @yield('pagetitle')</h5>
             </div>
             <div class="card-body">
                  @yield('content')
