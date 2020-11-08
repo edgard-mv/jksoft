@@ -16,7 +16,14 @@ class HomeController extends Controller
             
             if (Auth::attempt($credentials)) {
                 error_log('passed');
-                return redirect()->intended(route('producto.todos'));
+                switch (Auth::user()->role) {
+                    case 1:
+                        return redirect()->intended(route('estadistica.productos'));
+                    case 2:
+                        return redirect()->intended(route('producto.todos'));
+                    case 3:
+                        return redirect()->intended(route('venta.todos'));
+                }
             }
         }
         return view('Auth.login');

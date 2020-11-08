@@ -10,6 +10,7 @@ use App\Proveedor;
 use App\ProveedorProducto;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 class ProductosController extends Controller
@@ -40,9 +41,12 @@ class ProductosController extends Controller
     ];
 
     public function getAll() {
-        $productos = Producto::with('proveedores')->get();
-
-        return view('producto.productos', compact('productos'));
+        if (Gate::allows('access-products')) {
+            $productos = Producto::with('proveedores')->get();
+    
+            return view('producto.productos', compact('productos'));
+        }
+        return redirect(url()->previous());
     }
 
     public function search(Request $request)
