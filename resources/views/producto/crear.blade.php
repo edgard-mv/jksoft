@@ -12,7 +12,37 @@
                     <strong><label for="nombre">Nombre del producto</label></strong>
                     <input type="text" class="form-control" autocomplete="off" name="nombre">
                 </div>
-    
+
+                <div class="form-group">
+                    <strong><label for="categoria">Categoría</label></strong>
+                    <select class="form-control" name="categoria">
+                        <option selected disabled>Categoría</option>
+                        <option value="Granos basicos">Granos básicos</option>
+                        <option value="Carnes y Embutidos">Carnes y Embutidos</option>
+                        <option value="Frutas y Verduras">Frutas y Verduras</option>
+                        <option value="Panadería y Dulces">Panadería y Dulces</option>
+                        <option value="Aceite, Pasta y Legumbres">Aceite, Pasta y Legumbres</option>
+                        <option value="Huevos y Lacteos">Huevos y Lácteos</option>
+                        <option value="Conservas y Comida Preparada">Conservas y Comida Preparada</option>
+                        <option value="Zumos y Bebidas">Zumos y Bebidas</option>
+                        <option value="Aperitivos">Aperitivos</option>
+                        <option value="Infantil">Infantil</option>
+                        <option value="Mariscos">Mariscos</option>
+                        <option value="Cosmeticos">Cosméticos</option>
+                        <option value="Hogar y Limpieza">Hogar y Limpieza</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <strong><label for="unidad">Unidad</label></strong>
+                    <select class="form-control" name="unidad">
+                        <option selected disabled>Unidad</option>
+                        <option value="botella">Botella</option>
+                        <option value="lata">Lata</option>
+                        <option value="bolsa">Bolsa</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <strong><label for="precio">Precio por unidad del producto</label></strong>
                     <input type="number" class="form-control"  autocomplete="off" name="precio" >

@@ -14,17 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::permanentRedirect('/', '/productos');
+Route::match(['get', 'post'], '/', 'HomeController@login')->name('login');
+
+Route::get('/logout', 'HomeController@logout')->name('logout');
 
 
-Route::get('/backup', 'BackupController@index')->name('backup');
-Route::get('/backup/guardar', 'BackupController@save')->name('backup.save');
+
+Route::get('/backup', 'BackupController@index')->middleware('auth')->name('backup');
+Route::get('/backup/guardar', 'BackupController@save')->middleware('auth')->name('backup.save');
 
 Route::get('manualu', function () {
     return view('manualuser');
-});
+})->middleware('auth');
 
-Route::name('estadistica.')->group(function () {
+Route::name('estadistica.')->middleware(['auth'])->group(function () {
 
     Route::get(
         '/estadisticas/proveedores/fechas', 
@@ -83,6 +86,7 @@ Route::name('pedidos.')->group(function () {
  });
 
 Route::name('producto.')->group(function () {
+Route::name('producto.')->middleware(['auth'])->group(function () {
 
     Route::get(
         '/productos',
@@ -133,7 +137,7 @@ Route::name('producto.')->group(function () {
 
 });
 
-Route::name('proveedor.')->group(function () {
+Route::name('proveedor.')->middleware(['auth'])->group(function () {
 
     Route::get(
         '/proveedores',
@@ -164,7 +168,7 @@ Route::name('proveedor.')->group(function () {
 
 });
 
-Route::name('operarios.')->group(function () {
+Route::name('operarios.')->middleware(['auth'])->group(function () {
 
    Route::get(
        '/operarios', 
@@ -195,7 +199,7 @@ Route::name('operarios.')->group(function () {
 
 });
 
-Route::name('venta.')->group(function () {
+Route::name('venta.')->middleware(['auth'])->group(function () {
     
     Route::get(
         '/ventas',
@@ -259,6 +263,7 @@ Route::name('venta.')->group(function () {
 
    
 
+});
 });
 
 
