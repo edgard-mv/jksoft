@@ -39,9 +39,9 @@
           </form>
       
           <!-- Remind Passowrd -->
-          <div id="formFooter">
+          {{-- <div id="formFooter">
             <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
-          </div>
+          </div> --}}
       
         </div>
     </div>

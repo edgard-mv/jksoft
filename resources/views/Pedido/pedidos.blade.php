@@ -4,23 +4,38 @@
 @section('content')
 
 
-<a class="btn btn-success" href="{{ route('pedidos.nuevo') }}">
-    <span class="fas fa-plus-square"></span>
-    <strong>Nuevo</strong>
-</a>
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
         <div class="table-responsive">
             <div class="container-fluid">
-                <table id="producttable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px">
+                <div id="toolbar">
+                    <a class="btn btn-success" href="{{ route('pedidos.nuevo') }}">
+                        <span class="fas fa-plus-square"></span>
+                        <strong>Nuevo</strong>
+                    </a>
+                </div>
+                <table id="producttable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px"
+                    data-toggle="table"
+                    data-search="true"
+                    data-show-columns="false"
+                    data-pagination="true"
+                    data-filter-control="true"
+                    data-show-search-clear-button="true"
+                    data-search-align="left"
+                    data-toolbar="#toolbar"
+                    data-toolbar-align="right"
+                    data-buttons-class="dark"
+                    data-locale="es-ES">
                     <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                        <th>ID</th>
-                        <th>Trabajador solicitante</th>
-                        <th>Cantidad de productos solicitados</th>
-                        <th>Total a pagar</th>
-                        <th>Estado del pedido</th>
-                        <th>Acciones</th>
+                        <tr>
+                            <th class="align-middle" data-sortable="true">ID</th>
+                            <th class="align-middle" data-sortable="true">Trabajador solicitante</th>
+                            <th class="align-middle" data-searchable="false">Cantidad de productos solicitados</th>
+                            <th class="align-middle" data-searchable="false" data-sortable="true">Total a pagar</th>
+                            <th data-field="estado"  data-filter-control="select">Estado del pedido</th>
+                            <th class="align-middle" data-searchable="false">Acciones</th>
+                        </tr>
                     </thead>
 
                     <tbody>
@@ -43,8 +58,9 @@
                                         </button>
                                     </a>
                                    <a href="{{ route('pedidos.detalles', ['id' => $pedido->id]) }}">
-                                        <button class="btn btn-primary">
-                                            <span class="fas fa-list-ul"> Detalles</span>
+                                        <button class="btn btn-info">
+                                            <span class="fas fa-info-circle"></span>
+                                            <strong>Detalles</strong>
                                         </button>
                                     </a>
 
