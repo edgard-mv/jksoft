@@ -36,7 +36,6 @@
 
   <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
   <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
-<<<<<<< HEAD
   <a href="{{ route('pedidos.todos') }}"><i class="fas fa-shopping-basket"></i><span>Pedidos</span></a>
   <a href="{{route('operarios.todos')}}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
   <a href="{{ route('venta.todos')}}"><i class="fas fa-coins"></i><span>Ventas</span></a>
@@ -62,7 +61,6 @@
 <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
 
 
-=======
   <a href="{{ route('operarios.todos') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
   <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
   <!--Dropdown de las estadisticas -->
@@ -80,12 +78,7 @@
   <!--Item de Copia de seguridad -->
   <a href="{{route('backup')}}"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
   <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
->>>>>>> 79549f0c644f66e62122d55b701a2e95bc353593
 </div>
-
-
-
-
 
     
     <!-- /#sidebar-wrapper --> 
