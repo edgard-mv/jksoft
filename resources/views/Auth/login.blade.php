@@ -33,8 +33,8 @@
           <!-- Login Form -->
           <form action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="contraseña">
+            <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña">
             <input type="submit" class="fadeIn fourth" value="Acceder">
           </form>
       
