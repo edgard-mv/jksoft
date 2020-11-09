@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Http\Response;
 
 class BackupController extends Controller
 {
@@ -14,10 +16,9 @@ class BackupController extends Controller
 
     function save(){
 
-        $resultado ="jksoftbd_laravel".\Carbon\Carbon::now()->toDateString() . '.sql';
+        $resultado ="jksoftbd_laravel".Carbon::now()->toDateString() . '.sql';
 
-        return response()->download(public_path($resultado));
-
+        return Response()->download(public_path($resultado));
     }
 
 
