@@ -40,6 +40,7 @@
   @if (Auth::user()->role === 1 or Auth::user()->role === 2)
     <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
     <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
+    <a href="{{ route('pedidos.todos') }}"><i class="fas fa-shopping-basket"></i><span>Pedidos</span></a>
   @endif
 
   @if (Auth::user()->role === 1 or Auth::user()->role === 3)  

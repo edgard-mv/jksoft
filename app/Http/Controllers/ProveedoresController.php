@@ -15,7 +15,7 @@ class ProveedoresController extends Controller
             return redirect(url()->previous());
         }
         
-        $proveedores = Proveedor::paginate(15);
+        $proveedores = Proveedor::all();
 
         return view('proveedores.proveedor', compact('proveedores'));
     }
