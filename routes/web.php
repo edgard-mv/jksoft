@@ -64,6 +64,37 @@ Route::name('estadistica.')->middleware(['auth'])->group(function () {
 
 });
 
+Route::name('pedidos.')->group(function () {
+
+    Route::get(
+        '/pedidos', 
+        'PedidosController@getAll')
+     ->name('todos');
+
+     Route::delete(
+        '/pedidos/{id}/remover',
+        'PedidosController@delete'
+    )->name('remover');
+
+    Route::match(
+        ['get', 'put'],
+        '/pedidos/nuevo',
+        'PedidosController@create'
+    )->name('nuevo');
+ 
+     Route::get(
+        '/pedido/{id}/detalles',
+        'PedidosController@details'
+     )->name('detalles');
+
+     Route::match(
+        ['get', 'patch'],
+        '/pedidos/{id}/editar',
+        'PedidosController@update'
+    )->name('editar');
+ 
+ });
+
 Route::name('producto.')->middleware(['auth'])->group(function () {
 
     Route::get(
@@ -239,4 +270,8 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
 
     });
 
+   
+
 });
+
+

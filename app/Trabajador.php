@@ -13,5 +13,6 @@ class Trabajador extends Model
 		return $this->hasMany('App\Salario');
     }
 
+
     protected $table = 'trabajadores';
 }
