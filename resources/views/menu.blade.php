@@ -88,8 +88,8 @@
                     {{Auth::user()->name}}
                   </button>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="">Action1</a>
-                    <a class="dropdown-item" href="">Action2</a>
+                    {{-- <a class="dropdown-item" href="">Action1</a>
+                    <a class="dropdown-item" href="">Action2</a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
                   </div>
