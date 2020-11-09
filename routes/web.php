@@ -82,10 +82,19 @@ Route::name('pedidos.')->group(function () {
         'PedidosController@create'
     )->name('nuevo');
  
+     Route::get(
+        '/pedido/{id}/detalles',
+        'PedidosController@details'
+     )->name('detalles');
+
+     Route::match(
+        ['get', 'patch'],
+        '/pedidos/{id}/editar',
+        'PedidosController@update'
+    )->name('editar');
  
  });
 
-Route::name('producto.')->group(function () {
 Route::name('producto.')->middleware(['auth'])->group(function () {
 
     Route::get(
@@ -263,7 +272,6 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
 
    
 
-});
 });
 
 

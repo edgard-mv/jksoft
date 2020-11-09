@@ -37,14 +37,14 @@
                             <td style="text-align:center">{{$pedido->estado}}</td>
                             <td>
                                 <div class="input-group-btn">
-                                   
+                                   <a href="{{ route('pedidos.editar', ['id' => $pedido->id]) }}"> 
                                         <button class="btn btn btn-warning">
                                             <span class="fas fa-pencil-alt"></span>
                                         </button>
                                     </a>
-                                   
+                                   <a href="{{ route('pedidos.detalles', ['id' => $pedido->id]) }}">
                                         <button class="btn btn-primary">
-                                            <span class="fas fa-list-ul"></span>
+                                            <span class="fas fa-list-ul"> Detalles</span>
                                         </button>
                                     </a>
 

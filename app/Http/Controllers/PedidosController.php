@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pedido;
 use App\Trabajador;
+use App\Proveedor;
 
 use Carbon\Carbon;
 use DB;
@@ -29,15 +30,44 @@ class PedidosController extends Controller
     public function create(Request $request) {
 
         $operariosDisponibles = Trabajador::all();
+        $proveedoresDisponibles = Proveedor::all();
         $fecha = Carbon::now();
 
         return view(
             'Pedido.crear',
             compact(
                 'operariosDisponibles',
+                'proveedoresDisponibles',
                 'fecha'
             )
         );
         }
+
+
+        public function update(Request $request) {
+
+            $operariosDisponibles = Trabajador::all();
+            $proveedoresDisponibles = Proveedor::all();
+            $fecha = Carbon::now();
+    
+            return view(
+                'Pedido.crear',
+                compact(
+                    'operariosDisponibles',
+                    'proveedoresDisponibles',
+                    'fecha'
+                )
+            );
+            }
+    
+
+
+        public function details(Request $request,$id) {
+                $pedido = Pedido::all()->find($id);
+    
+    
+                return view('Pedido.detalles', compact('pedido'));
+                }
+        
 
 }

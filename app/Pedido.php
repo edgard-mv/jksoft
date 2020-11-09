@@ -13,6 +13,11 @@ class Pedido extends Model
         return $this->belongsTo('App\Trabajador');
     }
 
+    public function productopedido() {
+        
+    }
+
+
     protected $table ='pedidos';
 
 }

@@ -10,10 +10,19 @@
                 @method('PUT')
                
                 <div class="form-group">
-                    <strong><label for="proveedores">Selecciona tu nombre</label></strong>
+                    <strong><label for="trabajadores">Selecciona tu nombre</label></strong>
                     <select class="form-control" name="operario_id" id="trabajadores" style="max-width:63%">
                         @foreach ($operariosDisponibles as $operario)
                             <option value="{{ $operario->id }}">{{ $operario->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <strong><label for="proveedores">Selecciona el nombre de la compañia proveedora</label></strong>
+                    <select class="form-control" name="proveedor_id" id="proveedores" style="max-width:63%">
+                        @foreach ($proveedoresDisponibles as $proveedor)
+                            <option value="{{ $proveedor->id }}">{{ $proveedor->empresa}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -24,7 +33,7 @@
                     <strong><label for="precio">Productos solicitados</label></strong>
 
                     <div class="input-group" style="align-content: center,margin-bottom:10px">
-                    <select class="form-control" name="produc" id="proveedores" style="max-width:53%">
+                    <select class="form-control" name="produc" id="productos" style="max-width:53%">
                         
                     </select>
                     <button class="btn btn-success" type="submit" style="margin-left: 5px">OK</button>
@@ -50,13 +59,13 @@
                 </div>
                                 
                 <div class="form-group">
-                    <strong><label for="cantidad">Estado</label></strong>                             
+                    <strong><label for="estado">Estado</label></strong>                             
                     <input type="text" class="form-control" style="max-width:53%" autocomplete="off" name="estado" value="Pendiente" readonly>
                 </div>
                                
     
                 <div class="form-group">
-                    <strong><label for="fecha">Fecha de la provisión</label></strong>
+                    <strong><label for="fecha">Fecha de la solicitud</label></strong>
                     <input type="date" name="fecha" style="max-width:53%" value="{{ date('Y-m-d', strtotime($fecha)) }}" class="form-control" autocomplete="off">
                 </div>
     
