@@ -9,11 +9,15 @@
     <script src="{{asset('js/app.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
-    <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    {{-- <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet"> --}}
+    <link href="{{asset('css/bootstrap-table.min.css')}}" rel="stylesheet">
 
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table-locale-all.min.js"></script>
+    {{-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script> --}}
+    <script src="{{asset('js/bootstrap-table.min.js')}}"></script>
+    {{-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script> --}}
+    <script src="{{asset('js/bootstrap-table-filter-control.min.js')}}"></script>
+    {{-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table-locale-all.min.js"></script> --}}
+    <script src="{{asset('js/bootstrap-table-locale-all.min.js')}}"></script>
 
       <!-- Custom styles for this template -->
     <link href="{{asset('css/simple-sidebar.css')}}" rel="stylesheet">
@@ -33,25 +37,32 @@
   <center>
     <h4><i class="fas fa-landmark"></i></h4>
   </center>
+  @if (Auth::user()->role === 1 or Auth::user()->role === 2)
+    <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
+    <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
+  @endif
 
-  <a href="{{ route('producto.todos') }}"><i class="fas fa-apple-alt"></i><span>Productos</span></a>
-  <a href="{{ route('proveedor.todos') }}"><i class="fas fa-box-open"></i><span>Proveedores</span></a>
-  <a href="{{ route('operarios.todos') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
-  <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
-  <!--Dropdown de las estadisticas -->
-  <div class="btn-group " style="width: 100%" >
-    <button type="button" class="btn dropdown-toggle" style="color: white;font-size: 17px;line-height: 40px; padding-right: 40px;" 
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-chart-line"></i><span>Estadísticas </span></button>
+  @if (Auth::user()->role === 1 or Auth::user()->role === 3)  
+    <a href="{{ route('venta.todos') }}"><i class="fas fa-coins"></i><span>Ventas</span></a>
+  @endif
 
-    <div class="dropdown-menu"  style="background-color:black ;font-size:14px;margin-left:95px">
-      <a class="dropdown-item hover-item" href="{{route('estadistica.productos') }}">Productos</a>
-      <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">Proveedores</a>
-      <a class="dropdown-item" href="{{route('estadistica.ventas')}}">Ventas</a>
+  @if (Auth::user()->role === 1)
+    <a href="{{ route('operarios.todos') }}"><i class="fas fa-user-tie"></i><span>Trabajadores</span></a>
+    <!--Dropdown de las estadisticas -->
+    <div class="btn-group " style="width: 100%" >
+      <button type="button" class="btn dropdown-toggle" style="color: white;font-size: 17px;line-height: 40px; padding-right: 40px;" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-chart-line"></i><span>Estadísticas </span></button>
+
+      <div class="dropdown-menu"  style="background-color:black ;font-size:14px;margin-left:95px">
+        <a class="dropdown-item hover-item" href="{{route('estadistica.productos') }}">Productos</a>
+        <a class="dropdown-item" href="{{route('estadistica.proveedores')}}">Proveedores</a>
+        <a class="dropdown-item" href="{{route('estadistica.ventas')}}">Ventas</a>
+      </div>
     </div>
-  </div>
+    <a href="{{route('backup')}}"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
+  @endif
   <!--Item de Copia de seguridad -->
-  <a href="{{route('backup')}}"><i class="fas fa-database"></i><span>Copia de seguridad</span></a>
   <a href="/manualu"><i class="fas fa-book-reader"></i><span>Manual de usuario</span></a>
 </div>
 

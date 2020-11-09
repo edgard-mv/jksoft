@@ -51,6 +51,10 @@ class ProductosController extends Controller
 
     public function search(Request $request)
     {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->isMethod('get') and $request->input('valor') and $request->input('tipo')) {
             $value = $request->input('valor');
             $type = $request->input('tipo');
@@ -92,6 +96,10 @@ class ProductosController extends Controller
     }
 
     public function update(Request $request, $id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         $producto = Producto::with('proveedores')->get()->find($id);
 
         // foreach ($producto->proveedores as $proveedor) {
@@ -128,6 +136,10 @@ class ProductosController extends Controller
     }
 
     public function create(Request $request) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->isMethod('put')) {
             if ($request->input('nombre') and $request->input('cantidad') and $request->input('precio') and $request->input('categoria') and $request->input('unidad')) {
                 $producto = new Producto;
@@ -165,12 +177,20 @@ class ProductosController extends Controller
     }
 
     public function delete($id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         Producto::destroy($id);
 
         return redirect()->route('producto.todos');    
     }
 
     public function proveedores($id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         $producto = Producto::with('proveedores')->get()->find($id);
         //$proveedoresDisponibles = DB::select('CALL spProveedores_GetAll()');
         $proveedoresDisponibles = Proveedor::all();
@@ -190,6 +210,10 @@ class ProductosController extends Controller
     }
 
     public function updateProveedor(Request $request, $producto_id, $id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->isMethod('patch')) {
             $producto = Producto::with('proveedores')->get()->find($producto_id);
             $proveedor = $producto->proveedores->find($id);
@@ -206,12 +230,20 @@ class ProductosController extends Controller
     }
 
     public function deleteProveedor($producto_id, $id=null) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         $producto = Producto::with('proveedores')->get()->find($producto_id);
         $producto->proveedores()->detach($id);
         return redirect()->route('producto.proveedores', ['id' => $producto_id]);
     }
 
     public function addProveedor(Request $request, $producto_id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->isMethod('put') and $request->input('proveedor_id') and $request->cantidad) {
             $producto = Producto::with('proveedores')->get()->find($producto_id);
             $producto->proveedores()->attach(

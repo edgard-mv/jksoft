@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Trabajador;
+use Illuminate\Support\Facades\Gate;
 use App\Salario;
 use DB;
 
@@ -12,6 +13,10 @@ class OperariosController extends Controller
 {
 
     public function getAll() {
+        if (Gate::denies('access-employee')) {
+            return redirect(url()->previous());
+        }
+
         //$trabajadores = DB::select('CALL spOperarios_GetAll()');
         $trabajadores = Trabajador::with('salarios')->paginate(15);
 
@@ -21,6 +26,10 @@ class OperariosController extends Controller
     }
 
     public function create(Request $request) {
+        if (Gate::denies('access-employee')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->isMethod('put')) {
             if ($request->input('nombret') and $request->input('telefonot')) {
                 //datos del operario
@@ -50,6 +59,10 @@ class OperariosController extends Controller
 
     //editar datos del trabajador
     public function update(Request $request, $id) {
+        if (Gate::denies('access-employee')) {
+            return redirect(url()->previous());
+        }
+
         $operador = Trabajador::find($id);
 
         $salario=Salario::where([
@@ -91,6 +104,9 @@ class OperariosController extends Controller
     }
 
     public function search(Request $request) {
+        if (Gate::denies('access-employee')) {
+            return redirect(url()->previous());
+        }
         
         if ($request->isMethod('get') and $request->input('valor')){
            
@@ -107,6 +123,9 @@ class OperariosController extends Controller
     }
 
     public function delete($id) {
+        if (Gate::denies('access-employee')) {
+            return redirect(url()->previous());
+        }
        
         Trabajador::destroy($id);
 

@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Proveedor;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 class ProveedoresController extends Controller
 {
     public function getAll() {
+        if (Gate::denies('access-providers')) {
+            return redirect(url()->previous());
+        }
         
         $proveedores = Proveedor::paginate(15);
 
@@ -17,6 +21,10 @@ class ProveedoresController extends Controller
     }
 
     public function search(Request $request) {
+        if (Gate::denies('access-providers')) {
+            return redirect(url()->previous());
+        }
+        
         if ($request->isMethod('get') and $request->input('valor') and $request->input('tipo')) {
             $value = $request->input('valor');
             $type = $request->input('tipo');
@@ -41,6 +49,10 @@ class ProveedoresController extends Controller
     }
 
     public function create(Request $request) {
+        if (Gate::denies('access-providers')) {
+            return redirect(url()->previous());
+        }
+        
         if ($request->isMethod('put')) {
             if ($request->input('nombre') and $request->input('empresa')) {
                 $proveedor = new Proveedor;
@@ -55,6 +67,10 @@ class ProveedoresController extends Controller
     }
 
     public function delete($id) {
+        if (Gate::denies('access-providers')) {
+            return redirect(url()->previous());
+        }
+        
         $proveedor = Proveedor::find($id);
         
         $proveedor->productos()->each(function ($producto) {
@@ -70,6 +86,10 @@ class ProveedoresController extends Controller
     }
 
     public function update(Request $request, $id) {
+        if (Gate::denies('access-providers')) {
+            return redirect(url()->previous());
+        }
+        
         $proveedor = Proveedor::find($id);
 
         if ($request->isMethod('patch')) {
