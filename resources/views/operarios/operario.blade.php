@@ -4,26 +4,44 @@
 @section('content')
 
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12  col-xs-8" >
         @include('operarios.buscar_o')
     </div> 
-</div>
+</div> --}}
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
         <div class="table-responsive">
             <div class="container-fluid">
-                <table id="Worktable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px">
+                <div id="toolbar">
+                    <a class="btn btn-success" href="{{ route('operarios.nuevo') }}">
+                        <span class="fas fa-plus-square"></span>
+                        <strong>Nuevo</strong>
+                    </a>
+                </div>
+                <table id="Worktable" class="table table-striped table-bordered nowrap" cellspacing="1"  style="border-collapse: separate;margin-right:40px"
+                    data-toggle="table"
+                    data-search="true"
+                    data-show-columns="false"
+                    data-pagination="true"
+                    data-show-search-clear-button="true"
+                    data-search-align="left"
+                    data-toolbar="#toolbar"
+                    data-toolbar-align="right"
+                    data-buttons-class="dark"
+                    data-locale="es-ES">
                     <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                        <th>Nombre del trabajador</th>
-                        <th>Teléfono</th>
-                        <th>Edad</th>
-                        <th>Horas laboradas</th>
-                        <th>Pago por hora</th>
-                        <th>Horas Extras</th>
-                        <th>Salario</th>
-                        <th>Acción</th>
+                        <tr>
+                            <th class="align-middle" data-sortable="true">Nombre del trabajador</th>
+                            <th class="align-middle">Teléfono</th>
+                            <th class="align-middle" data-searchable="false">Edad</th>
+                            <th class="align-middle" data-searchable="false">Horas laboradas</th>
+                            <th class="align-middle" data-searchable="false">Pago por hora</th>
+                            <th class="align-middle" data-searchable="false">Horas Extras</th>
+                            <th class="align-middle" data-searchable="false" data-sortable="true">Salario</th>
+                            <th class="align-middle" data-searchable="false">Acción</th>
+                        </tr>
                     </thead>
 
                     <tbody>

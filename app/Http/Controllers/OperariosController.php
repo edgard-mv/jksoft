@@ -18,7 +18,7 @@ class OperariosController extends Controller
         }
 
         //$trabajadores = DB::select('CALL spOperarios_GetAll()');
-        $trabajadores = Trabajador::with('salarios')->paginate(15);
+        $trabajadores = Trabajador::with('salarios')->get();
 
 
         return view('operarios.operario', compact('trabajadores'));
@@ -112,7 +112,7 @@ class OperariosController extends Controller
            
             $nombre = $request->input('valor');
 
-            $trabajadores = Trabajador::where('nombre', 'like', '%'. $nombre .'%')->with('salarios')->paginate(15);
+            $trabajadores = Trabajador::where('nombre', 'like', '%'. $nombre .'%')->with('salarios')->get();
 
 
             return view('operarios.operario', compact('trabajadores'));

@@ -15,7 +15,7 @@
         <div class="table-responsive">
             <div class="container-fluid">
                 <div id="toolbar">
-                    <a class="btn btn-success" href="{{ route('producto.nuevo') }}" style="margin-left:650px">
+                    <a class="btn btn-success" href="{{ route('producto.nuevo') }}">
                         <span class="fas fa-plus-square"></span>
                         <strong>Nuevo</strong>
                     </a>
@@ -37,7 +37,7 @@
                             <th class="align-middle" data-sortable="true">ID</th>
                             <th class="align-middle" data-sortable="true">Nombre del producto</th>
                             <th class="align-middle" data-searchable="false">Stock</th>
-                            <th data-field="categoria" data-filter-control="select">Categoría</th>
+                            <th data-field="categoria"  data-filter-control="select">Categoría</th>
                             <th class="align-middle">Empresa Proveedora</th>
                             <th class="align-middle" data-searchable="false" data-sortable="true">Fecha</th>
                             <th class="align-middle" data-searchable="false">Precio por unidad</th>

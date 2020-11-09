@@ -15,7 +15,7 @@
         <div class="table-responsive" >
             <div class="container-fluid">
                 <div id="toolbar">
-                    <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}" style="margin-left:650px">
+                    <a class="btn btn-success" href="{{ route('proveedor.nuevo') }}">
                         <span class="fas fa-plus-square"></span>
                         <strong>Nuevo</strong>
                     </a>
@@ -25,7 +25,6 @@
                     data-search="true"
                     data-show-columns="false"
                     data-pagination="true"
-                    data-filter-control="true"
                     data-show-search-clear-button="true"
                     data-search-align="left"
                     data-toolbar="#toolbar"

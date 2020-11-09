@@ -15,7 +15,7 @@ class VentasController extends Controller
 {
     public function getAll() {
         if (Gate::allows('access-sales')) {
-            $ventas = Venta::with('productos')->paginate(15);
+            $ventas = Venta::with('productos')->get();
     
             foreach ($ventas as $venta) {
                 if ($venta->contado()->exists()) {
@@ -44,7 +44,7 @@ class VentasController extends Controller
         $type = $request->input('tipo');
 
         if ($type == "contado") {
-            $ventas = Venta::with('productos')->has('contado')->paginate(15);
+            $ventas = Venta::with('productos')->has('contado')->get();
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'contado';
@@ -55,7 +55,7 @@ class VentasController extends Controller
                 // });
             });
         } elseif ($type == "credito") {
-            $ventas = Venta::with('productos')->has('credito')->paginate(15);
+            $ventas = Venta::with('productos')->has('credito')->get();
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'credito';
