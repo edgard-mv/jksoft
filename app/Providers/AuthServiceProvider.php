@@ -28,10 +28,19 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('access-products', function ($user) {
             return $user->role === 1 or $user->role === 2;
         });
+        Gate::define('access-providers', function ($user) {
+            return $user->role === 1 or $user->role === 2;
+        });
         Gate::define('access-sales', function ($user) {
             return $user->role === 1 or $user->role === 3;
         });
         Gate::define('access-statistics', function ($user) {
+            return $user->role === 1;
+        });
+        Gate::define('access-backup', function ($user) {
+            return $user->role === 1;
+        });
+        Gate::define('access-employee', function ($user) {
             return $user->role === 1;
         });
     }

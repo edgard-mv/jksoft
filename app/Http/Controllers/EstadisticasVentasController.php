@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
+use Illuminate\Support\Facades\Gate;
 use Creditos;
 use Contados;
 
@@ -13,7 +14,9 @@ use Contados;
 class EstadisticasVentasController extends Controller
 {
     function index(){
-
+        if (Gate::denies('access-statistics')) {
+            return redirect(url()->previous());
+        }
         
         $contados= DB::select('SELECT 
         COUNT(venta_id) as ventasobtenidas,
@@ -52,6 +55,9 @@ class EstadisticasVentasController extends Controller
 
 
         function Dates(Request $request){
+            if (Gate::denies('access-statistics')) {
+                return redirect(url()->previous());
+            }
 
             if ($request->isMethod('get') and $request->input('fechainicio') and $request->input('fechafin')) {
                 {

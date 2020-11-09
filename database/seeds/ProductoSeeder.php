@@ -1919,7 +1919,7 @@ class ProductoSeeder extends Seeder
 
         DB::table('productos')->insert([
             'nombre'=>'Aceite Mazola medio galon ',
-            'categoria'=>'caja',
+            'categoria'=>'Granos basicos',
             'unidad'=>'paquete (n)',
             'cantidad'=>5,
             'precio'=>135, 'created_at'=>Carbon::now()->format('Y-m-d'), 'updated_at'=>Carbon::now()->format('Y-m-d')      

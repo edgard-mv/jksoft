@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use DB;
 use Productos;
 
@@ -10,6 +11,9 @@ class EstadisticaProveedorController extends Controller
 {
 
     public function index(){
+        if (Gate::denies('access-statistics')) {
+            return redirect(url()->previous());
+        }
 
         $total_proveedor=DB::select('SELECT
         COUNT(empresa) as total_p
@@ -37,6 +41,9 @@ class EstadisticaProveedorController extends Controller
     }
 
     public function Dates(Request $request){
+        if (Gate::denies('access-statistics')) {
+            return redirect(url()->previous());
+        }
 
         if ($request->isMethod('get') and $request->input('fechainicio') and $request->input('fechafin')) {
         {

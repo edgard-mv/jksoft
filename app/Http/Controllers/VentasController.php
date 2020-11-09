@@ -8,34 +8,43 @@ use App\Venta;
 use App\Producto;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 
 class VentasController extends Controller
 {
     public function getAll() {
-        $ventas = Venta::with('productos')->paginate(15);
-
-        foreach ($ventas as $venta) {
-            if ($venta->contado()->exists()) {
-                $venta['tipo'] = 'contado';
-                $venta['monto_total'] = $venta->contado->monto;
-            } elseif ($venta->credito()->exists()) {
-                $venta['tipo'] = 'credito';
-
-                $venta['monto_total'] = $venta->productos->reduce(function ($total, $producto) {
-                    return $total + $producto->pivot->monto;
-                });
+        if (Gate::allows('access-sales')) {
+            $ventas = Venta::with('productos')->get();
+    
+            foreach ($ventas as $venta) {
+                if ($venta->contado()->exists()) {
+                    $venta['tipo'] = 'contado';
+                    $venta['monto_total'] = $venta->contado->monto;
+                } elseif ($venta->credito()->exists()) {
+                    $venta['tipo'] = 'credito';
+    
+                    $venta['monto_total'] = $venta->productos->reduce(function ($total, $producto) {
+                        return $total + $producto->pivot->monto;
+                    });
+                }
             }
+    
+            return view('ventas.venta', compact('ventas'));
         }
 
-        return view('ventas.venta', compact('ventas'));
+        return redirect(url()->previous());
     }
 
     public function getSaleBy(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $type = $request->input('tipo');
 
         if ($type == "contado") {
-            $ventas = Venta::with('productos')->has('contado')->paginate(15);
+            $ventas = Venta::with('productos')->has('contado')->get();
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'contado';
@@ -46,7 +55,7 @@ class VentasController extends Controller
                 // });
             });
         } elseif ($type == "credito") {
-            $ventas = Venta::with('productos')->has('credito')->paginate(15);
+            $ventas = Venta::with('productos')->has('credito')->get();
 
             $ventas->each(function ($venta) {
                 $venta['tipo'] = 'credito';
@@ -61,6 +70,10 @@ class VentasController extends Controller
     }
 
     public function details(Request $request, $tipo, $id) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         if ($tipo == 'contado') {
             $venta = Venta::with('productos')->has('contado')->get()->find($id);
 
@@ -91,6 +104,10 @@ class VentasController extends Controller
     }
 
     public function createContado(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $order = session()->get('order');
 
         if (!$order) {
@@ -157,6 +174,10 @@ class VentasController extends Controller
     }
 
     public function searchProductOrder(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $value = $request->input('value');
         $results = collect();
         if ($value and strlen($value) >= 3) {
@@ -168,6 +189,10 @@ class VentasController extends Controller
     }
 
     public function addToOrder(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $id = $request->input('producto_id');
 
         $producto = Producto::find($id);
@@ -203,6 +228,10 @@ class VentasController extends Controller
     }
 
     public function removeFromOrder(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         if ($request->id) {
 
             $order = session()->get('order');
@@ -222,6 +251,10 @@ class VentasController extends Controller
     }
 
     public function createCredito(Request $request) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $order = session()->get('order');
         $fecha = Carbon::now();
         
@@ -293,6 +326,10 @@ class VentasController extends Controller
     }
 
     public function addPayment(Request $request, $id) {
+        if (Gate::denies('access-sales')) {
+            return redirect(url()->previous());
+        }
+
         $venta = Venta::has('credito')->get()->find($id);
         $fecha = Carbon::now();
         $msgs = [];

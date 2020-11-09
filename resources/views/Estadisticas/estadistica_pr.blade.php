@@ -26,10 +26,10 @@
       <div class="form-group">
         <form  action="{{route('estadistica.actualizar.proveedor')}}" method="get" >
         <strong><label for="fechainicio" >Fecha de inicio:</label></strong>
-        <input type="date" required name="fechainicio" id="fechainicio" min="2019-08-04" max="2020-07-31" >
+        <input type="date" required name="fechainicio" id="fechainicio" min="2019-08-04" max="2021-07-31" >
 
         <strong><label for="fechafin" style="margin-left: 10px">Fecha de fin:</label></strong>
-        <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2020-07-31"  value="<?php echo date("Y-m-d"); ?>" >
+        <input type="date" name="fechafin" id="fechafin" min="2019-08-04" max="2021-07-31"  value="<?php echo date("Y-m-d"); ?>" >
 
         <button type="submit" class="btn btn-danger rounded"><i class="fas fa-retweet"></i></button>
 
