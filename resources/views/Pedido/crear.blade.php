@@ -43,23 +43,15 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
                             <div class="table-responsive" style="margin-top:20px">
-                                <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;"
+                                <table id="table" class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;"
                                     data-toggle="table"
-                                    {{-- data-search="true" --}}
                                     data-show-columns="false"
-                                    data-checkbox-header="false"
-                                    data-click-to-select="true"
-                                    {{-- data-pagination="true" --}}
-                                    {{-- data-show-search-clear-button="true" --}}
-                                    {{-- data-search-align="left" --}}
-                                    {{-- data-toolbar="#toolbar" --}}
-                                    {{-- data-toolbar-align="right" --}}
-                                    {{-- data-buttons-class="dark" --}}
-                                    data-locale="es-ES">            
+                                    {{-- data-checkbox-header="false" --}}
+                                    data-locale="es-ES">
                                     <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
                                         <tr>
                                             <th data-field="state" data-checkbox="true"></th>
-                                            <th>ID</th>
+                                            <th data-field="id">ID</th>
                                             <th>Producto</th>
                                             <th>Precio por unidad</th>
                                             <th>Cantidad</th>
@@ -108,7 +100,7 @@
             //alert(data);
             $("#productos").html(data);
         });
-    })
+    });
 
 </script>
 

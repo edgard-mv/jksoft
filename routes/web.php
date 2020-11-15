@@ -64,7 +64,7 @@ Route::name('estadistica.')->middleware(['auth'])->group(function () {
 
 });
 
-Route::name('pedidos.')->group(function () {
+Route::name('pedidos.')->middleware(['auth'])->group(function () {
 
     Route::get(
         '/pedidos', 

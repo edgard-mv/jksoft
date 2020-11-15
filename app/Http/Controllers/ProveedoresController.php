@@ -111,7 +111,6 @@ class ProveedoresController extends Controller
             $proveedor = Proveedor::with('productos')->get()->find($request->input('provider_id'));
             
             $productos = $proveedor->productos;
-            error_log('products()');
 
             $htmlResults = view('proveedores.lista_productos', compact('productos'))->render();
 

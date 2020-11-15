@@ -26,6 +26,7 @@ class Pedido extends Model
     //     return $this->belongsTo('App\Producto');
     // }
 
+    protected $fillable = ['cantidad_total', 'monto_total', 'estado'];
 
     protected $table ='pedidos';
 
