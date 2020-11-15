@@ -28,4 +28,9 @@ class Producto extends Model
         return $this->belongsToMany('App\Venta', 'producto_venta')
                         ->withPivot('cantidad_producto', 'monto');
     }
+
+    public function pedidos() {
+        return $this->belongsToMany('App\Pedido', 'producto_pedido')
+                        ->withPivot('cantidad_producto', 'fecha');
+    }
 }

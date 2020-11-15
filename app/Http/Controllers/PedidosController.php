@@ -70,11 +70,11 @@ class PedidosController extends Controller
 
 
         public function details(Request $request,$id) {
-                $pedido = Pedido::with('producto_pedido','trabajador','productos')->get()->find($id);
+            $pedido = Pedido::with('producto_pedido','trabajador','productos')->get()->find($id);
 
-
-                return view('Pedido.detalles', compact('pedido'));
-                }
+            return view('Pedido.detalles', compact('pedido'));
+            // return compact('pedido');
+        }
         
 
 }

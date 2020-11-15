@@ -13,13 +13,18 @@ class Pedido extends Model
         return $this->belongsTo('App\Trabajador');
     }
 
+    public function productos() {
+        return $this->belongsToMany('App\Producto', 'producto_pedido')
+                        ->withPivot('cantidad_producto', 'fecha');
+    }
+
     public function producto_pedido() {
         return $this->hasMany('App\ProductoPedido');
     }
 
-    public function productos() {
-        return $this->belongsTo('App\Producto');
-    }
+    // public function productos() {
+    //     return $this->belongsTo('App\Producto');
+    // }
 
 
     protected $table ='pedidos';
