@@ -5,21 +5,20 @@
 
     <div  class="row justify-content-center">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <form action="{{ route('pedidos.nuevo') }}" method="post">
+            <form action="{{ route('pedidos.editar', ['id' => $pedido->id])  }}" method="post">
                 @csrf
-                @method('PUT')
-               
+                @method('PATCH')
                 <div class="form-group">
                     <strong><label for="trabajadores">Trabajador quien realizó pedido</label></strong>
                     <input class="form-control" name="operario_id" id="trabajadores" style="max-width:63%"
-                            value="{{ $operario->nombre }}" readonly>
+                            value="{{ $pedido->trabajador->nombre }}" readonly>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <strong><label for="proveedores">Compañia proveedora</label></strong>
                     <input class="form-control" name="proveedor_id" id="proveedores" style="max-width:63%"
-                    value="{{ $proveedor->empresa}}" readonly>
+                    value="" readonly>
                 </div>
 
     
@@ -55,9 +54,9 @@
                                 
                 <div class="form-group">
                     <strong><label for="estado">Estado</label></strong>                             
-                    <select class="form-control" name="estado" id="estado_pedido" style="max-width:63%">
-                            <option value="Realizado"></option>
-                            <option value="Pendiente"></option>
+                    <select class="form-control" name="estado" style="max-width:63%">
+                            <option value="realizado">Realizado</option>
+                            <option value="pendiente">Pendiente</option>
                     </select>
                 </div>
                                

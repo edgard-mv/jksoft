@@ -9,7 +9,5 @@ class ProductoPedido extends Model
 {
     use SoftDeletes;
 
-   
-
     protected $table = 'producto_pedido';
 }

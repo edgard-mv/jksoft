@@ -57,6 +57,7 @@
                                             <span class="fas fa-pencil-alt"></span>
                                         </button>
                                     </a>
+                                    
                                    <a href="{{ route('pedidos.detalles', ['id' => $pedido->id]) }}">
                                         <button class="btn btn-info">
                                             <span class="fas fa-info-circle"></span>

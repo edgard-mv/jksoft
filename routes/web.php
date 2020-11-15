@@ -89,7 +89,7 @@ Route::name('pedidos.')->group(function () {
 
      Route::match(
         ['get', 'patch'],
-        '/pedidos/{id}/editar',
+        '/pedido/{id}/editar',
         'PedidosController@update'
     )->name('editar');
  

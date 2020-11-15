@@ -13,8 +13,12 @@ class Pedido extends Model
         return $this->belongsTo('App\Trabajador');
     }
 
-    public function productopedido() {
-        
+    public function producto_pedido() {
+        return $this->hasMany('App\ProductoPedido');
+    }
+
+    public function productos() {
+        return $this->belongsTo('App\Producto');
     }
 
 

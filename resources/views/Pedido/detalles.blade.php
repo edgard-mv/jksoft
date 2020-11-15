@@ -20,8 +20,8 @@
                     </thead>
                         <tr style="color: rgb(14,14,14);background-color:#CDE4F7; text-align:center">
                             <td style="text-align:left"></td>
-                            <td></td>
-                            <td></td>
+                        <td></td>
+                        <td></td>
                         </tr>
                    
                 </table>
@@ -30,6 +30,8 @@
     </div>           
     <hr>
 
-    <h5 style="margin-left:20px"><strong>Estado:</strong> </h5>
-    <h5 style="margin-left:20px"><strong>Fecha del pedido:</strong> </h5>
+    <h5 style="margin-left:20px"><strong>Trabajador encargado:</strong> {{$pedido->trabajador->nombre}}</h5>
+    <h5 style="margin-left:20px"><strong>Total de productos:</strong>{{$pedido->cantidad_total}} </h5>
+    <h5 style="margin-left:20px"><strong>Estado:</strong>{{$pedido->estado}} </h5>
+    <h5 style="margin-left:20px"><strong>Fecha del pedido:</strong> {{$pedido->producto_pedido->fecha}}</h5>
 @endsection
