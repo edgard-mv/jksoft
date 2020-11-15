@@ -8,6 +8,7 @@ use App\Proveedor;
 use App\Producto;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 use Illuminate\Http\Request;
