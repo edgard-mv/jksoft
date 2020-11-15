@@ -174,6 +174,11 @@ Route::name('proveedor.')->middleware(['auth'])->group(function () {
         '/proveedores/{id}/editar',
         'ProveedoresController@update'
     )->name('editar');
+    
+    Route::get(
+        '/proveedores/productos',
+        'ProveedoresController@products'
+    )->name('productos');
 
 });
 

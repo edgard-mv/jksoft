@@ -105,4 +105,17 @@ class ProveedoresController extends Controller
 
         return view('proveedores.editar_proveedor', compact('proveedor'));
     }
+
+    public function products(Request $request) {
+        if ($request->input('provider_id')) {
+            $proveedor = Proveedor::with('productos')->get()->find($request->input('provider_id'));
+            
+            $productos = $proveedor->productos;
+            error_log('products()');
+
+            $htmlResults = view('proveedores.lista_productos', compact('productos'))->render();
+
+            return $htmlResults;
+        }
+    }
 }
