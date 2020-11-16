@@ -71,6 +71,7 @@ class PedidosController extends Controller
                 $selectedItems->each(function ($item, $key) use($pedido, $fecha) {
                     $pedido->productos()->attach($key, [
                         'cantidad_producto' => $item['quantity'],
+                        'precio_compra' => $item['price'],
                         'fecha' => $fecha
                     ]);
                 });
