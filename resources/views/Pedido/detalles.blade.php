@@ -25,7 +25,7 @@
                         <tr style="color: rgb(14,14,14);background-color:#CDE4F7; text-align:center">
                         <td style="text-align:left">{{$product->nombre}}</td>
                         <td>{{$product->pivot->cantidad_producto}} {{$product->unidad}}</td>
-                        <td></td>
+                        <td>@money($product->pivot->precio_compra)</td>
                         </tr>
                     @endforeach
                     <td colspan="3" style="background-color: rgba(195, 255, 195, 0.623)"><strong>Total de productos:</strong>{{$pedido->cantidad_total}}</td>
