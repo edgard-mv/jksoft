@@ -92,6 +92,11 @@ Route::name('pedidos.')->middleware(['auth'])->group(function () {
         '/pedido/{id}/editar',
         'PedidosController@update'
     )->name('editar');
+
+    Route::get(
+        '/pedido/{id}/saldar',
+        'PedidosController@payOff'
+    )->name('saldar');
  
  });
 

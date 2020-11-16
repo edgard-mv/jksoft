@@ -127,5 +127,23 @@ class PedidosController extends Controller
              //return compact('pedido');
         }
         
+    public function payOff($id) {
+        if (Gate::denies('access-products')) {
+            return redirect(url()->previous());
+        }
+
+        $pedido = Pedido::with('trabajador', 'productos')->get()->find($id);
+
+        $pedido->productos->each(function ($producto) {
+            error_log('entró');
+            $producto->cantidad += $producto->pivot->cantidad_producto;
+            $producto->save();
+        });
+
+        $pedido->estado = 'Realizado';
+        $pedido->save();
+        
+        return redirect()->route('pedidos.todos');    
+    }
 
 }

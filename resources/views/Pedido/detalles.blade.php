@@ -7,6 +7,12 @@
             <span class="fas fa-arrow-left"></span>
             <strong>Regresar</strong>
         </a>
+        @if ($pedido->estado != 'Realizado')
+            <a href="{{ route('pedidos.saldar', ['id' => $pedido->id]) }}" class="btn btn-success" style="margin-left:900px">
+                <span class="fas fa-check-square"></span>
+                <strong>Saldar</strong>
+            </a>
+        @endif
     </div>
     <br>
     <div class="row">
