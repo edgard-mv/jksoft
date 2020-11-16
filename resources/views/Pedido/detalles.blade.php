@@ -18,12 +18,18 @@
                         <th>Cantidad</th>
                         <th>Costo unitario</th>
                     </thead>
+
+                    
+                    <tbody>
+                    @foreach ($pedido->productos as $product)
                         <tr style="color: rgb(14,14,14);background-color:#CDE4F7; text-align:center">
-                            <td style="text-align:left"></td>
-                        <td></td>
+                        <td style="text-align:left">{{$product->nombre}}</td>
+                        <td>{{$product->pivot->cantidad_producto}} {{$product->unidad}}</td>
                         <td></td>
                         </tr>
-                   
+                    @endforeach
+                    <td colspan="3" style="background-color: rgba(195, 255, 195, 0.623)"><strong>Total de productos:</strong>{{$pedido->cantidad_total}}</td>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -31,7 +37,6 @@
     <hr>
 
     <h5 style="margin-left:20px"><strong>Trabajador encargado:</strong> {{$pedido->trabajador->nombre}}</h5>
-    <h5 style="margin-left:20px"><strong>Total de productos:</strong>{{$pedido->cantidad_total}} </h5>
     <h5 style="margin-left:20px"><strong>Estado:</strong>{{$pedido->estado}} </h5>
     <h5 style="margin-left:20px"><strong>Fecha del pedido:</strong> {{$pedido->productos[0]->pivot->fecha}}</h5>
 @endsection

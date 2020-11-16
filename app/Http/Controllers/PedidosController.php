@@ -97,12 +97,12 @@ class PedidosController extends Controller
 
         public function update(Request $request,$id) {
 
-            $pedido = Pedido::with('producto_pedido','trabajador','productos')->get()->find($id);
+            $pedido = Pedido::with('trabajador','productos')->get()->find($id);
 
             if ($request->isMethod('patch')) {
 
                 //Cambio del estado del producto 
-                if ($request->input('estado')) {
+                if ($request->input('estado') ) {
                     $pedido->estado = $request->input('estado');
                 }
                 
@@ -122,8 +122,8 @@ class PedidosController extends Controller
         public function details(Request $request,$id) {
             $pedido = Pedido::with('trabajador','productos')->get()->find($id);
 
-            return view('Pedido.detalles', compact('pedido'));
-            // return compact('pedido');
+             return view('Pedido.detalles', compact('pedido'));
+             //return compact('pedido');
         }
         
 

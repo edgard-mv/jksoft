@@ -26,41 +26,40 @@
                     
                     <strong><label for="precio">Productos solicitados</label></strong>
 
-                    <div class="input-group" style="align-content: center,margin-bottom:10px">
-                    <select class="form-control" name="produc" id="productos" style="max-width:53%">
-                        
-                    </select>
-                    <button class="btn btn-success" type="submit" style="margin-left: 5px">OK</button>
-                    </div>
+                  
                     </span>
-                    
-                    <table class="table table-bordered " style="margin-top: 5px">
-                        <thead style="background-color:mistyrose">
-                          <tr>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Cantidad</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td> </td>
-                            <td> </td>
-                           
-                          </tr>
-                        </tbody>
-                      </table>
-
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                            <div class="table-responsive" style="margin-top:20px">
+                                <table id="table" class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;"
+                                    data-toggle="table"
+                                    data-show-columns="false"
+                                    {{-- data-checkbox-header="false" --}}
+                                    data-locale="es-ES">
+                                    <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
+                                        <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th data-field="id">ID</th>
+                                            <th>Producto</th>
+                                            <th>Precio por unidad</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody id="productos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        
                 </div>
                                 
                 <div class="form-group">
                     <strong><label for="estado">Estado</label></strong>                             
-                    <select class="form-control" name="estado" style="max-width:63%">
-                            <option value="realizado">Realizado</option>
-                            <option value="pendiente">Pendiente</option>
-                    </select>
+                    <input type="text" class="form-control" style="max-width:53%" autocomplete="off" name="estado" value="Pendiente" readonly>
                 </div>
                                
-    
                 <div class="form-group" style="text-align:center">
                     <button class="btn btn-primary" type="submit">
                         <span class="fas fa-save"></span>
@@ -74,5 +73,17 @@
             </form>
         </div>
     </div>
+
+    <script>
+        $("#proveedores").change(function () {
+            let currentID = $(this).val();
+            // alert(currentID);
+            $.get("{{ route('proveedor.productos') }}", { provider_id: currentID }).done(function(data) {
+                //alert(data);
+                $("#productos").html(data);
+            });
+        });
+    
+    </script>
 
 @endsection

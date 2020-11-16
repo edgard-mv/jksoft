@@ -33,12 +33,7 @@
                     
                     <strong><label for="precio">Productos solicitados</label></strong>
 
-                    {{-- <div class="input-group" style="align-content: center,margin-bottom:10px">
-                    <select class="form-control" name="products" id="productos" style="max-width:53%">
-                        <option value="" selected disabled>producto</option>
-                    </select>
-                    <button id="agregarProducto" class="btn btn-success" type="submit" style="margin-left: 5px">OK</button>
-                    </div> --}}
+                  
                     </span>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">

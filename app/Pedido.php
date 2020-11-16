@@ -18,13 +18,6 @@ class Pedido extends Model
                         ->withPivot('cantidad_producto', 'fecha');
     }
 
-    // public function producto_pedido() {
-    //     return $this->hasMany('App\ProductoPedido');
-    // }
-
-    // public function productos() {
-    //     return $this->belongsTo('App\Producto');
-    // }
 
     protected $fillable = ['cantidad_total', 'monto_total', 'estado'];
 
