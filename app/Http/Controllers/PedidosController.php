@@ -20,7 +20,7 @@ class PedidosController extends Controller
             return redirect(url()->previous());
         }
 
-        $pedidos = Pedido::with('trabajador')->get();
+        $pedidos = Pedido::with('trabajador','productos')->get();
         return view('Pedido.pedidos',compact('pedidos'));
     }
 
@@ -98,24 +98,27 @@ class PedidosController extends Controller
 
         public function update(Request $request,$id) {
 
-            $pedido = Pedido::with('trabajador','productos')->get()->find($id);
-
+            $pedido = Pedido::with('trabajador','productos')->get()->find($id);            
+            
             if ($request->isMethod('patch')) {
 
-                //Cambio del estado del producto 
-                if ($request->input('estado') ) {
-                    $pedido->estado = $request->input('estado');
-                }
-                
-                $pedido->save();
     
                 //validaciones de productos
+                if ($request->input('precio') ) {
+                    $pedido->pivot->precio_compra = $request->input('precio');
+                }
+                if ($request->input('cantidad') ) {
+                    $pedido->pivot->cantidad_producto = $request->input('cantidad');
+                }
+
+                $pedido->save();
     
                 return redirect()->route('pedidos.todos');
             }
 
     
             return view('Pedido.editar',compact('pedido'));
+            //return compact('pedido','proveedor');
             }
     
 

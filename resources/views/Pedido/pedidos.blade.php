@@ -31,7 +31,7 @@
                         <tr>
                             <th class="align-middle" data-sortable="true">ID</th>
                             <th class="align-middle" data-sortable="true">Trabajador solicitante</th>
-                            <th class="align-middle" data-searchable="false">Cantidad de productos solicitados</th>
+                            <th class="align-middle" data-sortable="true">Productos solicitados</th>
                             <th class="align-middle" data-searchable="false" data-sortable="true">Total a pagar</th>
                             <th data-field="estado"  data-filter-control="select">Estado del pedido</th>
                             <th class="align-middle" data-searchable="false">Acciones</th>
@@ -47,12 +47,18 @@
                             <td style="text-align:left">
                                 {{ $pedido->trabajador->nombre}}
                             </td>
-                            <td style="text-align:center">{{ $pedido->cantidad_total}}</td>
+                           
+                            <td style="text-align:center">
+                            @foreach ($pedido->productos as $product)
+                                <li>{{ $product->nombre}}</li>
+                            @endforeach
+                            </td>
                             <td style="text-align:center">@money($pedido->monto_total)</td>
                             <td style="text-align:center">{{$pedido->estado}}</td>
                             <td>
+                               
                                 <div class="input-group-btn">
-                                   <a href="{{ route('pedidos.editar', ['id' => $pedido->id]) }}"> 
+                                   <a href="{{ route('pedidos.editar', ['id' => $pedido->id]) }}">
                                         <button class="btn btn btn-warning">
                                             <span class="fas fa-pencil-alt"></span>
                                         </button>
