@@ -17,8 +17,9 @@ class CreateCreditosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('venta_id');
             $table->string('cliente');
-            $table->float('monto');
+            $table->decimal('monto', 13, 2);
             $table->date('fecha_de_pago');
+            $table->softDeletes();
             $table->timestamps();
         });
 

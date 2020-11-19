@@ -3,101 +3,115 @@
 @section('pagetitle','Nueva venta al crédito')
 @section('content')
 
-    <div  class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div  class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="datos_venta">
+            <fieldset style="border: 4px groove;border-color: skyblue;">
+                <legend style=" width: auto;">Agregar producto</legend>
 
-        <form class="datos_venta">
-        <fieldset style="border: 4px groove;border-color: skyblue;">
-        <legend style=" width: auto;">Datos de artículo en venta</legend>
+                <div class="" style="margin-left:200px; margin-right:200px">
+                    @include('ventas.buscar_producto')
+                </div>
 
-        <p style="text-align:right">
-            <strong style="margin-right:20px">N° de venta: 000000 </strong>
-        </p>
-
-        <div class="row" style="margin-left:1cm">
-            <div class="col-lg-4 col-md-4 col-sm-4  col-xs-8" >
-                 @include('ventas.buscar_producto')
-            </div> 
+                <div class="form-group align-items-center" id="searchResults">
+                    @include('ventas.resultados')
+                </div>
+                <div id="msgsArea" class="form-group" style="text-align: center;margin-left: 400px; margin-right:400px">
+                    @include('ventas.mensajes')
+                </div>
+            </fieldset>
         </div>
-        
+        <form action="{{ route('venta.credito.nuevo') }}" id="orderForm" method="post">
+            @csrf
+            @method('PUT')
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                    <div class="table-responsive" style="margin-top:20px">
+                        <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
+                            <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
+                                <th>Nombre del producto</th>
+                                <th>Precio por unidad</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th> 
+                                <th>Acción</th>    
+                            </thead>
+                            @foreach ((array) session('order') as $id => $details)
+                                <tr style="color: rgb(14,14,14);background-color:#CDE4F7; text-align:center">
+                                    <td style="text-align:left">
+                                        {{ $details['nombre'] }}
+                                    </td>
+                                    <td class="precio">@money($details['precio'])</td>
+                                    <td>
+                                        <input type="number" name="order[{{ $id }}][quantity]" value="{{ $details['quantity'] }}" class="cantidad form-control" style="text-align: center" min="1" autocomplete="off">
+                                    </td>
+                                    <td class="subtotal">@money($details['subtotal'])</td>
+                                    <td style="text-align:center">
+                                        <a href="{{ route('venta.orden.remover', ['id' => $id]) }}" class="btn btn-danger">
+                                            <span class="fas fa-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-        <p>
-        <ul><li><label for="cliente">Nombre del cliente</label>
-        <input type="text" id="cliente" autocomplete="true"></li></ul>
-        </p>
+            <hr>
 
-    
-        <p>
-        <ul><li><label for="cantidad_v">Cantidad de productos a comprar</label>
-        <input type="number" id="cantidad_v"></li></ul>
-        </p>
+            <h5 style="text-align: right"><strong style="margin-right:80px">Total a pagar: <span id="total">@money($total)</span> córdobas</strong></h5>
 
-        <p>
-        <ul><li><label for="fecha_p">Fecha de plazo para el pago</label>
-         <input type="date" name="fecha_p" id="fecha_p" min="2020-02-04" max="2020-05-30" step="2"></td>
-        </p></li></ul>
-
-
-        <p>
-        <ul><li><label for="stock">Stock del producto</label>
-        <input type="number" id="stock" disabled></li></ul>
-        </p>
-
-        <p>
-        <ul><li><label for="p_unitario">Precio unitario del producto</label>
-        <input type="number" id="p_unitario" disabled></li></ul>
-        </p>
-
-        <p>
-        <ul><li><textarea id="comentarios" rows="4" cols="50">
-            </textarea></li></ul>
-        
-        </p>
-
-
-        <p style="text-align:right">
-        <button type="submit" class="btn btn-info" style="margin-right:30px" > + Agregar producto</button>
-        </p>
-
-        </fieldset>
-        </form>
-
-        <div class="row"><!--table begin-->
-        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
-        <div class="table-responsive" style="margin-top:20px">
-                  <table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse: separate;">
-            <thead class="text-center text-dark bg-light border rounded shadow align-items-center">
-                <th>Nombre del producto</th>
-                <th>Fecha de plazo</th>
-                <th>Cantidad</th>
-                <th>Precio por unidad</th>
-                <th>Monto</th> 
-                <th>Acción</th>    
-            </thead>
-
-            <tr style="background-color:#CDE4F7;">
-                    <td ></td>
-                    <td style="text-align:center"> <input type="date" name="fecha_p" id="fecha_p" min="2020-02-04" max="2020-05-30" step="2"></td>
-                    <td > <input type="number" class="form-control" autocomplete="off" name="cantidad_v"></td>
-                    <td></td>
-                    <td></td>
-                    <td style="text-align:center">
-                        <a href="/"><button class="btn btn-danger">X</button></a>
-                    </td>
-            </tr>
-             </table>
-        </div>
-        </div>
-        </div><!--end of the table-->
-
-        <hr>
-
-              <strong><label for="total_v"> Total a pagar: 00000 cordobas </label></strong>
+            <hr>
+            
+            <div class="row d-flex justify-content-between" style="margin-left: 150px; margin-right:150px">
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="fecha">Fecha de plazo para el pago</label></strong></h6>
+                    <input type="date" id="fecha" value="{{ date('Y-m-d', strtotime($fecha)) }}" autocomplete="off" name="fecha">
+                </div>
+                <div class="form-group" style="text-align: center">
+                    <h6><strong><label for="cliente">Cliente</label></strong></h6>
+                    <input type="text" id="cliente" autocomplete="off" name="cliente">
+                </div>
+            </div>
 
             <div class="form-group" style="text-align:center">
-                <button class="btn btn-primary" type="submit">Guardar</button>
-                <a href="{{ url()->previous() }}" class="btn btn-default btn-danger">Cancelar</a>
-            </div>     
+                <button class="btn btn-primary" type="submit">
+                    <span class="fas fa-save"></span>
+                    <strong>Guardar</strong>
+                </button>
+                <a href="{{ route('venta.orden.remover') }}" class="btn btn-default btn-danger">
+                    <span class="fas fa-times"></span>
+                    <strong>Cancelar</strong></a>
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $(".cantidad").change(function () {
+        let price = $(this).parents("tr").find(".precio").html().substr(2);
+        price = parseFloat(price);
+
+        let quantity = $(this).val();
+        quantity = parseInt(quantity);
+
+        if (Number.isInteger(quantity) && quantity > 0) {
+            const subTotalTD = $(this).parents("tr").find(".subtotal");
+            let currentSubTotal = parseFloat(subTotalTD.html().substr(2).replace(",", ""));
+
+            const totalSpan = $("#total");
+            let currentTotal = parseFloat(totalSpan.html().substr(2).replace(",", ""));
+            currentTotal -= currentSubTotal;
+            currentSubTotal = price * quantity;
+            currentTotal += currentSubTotal;
+
+            subTotalTD.html("C$" + currentSubTotal.toFixed(2));
+            totalSpan.html("C$" + currentTotal.toFixed(2));
+        }
+    });
+</script>
 
  
 

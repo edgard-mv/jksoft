@@ -16,8 +16,10 @@ class CreatePedidosTable extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('trabajador_id');
-            $table->integer('cantidad total');
+            $table->integer('cantidad_total');
             $table->float('monto_total');
+            $table->string('estado');
+            $table->softDeletes();
             $table->timestamps();
         });
 

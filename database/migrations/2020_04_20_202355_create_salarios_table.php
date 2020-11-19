@@ -19,7 +19,8 @@ class CreateSalariosTable extends Migration
             $table->integer('horas');
             $table->integer('dias');
             $table->float('pago_por_hora');
-            $table->string('extra')->nullable();
+            $table->integer('extra')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -12,94 +12,68 @@ class VentaSeeder extends Seeder
     public function run()
     {
         DB::table('ventas')->insert([
-            'producto_id'=>1,
-            'nombre_producto'=>'Protex',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-01-21',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>170,
-            'nombre_producto'=>'Mantequilla',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-02-01',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>172,
-            'nombre_producto'=>'chips Ahoy',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-05-14',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>137,
-            'nombre_producto'=>'Zepol Vaso',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-02-21',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>130,
-            'nombre_producto'=>'Amoxicilina',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-01-21',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>86,
-            'nombre_producto'=>'pepsi 3 litros',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-05-05',
+            'estado'=>'Pendiente'
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>76,
-            'nombre_producto'=>'Coca dos litros',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-03-10',
+            'estado'=>'Pendiente'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>71,
-            'nombre_producto'=>'leche fresa',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-04-08',
+            'estado'=>'Pendiente'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>84,
-            'nombre_producto'=>'Pepsi litro',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'fecha'=>'2020-03-19',
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>1,
-            'nombre_producto'=>'Jabon Plus Clean',
             'fecha'=>'2020-05-21',
-            'estado'=>'Contado'                          
+            'estado'=>'Saldado'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>86,
-            'nombre_producto'=>'pepsi 3 litros',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-05-15',
+            'estado'=>'Pendiente'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>5,
-            'nombre_producto'=>'Doña blanca(jabon pequeño)',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-05-13',
+            'estado'=>'Pendiente'                          
         ]);
 
         DB::table('ventas')->insert([
-            'producto_id'=>59,
-            'nombre_producto'=>'Mecha de lampazo XL',
-            'fecha'=>'2020-05-21',
-            'estado'=>'Credito'                          
+            'fecha'=>'2020-05-16',
+            'estado'=>'Pendiente'                          
         ]);     
 
     }
