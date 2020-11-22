@@ -17,7 +17,8 @@
         "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "spatie/laravel-backup": "^6.11"
+        "spatie/laravel-backup": "^6.11",
+        "symfony/http-kernel": "^5.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
