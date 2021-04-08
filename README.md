@@ -1,6 +1,6 @@
 ## Clonar el repositorio
 
-Para clonar el repositorio, deben seguir los siguientes pasos:
+Para clonar el repositorio, debe seguir los siguientes pasos:
 
 - `git clone https://github.com/edgard-mv/jksoft.git`
 
