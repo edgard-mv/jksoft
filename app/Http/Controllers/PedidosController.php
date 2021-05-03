@@ -24,8 +24,6 @@ class PedidosController extends Controller
         return view('Pedido.pedidos',compact('pedidos'));
     }
 
-    //Pedido::withTrashed()->where('id', 15)->restore(); prueba de restore
-
     public function delete($id) {
         if (Gate::denies('access-products')) {
             return redirect(url()->previous());
@@ -95,40 +93,34 @@ class PedidosController extends Controller
         );
     }
 
+    public function update(Request $request,$id) {
 
-        public function update(Request $request,$id) {
+        $pedido = Pedido::with('trabajador','productos')->get()->find($id);            
+        
+        if ($request->isMethod('patch')) {
 
-            $pedido = Pedido::with('trabajador','productos')->get()->find($id);            
-            
-            if ($request->isMethod('patch')) {
 
-    
-                //validaciones de productos
-                if ($request->input('precio') ) {
-                    $pedido->pivot->precio_compra = $request->input('precio');
-                }
-                if ($request->input('cantidad') ) {
-                    $pedido->pivot->cantidad_producto = $request->input('cantidad');
-                }
-
-                $pedido->save();
-    
-                return redirect()->route('pedidos.todos');
+            //validaciones de productos
+            if ($request->input('precio') ) {
+                $pedido->pivot->precio_compra = $request->input('precio');
+            }
+            if ($request->input('cantidad') ) {
+                $pedido->pivot->cantidad_producto = $request->input('cantidad');
             }
 
-    
-            return view('Pedido.editar',compact('pedido'));
-            //return compact('pedido','proveedor');
-            }
-    
+            $pedido->save();
 
-
-        public function details(Request $request,$id) {
-            $pedido = Pedido::with('trabajador','productos')->get()->find($id);
-
-             return view('Pedido.detalles', compact('pedido'));
-             //return compact('pedido');
+            return redirect()->route('pedidos.todos');
         }
+        return view('Pedido.editar',compact('pedido'));
+        //return compact('pedido','proveedor');
+    }
+
+    public function details(Request $request,$id) {
+        $pedido = Pedido::with('trabajador','productos')->get()->find($id);
+
+        return view('Pedido.detalles', compact('pedido'));
+    }
         
     public function payOff($id) {
         if (Gate::denies('access-products')) {
