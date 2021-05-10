@@ -2,20 +2,27 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+use App\User;
 
 class TrabajadorTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    use DatabaseMigrations;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('db:seed');
+    }
+
+
     public function testExample()
     {
-        $response = $this->get('/');
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/operarios');
 
         $response->assertStatus(200);
     }

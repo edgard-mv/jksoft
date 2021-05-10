@@ -30,48 +30,46 @@ Route::get('manualu', function () {
 Route::name('estadistica.')->middleware(['auth'])->group(function () {
 
     Route::get(
-        '/estadisticas/proveedores/fechas', 
+        '/estadisticas/proveedores/fechas',
         'EstadisticaProveedorController@Dates'
     )->name('actualizar.proveedor');
 
 
     Route::get(
-        '/estadistica/proveedores', 
+        '/estadistica/proveedores',
         'EstadisticaProveedorController@index'
-        )->name('proveedores');
+    )->name('proveedores');
 
     Route::get(
-        '/estadistica/productos', 
+        '/estadistica/productos',
         'ChartController@index'
-        )->name('productos');
-    
-    Route::get(
-        '/estadisticas/productos/fechas', 
-          'ChartController@Dates'
-        )->name('actualizar.productos');
+    )->name('productos');
 
     Route::get(
-        '/estadistica/ventas', 
+        '/estadisticas/productos/fechas',
+        'ChartController@Dates'
+    )->name('actualizar.productos');
+
+    Route::get(
+        '/estadistica/ventas',
         'EstadisticasVentasController@index'
-         )->name('ventas');
-    
+    )->name('ventas');
+
     Route::get(
-       '/estadisticas/ventas/fechas', 
-       'EstadisticasVentasController@Dates'
-        )->name('actualizar.ventas');
-
-    
-
+        '/estadisticas/ventas/fechas',
+        'EstadisticasVentasController@Dates'
+    )->name('actualizar.ventas');
 });
 
 Route::name('pedidos.')->middleware(['auth'])->group(function () {
 
     Route::get(
-        '/pedidos', 
-        'PedidosController@getAll')
-     ->name('todos');
+        '/pedidos',
+        'PedidosController@getAll'
+    )
+        ->name('todos');
 
-     Route::delete(
+    Route::delete(
         '/pedidos/{id}/remover',
         'PedidosController@delete'
     )->name('remover');
@@ -81,13 +79,13 @@ Route::name('pedidos.')->middleware(['auth'])->group(function () {
         '/pedidos/nuevo',
         'PedidosController@create'
     )->name('nuevo');
- 
-     Route::get(
+
+    Route::get(
         '/pedido/{id}/detalles',
         'PedidosController@details'
-     )->name('detalles');
+    )->name('detalles');
 
-     Route::match(
+    Route::match(
         ['get', 'patch'],
         '/pedido/{id}/editar',
         'PedidosController@update'
@@ -97,8 +95,7 @@ Route::name('pedidos.')->middleware(['auth'])->group(function () {
         '/pedido/{id}/saldar',
         'PedidosController@payOff'
     )->name('saldar');
- 
- });
+});
 
 Route::name('producto.')->middleware(['auth'])->group(function () {
 
@@ -148,7 +145,6 @@ Route::name('producto.')->middleware(['auth'])->group(function () {
         '/productos/{producto_id}/proveedores/agregar',
         'ProductosController@addProveedor'
     )->name('proveedor.agregar');
-
 });
 
 Route::name('proveedor.')->middleware(['auth'])->group(function () {
@@ -179,47 +175,45 @@ Route::name('proveedor.')->middleware(['auth'])->group(function () {
         '/proveedores/{id}/editar',
         'ProveedoresController@update'
     )->name('editar');
-    
+
     Route::get(
         '/proveedores/productos',
         'ProveedoresController@products'
     )->name('productos');
-
 });
 
 Route::name('operarios.')->middleware(['auth'])->group(function () {
 
-   Route::get(
-       '/operarios', 
-       'OperariosController@getAll')
-    ->name('todos');
+    Route::get(
+        '/operarios',
+        'OperariosController@getAll'
+    )->name('todos');
 
-   Route::match(
-       ['get', 'put'], 
-       '/operarios/nuevo', 
-       'OperariosController@create'
-       )->name('nuevo');
+    Route::match(
+        ['get', 'put'],
+        '/operarios/nuevo',
+        'OperariosController@create'
+    )->name('nuevo');
 
     Route::match(
         ['get', 'patch'],
-         '/operarios/{id}/editar', 
-         'OperariosController@update'
-         )->name('editar');
+        '/operarios/{id}/editar',
+        'OperariosController@update'
+    )->name('editar');
 
     Route::get(
         '/operarios/buscar',
         'OperariosController@search'
-        )->name('buscar');
-    
+    )->name('buscar');
+
     Route::delete(
         '/operarios/{id}/remover',
         'OperariosController@delete'
-        )->name('remover');
-
+    )->name('remover');
 });
 
 Route::name('venta.')->middleware(['auth'])->group(function () {
-    
+
     Route::get(
         '/ventas',
         'VentasController@getAll'
@@ -242,7 +236,6 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
             '/ventas/contado/nuevo',
             'VentasController@createContado'
         )->name('nuevo');
-
     });
 
     Route::name('credito.')->group(function () {
@@ -258,7 +251,6 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
             '/ventas/credito/{id}/abonar',
             'VentasController@addPayment'
         )->name('abonar');
-
     });
 
     Route::name('orden.')->group(function () {
@@ -267,7 +259,7 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
             'ventas/contado/orden/agregar',
             'VentasController@addToOrder'
         )->name('agregar');
-        
+
         Route::get(
             'ventas/contado/orden/remover',
             'VentasController@removeFromOrder'
@@ -276,12 +268,6 @@ Route::name('venta.')->middleware(['auth'])->group(function () {
         Route::get(
             '/ventas/contado/orden/buscar',
             'VentasController@searchProductOrder'
-        )->name('buscar');        
-
+        )->name('buscar');
     });
-
-   
-
 });
-
-
