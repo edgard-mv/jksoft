@@ -18,8 +18,6 @@ Route::match(['get', 'post'], '/', 'HomeController@login')->name('login');
 
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
-
-
 Route::get('/backup', 'BackupController@index')->middleware('auth')->name('backup');
 Route::get('/backup/guardar', 'BackupController@save')->middleware('auth')->name('backup.save');
 
