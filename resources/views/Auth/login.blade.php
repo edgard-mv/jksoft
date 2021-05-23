@@ -21,10 +21,9 @@
     </div>
 </header>
 <body>
-    <div class="wrapper fadeInDown">
+    <div class="wrapper ">
         <div id="formContent">
           <!-- Tabs Titles -->
-      
           <!-- Icon -->
           <div class="fadeIn first">
             <span class="fas fa-user-circle" id="icon" alt="User Icon"></span>
@@ -33,9 +32,9 @@
           <!-- Login Form -->
           <form action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña">
-            <input type="submit" class="fadeIn fourth" value="Acceder">
+            <input type="text" id="login" name="email" placeholder="Email">
+            <input type="password" id="password" name="password" placeholder="Contraseña">
+            <input dusk="loginButton" type="submit" value="Acceder">
           </form>
       
           <!-- Remind Passowrd -->
