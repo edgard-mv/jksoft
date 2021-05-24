@@ -51,7 +51,7 @@
                                     </button>
                                 </a>
                                 <a href="" data-target="#ModalDelete{{ $proveedor->id }}" data-toggle="modal">
-                                    <button class="btn btn-danger">
+                                    <button dusk="id:{{ $proveedor->id }}" class="btn btn-danger">
                                         <span class="fas fa-trash-alt"></span>
                                     </button>
                                 </a>

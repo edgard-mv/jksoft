@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Proveedor;
 use Illuminate\Support\Facades\Gate;
+use App\Services\ProveedorService;
 use DB;
 
 class ProveedoresController extends Controller
@@ -15,7 +16,7 @@ class ProveedoresController extends Controller
             return redirect(url()->previous());
         }
         
-        $proveedores = Proveedor::all();
+        $proveedores = ProveedorService::getAll();
 
         return view('proveedores.proveedor', compact('proveedores'));
     }
@@ -29,18 +30,7 @@ class ProveedoresController extends Controller
             $value = $request->input('valor');
             $type = $request->input('tipo');
 
-            if ($type == 'id') {
-                $proveedores = Proveedor::find($value);
-                if (!$proveedores) {
-                    $proveedores = collect([])->paginate(15);
-                } else {
-                    $proveedores = collect([$proveedores])->paginate(15);
-                }
-            } elseif ($type == 'empresa') {
-                $proveedores = Proveedor::where('empresa', 'like', '%'. $value .'%')->paginate(15);
-            } elseif ($type == 'nombre') {
-                $proveedores = Proveedor::where('nombre', 'like', '%'. $value .'%')->paginate(15);
-            }
+            $proveedores = search($value, $type);
 
             return view('proveedores.proveedor', compact('proveedores'));
         }
@@ -55,10 +45,10 @@ class ProveedoresController extends Controller
         
         if ($request->isMethod('put')) {
             if ($request->input('nombre') and $request->input('empresa')) {
-                $proveedor = new Proveedor;
-                $proveedor->nombre = $request->input('nombre');
-                $proveedor->empresa = $request->input('empresa');
-                $proveedor->save();
+                ProveedorService::createOne(
+                    $request->input('nombre'),
+                    $request->input('empresa')
+                );
             }
             return redirect()->route('proveedor.todos');
         }
@@ -70,17 +60,8 @@ class ProveedoresController extends Controller
         if (Gate::denies('access-providers')) {
             return redirect(url()->previous());
         }
-        
-        $proveedor = Proveedor::find($id);
-        
-        $proveedor->productos()->each(function ($producto) {
-            if ($producto->proveedores()->count() == 1) {
-                $producto->delete();
-            }
-        });
 
-
-        $proveedor->delete();
+        ProveedorService::deleteOne($id);
 
         return redirect()->route('proveedor.todos');    
     }

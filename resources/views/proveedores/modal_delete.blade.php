@@ -13,7 +13,7 @@
               <span class="fas fa-times"></span>
               <strong>Cancelar</strong>
             </button>
-            <button class="btn btn-primary" type="submit">
+            <button dusk="confirmDeletion{{ $proveedor->id }}" class="btn btn-primary" type="submit">
               <span class="fas fa-check"></span>
               <strong>Aceptar</strong>
             </button>
