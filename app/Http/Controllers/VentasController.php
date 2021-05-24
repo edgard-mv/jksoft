@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Venta;
 use App\Producto;
 
+use App\Services\VentaService;
+
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
 
@@ -141,29 +143,8 @@ class VentasController extends Controller
         }
 
         if ($request->isMethod('PUT') and empty($msgs)) {
-            $venta = new Venta;
+            VentaService::createOne($order, $total);
 
-            $venta->fecha = Carbon::now();
-            $venta->estado = 'Saldado';
-
-            $venta->save();
-
-            foreach ($order as $id => $details) {
-                $venta->productos()->attach($id, [
-                    'cantidad_producto' => $order[$id]['quantity'],
-                    'precio_actual' => $details['precio'],
-                    'monto' => $details['subtotal']
-                ]);
-
-                $producto = Producto::find($id);
-                $producto->cantidad -= $order[$id]['quantity'];
-                $producto->save();
-            }
-
-            $venta->contado()->create([
-                'monto' => $total
-            ]);
-            
             session()->forget('order');
             return redirect()->route('venta.contado.nuevo');
         }
